@@ -57,9 +57,8 @@ window.CountryScreen = {
         : (isAr ? 'اختر دولة أولاً' : 'Select a Country'),
     };
 
-    const ff = isAr
-      ? "'Cairo','Plus Jakarta Sans',sans-serif"
-      : "'Plus Jakarta Sans',sans-serif";
+    const ffBody    = isAr ? "var(--font-arabic)" : "var(--font-body)";
+    const ffHeading = isAr ? "var(--font-arabic)" : "var(--font-heading)";
 
     return {
       isCountryScreen: state.currentScreen === 'country',
@@ -79,7 +78,7 @@ window.CountryScreen = {
         whiteSpace: 'pre-line',
         lineHeight: '1.2',
         letterSpacing: isAr ? '-0.2px' : '-0.7px',
-        fontFamily: ff,
+        fontFamily: ffHeading,
       },
       subtitleStyle: {
         fontSize: '13px',
@@ -87,7 +86,7 @@ window.CountryScreen = {
         fontWeight: '400',
         marginTop: '6px',
         lineHeight: '1.5',
-        fontFamily: ff,
+        fontFamily: ffBody,
       },
       sectionLabelStyle: {
         fontSize: '11px',
@@ -95,7 +94,7 @@ window.CountryScreen = {
         color: '#9a9a9a',
         letterSpacing: isAr ? '0' : '1px',
         textTransform: isAr ? 'none' : 'uppercase',
-        fontFamily: ff,
+        fontFamily: ffBody,
       },
       bodyStyle: {
         flex: '1',
@@ -103,7 +102,7 @@ window.CountryScreen = {
         flexDirection: 'column',
         padding: '22px 20px 0',
         overflow: 'hidden',
-        fontFamily: ff,
+        fontFamily: ffBody,
       },
       btnStyle: {
         width: '100%',
@@ -115,7 +114,7 @@ window.CountryScreen = {
         fontSize: '16px',
         fontWeight: '700',
         cursor: selected ? 'pointer' : 'default',
-        fontFamily: ff,
+        fontFamily: ffBody,
         letterSpacing: isAr ? '0' : '0.2px',
         transition: 'background 0.3s ease, color 0.3s ease, transform 0.12s ease',
         boxShadow: selected ? '0 8px 28px rgba(229,57,53,0.35)' : 'none',
@@ -132,7 +131,7 @@ window.CountryScreen = {
         fontSize: '13px',
         cursor: 'pointer',
         transition: 'all 0.22s ease',
-        fontFamily: "'Plus Jakarta Sans',sans-serif",
+        fontFamily: "var(--font-body)",
         letterSpacing: '0.3px',
       },
       toggleArStyle: {
@@ -145,7 +144,7 @@ window.CountryScreen = {
         fontSize: '13px',
         cursor: 'pointer',
         transition: 'all 0.22s ease',
-        fontFamily: "'Cairo',sans-serif",
+        fontFamily: "var(--font-arabic)",
       },
 
       switchToEn: () => setState({ lang: 'en' }),
@@ -203,16 +202,14 @@ window.CountryScreen = {
             color: '#141414',
             letterSpacing: isAr ? '0' : '-0.2px',
             lineHeight: '1.2',
-            fontFamily: ff,
+            fontFamily: ffBody,
           },
           subNameStyle: {
             fontSize: '12px',
             color: '#a0a0a0',
             fontWeight: '400',
             marginTop: '3px',
-            fontFamily: isAr
-              ? "'Plus Jakarta Sans',sans-serif"
-              : "'Cairo',sans-serif",
+            fontFamily: isAr ? "var(--font-body)" : "var(--font-arabic)",
           },
 
           ringStyle: {

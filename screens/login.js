@@ -18,7 +18,7 @@ window.LoginScreen = {
       color: '#E53935',
       fontSize: '14px',
       cursor: 'pointer',
-      fontFamily: "'Plus Jakarta Sans',sans-serif",
+      fontFamily: "var(--font-body)",
       boxShadow: '0 2px 12px rgba(0,0,0,0.1)',
       transition: 'all 0.22s ease',
       letterSpacing: '0.1px',
@@ -38,7 +38,7 @@ window.LoginScreen = {
       color: '#A0A0B8',
       fontSize: '14px',
       cursor: 'pointer',
-      fontFamily: "'Plus Jakarta Sans',sans-serif",
+      fontFamily: "var(--font-body)",
       transition: 'all 0.22s ease',
       letterSpacing: '0.1px',
     };

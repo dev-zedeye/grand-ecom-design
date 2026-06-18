@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Cairo:wght@400;500;600;700;800&display=swap');
+
+/* To swap fonts project-wide, change these three values only */
+:root {
+  --font-heading: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-arabic:  'Cairo', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+}

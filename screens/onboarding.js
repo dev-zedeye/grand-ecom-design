@@ -86,7 +86,7 @@ window.OnboardingScreen = {
         overflow: 'hidden',
         background: onboardingDone ? '#FAFAF8' : slide.bg,
         transition: 'background 0.5s ease',
-        fontFamily: "'Plus Jakarta Sans',sans-serif",
+        fontFamily: "var(--font-body)",
         animation: 'fadeInUp 0.3s ease both',
       },
 
