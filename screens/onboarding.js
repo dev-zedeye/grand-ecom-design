@@ -44,7 +44,7 @@ window.OnboardingScreen = {
     const next = state.currentSlide + dir;
     if (next >= this.slides.length) {
       setState({ fading: true });
-      setTimeout(() => setState({ onboardingDone: true, fading: false }), 300);
+      setTimeout(() => setState({ currentScreen: 'login', fading: false }), 300);
       return;
     }
     if (next < 0) return;
@@ -151,10 +151,8 @@ window.OnboardingScreen = {
       skip: () => {
         if (state.fading) return;
         setState({ fading: true });
-        setTimeout(() => setState({ onboardingDone: true, fading: false }), 300);
+        setTimeout(() => setState({ currentScreen: 'login', fading: false }), 300);
       },
-
-      startShopping: () => setState({ currentScreen: 'login' }),
 
       onTouchStart: (e) => {
         if (state.currentScreen !== 'onboarding') return;
