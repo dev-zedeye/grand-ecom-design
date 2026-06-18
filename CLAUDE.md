@@ -8,6 +8,31 @@ This is a **static design prototype** for GrandHyper — a grocery delivery app 
 
 Open `index.html` directly in a browser to run the prototype.
 
+## Git Workflow
+
+- **Always work on and push to `main` branch** after every edit session.
+- Use: `git add <files> && git commit -m "..." && git push origin main`
+
+## Memory Bank
+
+This section captures decisions and preferences made during development. Update it whenever a meaningful design, tooling, or structural decision is made.
+
+| Decision | Detail |
+|---|---|
+| Font pair | Outfit (headings) + Nunito (body) + Cairo (Arabic) |
+| Font source of truth | `theme.css` — edit only the three `:root` variables to reswap fonts |
+| Deployment | Netlify, auto-deploys on push to `main` |
+| Target device | iPad / mobile Safari is primary preview device |
+
+## CSS Conventions
+
+- **Never hard-code font-family strings** in `screens/*.js` or `index.html`. Always use the CSS variables defined in `theme.css`:
+  - `var(--font-heading)` — large titles, brand name (currently Outfit)
+  - `var(--font-body)` — body copy, buttons, inputs, labels (currently Nunito)
+  - `var(--font-arabic)` — all Arabic text regardless of element size (currently Cairo)
+- To add a new screen HTML file, include `<link rel="stylesheet" href="./theme.css">` in its `<head>` and use the same variables.
+- Inline styles are the norm in this codebase. CSS variables work fine inside inline `style` attributes.
+
 ## Rebuilding support.js
 
 `support.js` is generated code — do not edit it directly. It is built from a `dc-runtime` source tree (not included in this repo):
