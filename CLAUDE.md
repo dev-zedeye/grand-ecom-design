@@ -1,221 +1,106 @@
 # CLAUDE.md
 
-This file is the primary memory bank and guidance document for all AI assistants working on this repository. Update it after every meaningful decision so any session — on any device — can resume without context loss.
-
----
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
-**Grand** is a static design prototype for a grocery delivery app targeting GCC countries (UAE, Kuwait, Qatar, Saudi Arabia). It is an interactive mobile mockup, not a production application. There is no build pipeline, package manager, or test suite.
+This is a **static design prototype** for GrandHyper — a grocery delivery app targeting GCC countries (UAE, Kuwait, Qatar, Saudi Arabia). It is an interactive mobile mockup, not a production application. There is no build pipeline, package manager, or test suite.
 
-**Run it:** Open `index.html` directly in a browser (or access via Netlify — see Deployment below).
-
----
+Open `index.html` directly in a browser to run the prototype.
 
 ## Git Workflow
 
-- **Always work on and push to `main`** — it is the sole branch. Never create feature branches unless explicitly asked.
-- Push after every edit session: `git add <files> && git commit -m "..." && git push origin main`
-- Netlify auto-deploys on every push to `main`.
-
----
+- **Always work on and push to `main` branch** after every edit session.
+- Use: `git add <files> && git commit -m "..." && git push origin main`
 
 ## Memory Bank
 
-Every meaningful design, structural, and tooling decision is recorded here.
-
-### Brand
+This section captures decisions and preferences made during development. Update it whenever a meaningful design, tooling, or structural decision is made.
 
 | Decision | Detail |
 |---|---|
-| App name | **Grand** (the full marketing name is "GrandHyper" but the displayed wordmark is "GRAND" in uppercase) |
-| Primary colour | `#E53935` — used for CTAs, selected states, header gradient midpoint |
-| Header gradient | `linear-gradient(148deg, #FF5252 0%, #E53935 45%, #C62828 100%)` |
-| Header shape | `border-radius: 0 0 38px 38px` with `box-shadow: 0 12px 40px rgba(229,57,53,0.32)` |
-| Body background | `#FAFAF8` (warm off-white) for country and login screens |
-| Outer wrapper bg | Dark gradient: `linear-gradient(150deg, #0c0c1e 0%, #18102e 55%, #081820 100%)` |
-
-### Logo
-
-| Element | Detail |
-|---|---|
-| Mark | Sunrise SVG: semicircle arc on a baseline + 7 white rays at 0°, ±35°, ±65°, ±82° |
-| SVG viewBox | `0 0 60 36`, rendered at `width:52 height:32` |
-| Colour on red bg | All white (strokes and fills) |
-| Wordmark | "Grand" in `var(--font-heading)`, `font-size:13px`, `font-weight:800`, `text-transform:uppercase`, `letter-spacing:0.6px`, white |
-| Layout | Stacked column: SVG mark above wordmark, `align-items:center`, `gap:2px` |
-| **Pending** | Login screen header still uses the old map-pin + "GrandHyper" — needs updating to the Grand sunrise logo |
-
-### Fonts
-
-| Role | Font | Weights |
-|---|---|---|
-| Heading (`--font-heading`) | Outfit | 300–800 |
-| Body (`--font-body`) | Nunito | 300–800 |
-| Arabic (`--font-arabic`) | Cairo | 400–800 |
-
-**Source of truth:** `theme.css` — change only the three `:root` CSS variables to swap fonts project-wide.
-
-### Screens & Navigation Flow
-
-```
-country → onboarding → login
-```
-
-- No intermediate screen between onboarding and login — removed the "You're all set" state.
-- Login has a back button that returns to the country screen.
-- `onboardingDone` state key still exists in `index.html` but is unused; can be cleaned up.
-
-### Country Screen
-
-| Element | Detail |
-|---|---|
-| Flag display | Emoji at `font-size:72px` absolutely centred inside a `68×46px` `overflow:hidden` container with `border-radius:8px` |
-| Row style | Full-width rows with `border-bottom: 1px solid rgba(0,0,0,0.06)`; no card borders |
-| Checkmark | Circle `32×32px`: gray outline + gray check when unselected; `#E53935` filled + white check when selected |
-| CTA button | Full-width 58px red pill (`border-radius:29px`); gray/disabled when no country selected |
-| Countries | UAE 🇦🇪, Kuwait 🇰🇼, Qatar 🇶🇦, Saudi Arabia 🇸🇦 |
-| Lang toggle | EN / عربي pill in top-right of header; white active pill with red text, transparent inactive |
-
-### Onboarding Screen
-
-| Element | Detail |
-|---|---|
-| Slides | 3 slides with food-emoji floating animations |
-| Slide backgrounds | Amber `#FFB300`, Orange `#FF6B35`, Teal `#00897B` |
-| Interaction | Swipe/drag (≥ 50px delta) or tap "Continue"/"Get Started" button |
-| Skip | Button at top-right; goes directly to login |
-| Bottom card | 360px white card at bottom with headline, subtitle, pagination dots, CTA |
-| Transition | Cross-fade via `fading` state flag (280ms) |
-
-### Login Screen
-
-| Element | Detail |
-|---|---|
-| Tabs | Email / Phone — toggles between two form layouts |
-| Social login | Built in HTML but hidden (`showSocialLogin: false`) |
-| Guest login | Visible (`showGuestLogin: true`) |
-| Back | Button returns to country screen (`backToCountry`) |
-| **Pending** | Header logo is still the old map-pin + "GrandHyper" text; needs Grand sunrise logo |
-
-### Deployment & Environment
-
-| Item | Detail |
-|---|---|
-| Host | Netlify — auto-deploys on push to `main` |
-| Primary viewer | iPad / mobile Safari |
-| Viewport | Fixed `390×844px` frame with `54px` border radius (phone simulation) |
-| Dynamic island | `130×37px` centred at `top:12px`, `z-index:30` |
-| Home indicator | `134×5px`, `background:#000`, `opacity:0.1`, centred at screen bottom |
-| Status bar | Always shows mock time "9:41" |
-
----
+| Font pair | Outfit (headings) + Nunito (body) + Cairo (Arabic) |
+| Font source of truth | `theme.css` — edit only the three `:root` variables to reswap fonts |
+| Deployment | Netlify, auto-deploys on push to `main` |
+| Target device | iPad / mobile Safari is primary preview device |
 
 ## CSS Conventions
 
-- **Never hard-code font-family strings** in `screens/*.js` or `index.html`. Use only:
-  - `var(--font-heading)` — large titles, logo wordmark
-  - `var(--font-body)` — all body copy, buttons, inputs, labels
-  - `var(--font-arabic)` — all Arabic text regardless of element size
-- New screen files must include `<link rel="stylesheet" href="./theme.css">` in `<head>`.
-- Inline styles are the norm. CSS variables work fine in inline `style` attributes.
-- When editing copy, **always update both English and Arabic variants**.
+- **Never hard-code font-family strings** in `screens/*.js` or `index.html`. Always use the CSS variables defined in `theme.css`:
+  - `var(--font-heading)` — large titles, brand name (currently Outfit)
+  - `var(--font-body)` — body copy, buttons, inputs, labels (currently Nunito)
+  - `var(--font-arabic)` — all Arabic text regardless of element size (currently Cairo)
+- To add a new screen HTML file, include `<link rel="stylesheet" href="./theme.css">` in its `<head>` and use the same variables.
+- Inline styles are the norm in this codebase. CSS variables work fine inside inline `style` attributes.
 
----
+## Rebuilding support.js
 
-## File Map
+`support.js` is generated code — do not edit it directly. It is built from a `dc-runtime` source tree (not included in this repo):
 
-| File | Purpose |
-|---|---|
-| `index.html` | Single app entry point — all screens composed here; do not open `.dc.html` files |
-| `theme.css` | Font imports + CSS custom property definitions; single source of truth |
-| `screens/country.js` | Country selection screen logic + style values |
-| `screens/onboarding.js` | Onboarding carousel logic + style values |
-| `screens/login.js` | Login screen logic + style values |
-| `support.js` | **Generated** DC runtime — do not edit directly |
-| `GrandHyper *.dc.html` | Original per-screen design source files; superseded by `index.html` |
-| `profile.code-profile` | VS Code profile export; not relevant to the prototype |
-
----
+```bash
+cd dc-runtime && bun run build
+```
 
 ## Architecture
 
 ### DC (Design Component) Runtime
 
-Custom reactive framework (`support.js`) using `<x-dc>` custom elements:
+The project uses a custom reactive framework called DC. Markup lives inside `<x-dc>` custom elements with a template syntax:
 
-| Syntax | Purpose |
-|---|---|
-| `{{ variable }}` | Value interpolation |
-| `{{ handler }}` | Event handler binding |
-| `<sc-if condition="...">` | Conditional rendering |
-| `<sc-for items="...">` | List rendering |
-| `style-hover` / `style-active` | State-dependent CSS overrides |
+- `{{ variable }}` — value interpolation
+- `{{ handler }}` — event handler binding
+- `<sc-if condition="...">` — conditional rendering
+- `<sc-for items="...">` — list rendering
+- `style-hover`, `style-active` attributes — state-dependent CSS overrides
 
 ### Screen Module Pattern
 
-Each `screens/*.js` file exports a singleton on `window`:
+Each file in `screens/` exports a singleton on `window`:
 
 ```js
 window.ScreenName = {
   renderVals(state, setState) {
-    // Returns a flat object of values, handlers, and style objects
+    // Returns a flat object of values, event handlers, and style objects
+    // that are spread into the DC template bindings
   }
 }
 ```
 
-`index.html` merges all screens into one binding set:
+`index.html` composes all screens by spreading their return values together:
 
 ```js
-{
-  ...CountryScreen.renderVals(state, setState),
+{ ...CountryScreen.renderVals(state, setState),
   ...OnboardingScreen.renderVals(state, setState),
-  ...LoginScreen.renderVals(state, setState),
-}
+  ...LoginScreen.renderVals(state, setState) }
 ```
-
-Each screen uses `isXxxScreen: state.currentScreen === 'xxx'` to show/hide itself via `<sc-if>`.
 
 ### Central State (index.html)
 
-```js
-state = {
-  currentScreen: 'country',   // 'country' | 'onboarding' | 'login'
-  selectedCountry: null,       // 'uae' | 'kw' | 'qa' | 'sa'
-  lang: 'en',                  // 'en' | 'ar'
-  currentSlide: 0,             // 0–2
-  fading: false,               // cross-fade in progress
-  onboardingDone: false,       // legacy — unused, safe to remove
-  activeTab: 'email',          // 'email' | 'phone'
-  showPw: false,               // password visibility
-}
-```
+All application state lives in a single object inside the `Component` class:
 
-### Bilingual / RTL
-
-- `isAr ? '...' : '...'` ternaries inline in `renderVals`
-- `dir` binding switches layout direction (`'rtl'` or `'ltr'`)
-- Font switches: `isAr ? 'var(--font-arabic)' : 'var(--font-body)'`
-- Status bar and logo row are always `dir="ltr"` regardless of lang
-
-### Animations
-
-All keyframes defined in `index.html` `<style>` block:
-
-| Name | Use |
+| Key | Purpose |
 |---|---|
-| `floatA/B/C` | Floating food emojis on onboarding |
-| `pulseCircle` | Soft glow circle on onboarding |
-| `fadeInUp` | Screen entrance (country + login) |
-| `fadeUp` | Tab content entrance (login) |
-| `cardPop` | Card pop-in |
-| `fadeSlide` | Slide fade |
-| `floatBadge` | Badge float |
+| `currentScreen` | Active screen: `'country'`, `'onboarding'`, or `'login'` |
+| `selectedCountry` | Currently selected GCC country object |
+| `lang` | Language: `'en'` or `'ar'` |
+| `currentSlide` | Active slide index in the onboarding carousel |
+| `fading` | Boolean flag controlling cross-fade transitions |
+| `onboardingDone` | Whether onboarding has been completed |
+| `activeTab` | Login tab: `'email'` or `'phone'` |
+| `showPw` | Password visibility toggle |
 
-### Rebuilding support.js
+### Bilingual / RTL Support
 
-`support.js` is generated — do not edit directly. Built from `dc-runtime` (not in repo):
+Every screen supports English (LTR) and Arabic (RTL). Text strings are stored as `{ en, ar }` objects and resolved via `state.lang`. Layout direction switches dynamically. When editing copy or layout, update both language variants.
 
-```bash
-cd dc-runtime && bun run build
-```
+### Viewport
+
+The mockup is fixed at **390×844 px** with a 54 px border radius to simulate a phone frame. All sizing decisions should stay within these constraints.
+
+### Animation Conventions
+
+Named CSS keyframes defined in `index.html`: `cardPop`, `fadeSlide`, `floatA/B/C`, `pulseCircle`, `fadeInUp`, `fadeUp`, `floatBadge`. Durations range from 0.22 s to 4.2 s with `cubic-bezier` easing. Backdrop glows use blurred colored divs at opacity 0.10–0.13.
+
+### Gesture Handling
+
+The onboarding carousel responds to both touch and mouse drag. A ≥ 50 px horizontal delta triggers slide advance (left swipe) or retreat (right swipe). This logic lives in `screens/onboarding.js`.
