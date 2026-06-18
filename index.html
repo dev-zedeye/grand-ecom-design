@@ -119,15 +119,30 @@
 
           <!-- Logo row (always LTR) -->
           <div dir="ltr" style="display:flex;align-items:center;gap:10px;padding:0 24px">
-            <div style="width:36px;height:36px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,0.3)">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M11 3C7.5 3 4 5.5 4 9c0 2.5 1.5 4.5 4 5.5L11 19l3-4.5c2.5-1 4-3 4-5.5 0-3.5-3.5-6-7-6z" fill="white" opacity="0.9"></path>
-                <circle cx="11" cy="9" r="2.5" fill="rgba(229,57,53,0.8)"></circle>
+            <!-- Grand sunrise logo: icon + wordmark stacked -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+              <svg width="52" height="32" viewBox="0 0 60 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Baseline -->
+                <line x1="4" y1="33" x2="56" y2="33" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+                <!-- Semicircle sun -->
+                <path d="M13 30 A17 17 0 0 1 47 30" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+                <!-- Rays -->
+                <!-- 0° top -->
+                <line x1="30" y1="13" x2="30" y2="7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <!-- +35° right -->
+                <line x1="39.8" y1="16.1" x2="43.2" y2="11.2" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <!-- -35° left -->
+                <line x1="20.2" y1="16.1" x2="16.8" y2="11.2" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <!-- +65° right -->
+                <line x1="45.4" y1="22.8" x2="50.8" y2="20.3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <!-- -65° left -->
+                <line x1="14.6" y1="22.8" x2="9.2" y2="20.3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <!-- +82° far right -->
+                <line x1="46.8" y1="27.6" x2="52.8" y2="26.8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <!-- -82° far left -->
+                <line x1="13.2" y1="27.6" x2="7.2" y2="26.8" stroke="white" stroke-width="2" stroke-linecap="round"/>
               </svg>
-            </div>
-            <div>
-              <div style="font-size:17px;font-weight:800;font-family:var(--font-heading);color:#fff;letter-spacing:-0.4px;line-height:1">GrandHyper</div>
-              <div style="font-size:11px;color:rgba(255,255,255,0.62);font-weight:500;margin-top:1px;letter-spacing:0.1px">{{ tagline }}</div>
+              <div style="font-size:13px;font-weight:800;font-family:var(--font-heading);color:#fff;letter-spacing:0.6px;line-height:1;text-transform:uppercase">Grand</div>
             </div>
             <div dir="ltr" style="margin-left:auto;background:rgba(255,255,255,0.16);border-radius:22px;padding:3px;display:flex;gap:2px;border:1px solid rgba(255,255,255,0.2)">
               <button onClick="{{ switchToEn }}" style="{{ toggleEnStyle }}">EN</button>
