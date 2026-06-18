@@ -108,9 +108,8 @@ window.CountryScreen = {
 
           flagWrapStyle: {
             width: '68px', height: '46px', borderRadius: '8px',
-            overflow: 'hidden', flexShrink: '0',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: 'rgba(0,0,0,0.03)',
+            overflow: 'hidden', flexShrink: '0', position: 'relative',
+            boxShadow: '0 1px 6px rgba(0,0,0,0.18), inset 0 0 0 0.5px rgba(0,0,0,0.08)',
           },
 
           nameStyle: {
