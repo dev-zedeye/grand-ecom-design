@@ -31,7 +31,7 @@ window.CountryScreen = {
       btnEnabled: !!selected,
 
       headlineStyle: {
-        fontSize: '30px', fontWeight: '600', color: '#fff',
+        fontSize: '30px', fontWeight: '700', color: '#fff',
         whiteSpace: 'pre-line', lineHeight: '1.18',
         letterSpacing: isAr ? '0.2px' : 'var(--ls-display)',
         fontFamily: ffHeading,

@@ -24,6 +24,7 @@ This section captures decisions and preferences made during development. Update 
 | Button height | 56 px — all primary CTA buttons project-wide (`--btn-height: 56px`) |
 | Deployment | Netlify, auto-deploys on push to `main` |
 | Target device | iPad / mobile Safari is primary preview device |
+| Country screen title | "Fresh Picks, Delivered Daily." (EN) / "أفضل الطازجات، بتوصيل يومي." (AR) |
 
 ## Typography Hierarchy
 
@@ -31,7 +32,7 @@ All headings use `var(--font-heading)` (Montserrat) with **positive letter-spaci
 
 | Level | Size | Weight | Letter-spacing variable | Use case |
 |---|---|---|---|---|
-| Display | 28–32 px | 900 | `var(--ls-display)` = 0.5 px | Screen hero titles (country, login welcome) |
+| Display | 28–32 px | 700 | `var(--ls-display)` = 0.5 px | Screen hero titles (country, login welcome) |
 | H1 | 20–26 px | 800 | `var(--ls-h1)` = 0.25 px | Section headings, card titles |
 | H2 | 14–18 px | 700 | `var(--ls-h2)` = 0.1 px | Labels, tab headings, sub-sections |
 
