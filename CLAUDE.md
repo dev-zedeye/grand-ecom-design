@@ -23,7 +23,7 @@ This section captures decisions and preferences made during development. Update 
 | Font source of truth | `theme.css` — edit only the three `:root` variables to reswap fonts |
 | Button height | 56 px — all primary CTA buttons project-wide (`--btn-height: 56px`) |
 | Border radius | 16 px globally for all applicable UI elements (buttons, cards, inputs, panels, icon boxes). Exceptions: circle buttons stay `50%`; phone frame stays `54px`; home indicator stays `3px`; pagination dots stay `4px` |
-| Red header bottom | Flat — no bottom border-radius on any red header section. Never add `border-radius` to the bottom edge of top headers |
+| Red header bottom | `border-radius: 0 0 32px 32px` — all red header sections use this universally. Always apply to new red headers. |
 | Button shadow | None — never add `box-shadow` to any button |
 | Deployment | Netlify, auto-deploys on push to `main` |
 | Target device | iPad / mobile Safari is primary preview device |
