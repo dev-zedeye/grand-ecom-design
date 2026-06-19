@@ -42,7 +42,11 @@ window.LocationScreen = {
 
       selectHome:   () => setState({ locationSelected: 'home' }),
       selectOffice: () => setState({ locationSelected: 'office' }),
-      backToLogin:  () => setState({ currentScreen: 'login' }),
+      backToLogin:  () => setState({ currentScreen: 'login', mapFullscreen: false }),
+
+      mapFullscreen:      state.mapFullscreen,
+      openFullscreenMap:  () => setState({ mapFullscreen: true }),
+      closeFullscreenMap: () => setState({ mapFullscreen: false }),
 
       homeCardStyle:   makeCard(homeSelected,   '#E53935'),
       officeCardStyle: makeCard(officeSelected, '#1565C0'),
