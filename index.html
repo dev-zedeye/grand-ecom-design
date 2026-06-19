@@ -72,8 +72,8 @@
     input:focus { outline:none; }
     #bnHomeScroll::-webkit-scrollbar { display:none; }
     #bnHomeScroll { scrollbar-width:none; }
-    #bnTileRow::-webkit-scrollbar { display:none; }
-    #bnTileRow { scrollbar-width:none; }
+    .bn-tile-row::-webkit-scrollbar { display:none; }
+    .bn-tile-row { scrollbar-width:none; }
     @keyframes heartPop { 0%{transform:scale(1)} 35%{transform:scale(1.45)} 65%{transform:scale(0.88)} 100%{transform:scale(1)} }
     @keyframes cartBounce { 0%{transform:scale(1)} 30%{transform:scale(0.91)} 65%{transform:scale(1.06)} 100%{transform:scale(1)} }
   </style>
@@ -1440,7 +1440,7 @@
               </button>
             </div>
 
-            <div id="bnTileRow" style="display:flex;gap:12px;overflow-x:auto;padding:12px 0 20px 16px;align-items:flex-start">
+            <div class="bn-tile-row" style="display:flex;gap:12px;overflow-x:auto;padding:12px 0 20px 16px;align-items:flex-start">
               <sc-for list="{{ bnProducts }}" as="p" hint-placeholder-count="3">
                 <div style="flex-shrink:0;width:140px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04)">
 
@@ -1485,6 +1485,130 @@
                     </button>
                   </div>
 
+                </div>
+              </sc-for>
+              <div style="flex-shrink:0;width:4px"></div>
+            </div>
+
+            <!-- FEATURED PRODUCTS -->
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:4px 16px 0">
+              <div>
+                <div style="font-size:15px;font-weight:800;color:#141414;font-family:var(--font-heading);letter-spacing:var(--ls-h2)">Featured Products</div>
+                <div style="font-size:11px;font-weight:500;color:#9898A8;margin-top:2px">Specially selected for you</div>
+              </div>
+              <button style="background:none;border:none;cursor:pointer;padding:0">
+                <span style="font-size:12px;font-weight:700;color:#E53935">See All</span>
+              </button>
+            </div>
+            <div class="bn-tile-row" style="display:flex;gap:12px;overflow-x:auto;padding:12px 0 20px 16px;align-items:flex-start">
+              <sc-for list="{{ bnFeaturedProducts }}" as="p" hint-placeholder-count="3">
+                <div style="flex-shrink:0;width:140px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04)">
+                  <div style="{{ p.bannerStyle }}">{{ p.bannerIconEl }}<span style="font-size:8px;font-weight:800;color:#fff;letter-spacing:0.8px;text-transform:uppercase;line-height:1">{{ p.bannerLabel }}</span></div>
+                  <div style="{{ p.imgStyle }}">
+                    <div style="position:absolute;top:8px;left:8px;background:rgba(14,14,14,0.68);border-radius:7px;padding:3px 7px;backdrop-filter:blur(8px)"><span style="font-size:10px;font-weight:800;color:#fff">{{ p.discLabel }}</span></div>
+                    <button onClick="{{ p.onWishlist }}" style="{{ p.wlStyle }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="{{ p.heartFill }}" stroke="{{ p.heartStroke }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <span style="font-size:56px;line-height:1;display:block;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.16));user-select:none;transform:translateY(2px)">{{ p.emoji }}</span>
+                  </div>
+                  <div style="padding:10px;display:flex;flex-direction:column;gap:0">
+                    <div style="{{ p.nameStyle }}">{{ p.name }}</div>
+                    <div style="font-size:9.5px;font-weight:500;color:#9898A8;margin-top:3px;margin-bottom:7px">{{ p.qty }}</div>
+                    <div style="height:20px;margin-bottom:7px;display:flex;align-items:center"><sc-if value="{{ p.express }}" hint-placeholder-val="{{ true }}"><div style="display:inline-flex;align-items:center;gap:3px;background:#EBF3FF;border-radius:6px;padding:2.5px 8px"><svg width="7" height="10" viewBox="0 0 7 10" fill="#1565C0"><polygon points="4,0 0,5.5 3,5.5 2,10 7,4.5 4,4.5"></polygon></svg><span style="font-size:9px;font-weight:700;color:#1565C0">Express</span></div></sc-if></div>
+                    <div style="margin-bottom:10px"><div style="font-size:14px;font-weight:800;color:#E53935;letter-spacing:-0.3px;line-height:1.15">AED {{ p.spStr }}</div><div style="font-size:10px;font-weight:500;color:#C0BFCA;text-decoration:line-through;margin-top:2px">AED {{ p.prStr }}</div></div>
+                    <button onClick="{{ p.onCart }}" style="{{ p.cartStyle }}">{{ p.cartIconEl }}<span style="{{ p.cartLblStyle }}">{{ p.cartLbl }}</span></button>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="flex-shrink:0;width:4px"></div>
+            </div>
+
+            <!-- NEW ARRIVALS -->
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:4px 16px 0">
+              <div>
+                <div style="font-size:15px;font-weight:800;color:#141414;font-family:var(--font-heading);letter-spacing:var(--ls-h2)">New Arrivals</div>
+                <div style="font-size:11px;font-weight:500;color:#9898A8;margin-top:2px">Fresh in from our suppliers</div>
+              </div>
+              <button style="background:none;border:none;cursor:pointer;padding:0">
+                <span style="font-size:12px;font-weight:700;color:#E53935">See All</span>
+              </button>
+            </div>
+            <div class="bn-tile-row" style="display:flex;gap:12px;overflow-x:auto;padding:12px 0 20px 16px;align-items:flex-start">
+              <sc-for list="{{ bnNewArrivalProducts }}" as="p" hint-placeholder-count="3">
+                <div style="flex-shrink:0;width:140px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04)">
+                  <div style="{{ p.bannerStyle }}">{{ p.bannerIconEl }}<span style="font-size:8px;font-weight:800;color:#fff;letter-spacing:0.8px;text-transform:uppercase;line-height:1">{{ p.bannerLabel }}</span></div>
+                  <div style="{{ p.imgStyle }}">
+                    <div style="position:absolute;top:8px;left:8px;background:rgba(14,14,14,0.68);border-radius:7px;padding:3px 7px;backdrop-filter:blur(8px)"><span style="font-size:10px;font-weight:800;color:#fff">{{ p.discLabel }}</span></div>
+                    <button onClick="{{ p.onWishlist }}" style="{{ p.wlStyle }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="{{ p.heartFill }}" stroke="{{ p.heartStroke }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <span style="font-size:56px;line-height:1;display:block;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.16));user-select:none;transform:translateY(2px)">{{ p.emoji }}</span>
+                  </div>
+                  <div style="padding:10px;display:flex;flex-direction:column;gap:0">
+                    <div style="{{ p.nameStyle }}">{{ p.name }}</div>
+                    <div style="font-size:9.5px;font-weight:500;color:#9898A8;margin-top:3px;margin-bottom:7px">{{ p.qty }}</div>
+                    <div style="height:20px;margin-bottom:7px;display:flex;align-items:center"><sc-if value="{{ p.express }}" hint-placeholder-val="{{ true }}"><div style="display:inline-flex;align-items:center;gap:3px;background:#EBF3FF;border-radius:6px;padding:2.5px 8px"><svg width="7" height="10" viewBox="0 0 7 10" fill="#1565C0"><polygon points="4,0 0,5.5 3,5.5 2,10 7,4.5 4,4.5"></polygon></svg><span style="font-size:9px;font-weight:700;color:#1565C0">Express</span></div></sc-if></div>
+                    <div style="margin-bottom:10px"><div style="font-size:14px;font-weight:800;color:#E53935;letter-spacing:-0.3px;line-height:1.15">AED {{ p.spStr }}</div><div style="font-size:10px;font-weight:500;color:#C0BFCA;text-decoration:line-through;margin-top:2px">AED {{ p.prStr }}</div></div>
+                    <button onClick="{{ p.onCart }}" style="{{ p.cartStyle }}">{{ p.cartIconEl }}<span style="{{ p.cartLblStyle }}">{{ p.cartLbl }}</span></button>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="flex-shrink:0;width:4px"></div>
+            </div>
+
+            <!-- SPECIAL OFFER PRODUCTS -->
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:4px 16px 0">
+              <div>
+                <div style="font-size:15px;font-weight:800;color:#141414;font-family:var(--font-heading);letter-spacing:var(--ls-h2)">Special Offer Products</div>
+                <div style="font-size:11px;font-weight:500;color:#9898A8;margin-top:2px">Limited time deals you'll love</div>
+              </div>
+              <button style="background:none;border:none;cursor:pointer;padding:0">
+                <span style="font-size:12px;font-weight:700;color:#E53935">See All</span>
+              </button>
+            </div>
+            <div class="bn-tile-row" style="display:flex;gap:12px;overflow-x:auto;padding:12px 0 20px 16px;align-items:flex-start">
+              <sc-for list="{{ bnSpecialOfferProducts }}" as="p" hint-placeholder-count="3">
+                <div style="flex-shrink:0;width:140px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04)">
+                  <div style="{{ p.bannerStyle }}">{{ p.bannerIconEl }}<span style="font-size:8px;font-weight:800;color:#fff;letter-spacing:0.8px;text-transform:uppercase;line-height:1">{{ p.bannerLabel }}</span></div>
+                  <div style="{{ p.imgStyle }}">
+                    <div style="position:absolute;top:8px;left:8px;background:rgba(14,14,14,0.68);border-radius:7px;padding:3px 7px;backdrop-filter:blur(8px)"><span style="font-size:10px;font-weight:800;color:#fff">{{ p.discLabel }}</span></div>
+                    <button onClick="{{ p.onWishlist }}" style="{{ p.wlStyle }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="{{ p.heartFill }}" stroke="{{ p.heartStroke }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <span style="font-size:56px;line-height:1;display:block;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.16));user-select:none;transform:translateY(2px)">{{ p.emoji }}</span>
+                  </div>
+                  <div style="padding:10px;display:flex;flex-direction:column;gap:0">
+                    <div style="{{ p.nameStyle }}">{{ p.name }}</div>
+                    <div style="font-size:9.5px;font-weight:500;color:#9898A8;margin-top:3px;margin-bottom:7px">{{ p.qty }}</div>
+                    <div style="height:20px;margin-bottom:7px;display:flex;align-items:center"><sc-if value="{{ p.express }}" hint-placeholder-val="{{ true }}"><div style="display:inline-flex;align-items:center;gap:3px;background:#EBF3FF;border-radius:6px;padding:2.5px 8px"><svg width="7" height="10" viewBox="0 0 7 10" fill="#1565C0"><polygon points="4,0 0,5.5 3,5.5 2,10 7,4.5 4,4.5"></polygon></svg><span style="font-size:9px;font-weight:700;color:#1565C0">Express</span></div></sc-if></div>
+                    <div style="margin-bottom:10px"><div style="font-size:14px;font-weight:800;color:#E53935;letter-spacing:-0.3px;line-height:1.15">AED {{ p.spStr }}</div><div style="font-size:10px;font-weight:500;color:#C0BFCA;text-decoration:line-through;margin-top:2px">AED {{ p.prStr }}</div></div>
+                    <button onClick="{{ p.onCart }}" style="{{ p.cartStyle }}">{{ p.cartIconEl }}<span style="{{ p.cartLblStyle }}">{{ p.cartLbl }}</span></button>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="flex-shrink:0;width:4px"></div>
+            </div>
+
+            <!-- RECENTLY VIEWED -->
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:4px 16px 0">
+              <div>
+                <div style="font-size:15px;font-weight:800;color:#141414;font-family:var(--font-heading);letter-spacing:var(--ls-h2)">Recently Viewed</div>
+                <div style="font-size:11px;font-weight:500;color:#9898A8;margin-top:2px">Pick up where you left off</div>
+              </div>
+              <button style="background:none;border:none;cursor:pointer;padding:0">
+                <span style="font-size:12px;font-weight:700;color:#E53935">See All</span>
+              </button>
+            </div>
+            <div class="bn-tile-row" style="display:flex;gap:12px;overflow-x:auto;padding:12px 0 28px 16px;align-items:flex-start">
+              <sc-for list="{{ bnRecentlyViewedProducts }}" as="p" hint-placeholder-count="3">
+                <div style="flex-shrink:0;width:140px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08),0 0 0 1px rgba(0,0,0,0.04)">
+                  <div style="{{ p.bannerStyle }}">{{ p.bannerIconEl }}<span style="font-size:8px;font-weight:800;color:#fff;letter-spacing:0.8px;text-transform:uppercase;line-height:1">{{ p.bannerLabel }}</span></div>
+                  <div style="{{ p.imgStyle }}">
+                    <div style="position:absolute;top:8px;left:8px;background:rgba(14,14,14,0.68);border-radius:7px;padding:3px 7px;backdrop-filter:blur(8px)"><span style="font-size:10px;font-weight:800;color:#fff">{{ p.discLabel }}</span></div>
+                    <button onClick="{{ p.onWishlist }}" style="{{ p.wlStyle }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="{{ p.heartFill }}" stroke="{{ p.heartStroke }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <span style="font-size:56px;line-height:1;display:block;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.16));user-select:none;transform:translateY(2px)">{{ p.emoji }}</span>
+                  </div>
+                  <div style="padding:10px;display:flex;flex-direction:column;gap:0">
+                    <div style="{{ p.nameStyle }}">{{ p.name }}</div>
+                    <div style="font-size:9.5px;font-weight:500;color:#9898A8;margin-top:3px;margin-bottom:7px">{{ p.qty }}</div>
+                    <div style="height:20px;margin-bottom:7px;display:flex;align-items:center"><sc-if value="{{ p.express }}" hint-placeholder-val="{{ true }}"><div style="display:inline-flex;align-items:center;gap:3px;background:#EBF3FF;border-radius:6px;padding:2.5px 8px"><svg width="7" height="10" viewBox="0 0 7 10" fill="#1565C0"><polygon points="4,0 0,5.5 3,5.5 2,10 7,4.5 4,4.5"></polygon></svg><span style="font-size:9px;font-weight:700;color:#1565C0">Express</span></div></sc-if></div>
+                    <div style="margin-bottom:10px"><div style="font-size:14px;font-weight:800;color:#E53935;letter-spacing:-0.3px;line-height:1.15">AED {{ p.spStr }}</div><div style="font-size:10px;font-weight:500;color:#C0BFCA;text-decoration:line-through;margin-top:2px">AED {{ p.prStr }}</div></div>
+                    <button onClick="{{ p.onCart }}" style="{{ p.cartStyle }}">{{ p.cartIconEl }}<span style="{{ p.cartLblStyle }}">{{ p.cartLbl }}</span></button>
+                  </div>
                 </div>
               </sc-for>
               <div style="flex-shrink:0;width:4px"></div>
@@ -1745,8 +1869,11 @@ class Component extends DCLogic {
     // Bottom Nav
     bnTab: 'home',
     bnBannerIdx: 0,
-    bnWl: {},
-    bnCart: {},
+    bnWl: {}, bnCart: {},
+    bnFeatWl: {}, bnFeatCart: {},
+    bnNewWl: {}, bnNewCart: {},
+    bnSoWl: {}, bnSoCart: {},
+    bnRvWl: {}, bnRvCart: {},
   };
 
   componentDidMount() {
