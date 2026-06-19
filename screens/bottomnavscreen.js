@@ -1,22 +1,35 @@
 window.BottomNavScreen = {
 
   _productData: [
-    { id: 1, name: 'Almarai Full Fat Milk',       qty: '1 Litre',   pct: 24, pr: 7.25,  sp: 5.50,  express: true,  bg: 'linear-gradient(148deg,#EEF4FF 0%,#D2E6FF 100%)', emoji: '🥛', bannerLabel: 'BUNDLE DEAL',  bannerColor: '#5B21B6', bannerKind: 'star'  },
-    { id: 2, name: "Driscoll's Fresh Strawberries", qty: '500g Pack', pct: 36, pr: 14.99, sp: 9.75,  express: true,  bg: 'linear-gradient(148deg,#FFF0F2 0%,#FFD5DA 100%)', emoji: '🍓', bannerLabel: 'FLASH SALE',   bannerColor: '#DC2626', bannerKind: 'bolt'  },
-    { id: 3, name: 'Premium Blueberries',          qty: '250g Pack', pct: 28, pr: 12.50, sp: 8.99,  express: false, bg: 'linear-gradient(148deg,#F3EEFF 0%,#E2D0FF 100%)', emoji: '🫐', bannerLabel: 'MEMBER PRICE', bannerColor: '#92400E', bannerKind: 'crown' },
-    { id: 4, name: 'Hass Avocados',                qty: 'Pack of 3', pct: 20, pr: 17.99, sp: 14.50, express: true,  bg: 'linear-gradient(148deg,#EDFAEE 0%,#C9EDD0 100%)', emoji: '🥑', bannerLabel: 'FRESH PICK',   bannerColor: '#15803D', bannerKind: 'leaf'  },
+    { id: 1, name: 'Almarai Full Fat Milk',         qty: '1 Litre',   pct: 24, pr: 7.25,  sp: 5.50,  express: true,  bg: 'linear-gradient(148deg,#EEF4FF 0%,#D2E6FF 100%)', emoji: '🥛', bannerLabel: 'NO.1 BEST SELLER', bannerColor: '#4338CA', bannerKind: 'medal'   },
+    { id: 2, name: "Driscoll's Fresh Strawberries", qty: '500g Pack', pct: 36, pr: 14.99, sp: 9.75,  express: true,  bg: 'linear-gradient(148deg,#FFF0F2 0%,#FFD5DA 100%)', emoji: '🍓', bannerLabel: 'MOST LOVED',       bannerColor: '#DB2777', bannerKind: 'heart'   },
+    { id: 3, name: 'Premium Blueberries',           qty: '250g Pack', pct: 28, pr: 12.50, sp: 8.99,  express: false, bg: 'linear-gradient(148deg,#F3EEFF 0%,#E2D0FF 100%)', emoji: '🫐', bannerLabel: "EDITOR'S PICK",    bannerColor: '#B45309', bannerKind: 'sparkle' },
+    { id: 4, name: 'Hass Avocados',                 qty: 'Pack of 3', pct: 20, pr: 17.99, sp: 14.50, express: true,  bg: 'linear-gradient(148deg,#EDFAEE 0%,#C9EDD0 100%)', emoji: '🥑', bannerLabel: 'TRENDING NOW',      bannerColor: '#059669', bannerKind: 'fire'    },
   ],
 
   _mkBannerIcon(kind) {
     const w = 'rgba(255,255,255,0.95)';
     const ce = React.createElement.bind(React);
-    if (kind === 'bolt')  return ce('svg', { width:7,  height:11, viewBox:'0 0 7 11',  fill:w }, ce('polygon', { points:'4.2,0 0,5.8 3.2,5.8 2.2,11 7,5.2 3.8,5.2' }));
-    if (kind === 'star')  return ce('svg', { width:10, height:10, viewBox:'0 0 20 20', fill:w }, ce('polygon', { points:'10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7' }));
-    if (kind === 'crown') return ce('svg', { width:12, height:9,  viewBox:'0 0 12 9',  fill:w }, ce('path', { d:'M0.5 8.5L2 2L5 6L6 0.5L7 6L10 2L11.5 8.5H0.5Z' }));
-    return ce('svg', { width:10, height:10, viewBox:'0 0 10 10', fill:w },
-      ce('path', { d:'M9 1C4 1 1 4.5 1 9.5C6.5 9 9.5 6 9 1Z' }),
-      ce('path', { d:'M1 9.5L5 5.5', stroke:w, strokeWidth:1.3, strokeLinecap:'round', fill:'none' })
+    // medal
+    if (kind === 'medal') return ce('svg', { width:11, height:12, viewBox:'0 0 22 24', fill:w },
+      ce('circle', { cx:11, cy:15, r:7, fill:'none', stroke:w, strokeWidth:2 }),
+      ce('path', { d:'M8 2h6l-2 6H10L8 2Z', fill:w }),
+      ce('text', { x:11, y:19.5, textAnchor:'middle', fontSize:8, fontWeight:'bold', fill:'rgba(255,255,255,0.95)' }, '1')
     );
+    // heart
+    if (kind === 'heart') return ce('svg', { width:11, height:10, viewBox:'0 0 24 22', fill:w },
+      ce('path', { d:'M12 20S2 13 2 7a5 5 0 0110 0 5 5 0 0110 0c0 6-10 13-10 13Z' })
+    );
+    // sparkle / star wand
+    if (kind === 'sparkle') return ce('svg', { width:11, height:11, viewBox:'0 0 24 24', fill:w },
+      ce('path', { d:'M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2Z' })
+    );
+    // fire
+    if (kind === 'fire') return ce('svg', { width:9, height:12, viewBox:'0 0 18 24', fill:w },
+      ce('path', { d:'M9 0C9 0 4 5 4 10a5 5 0 008 4C13.5 12.5 14 9 12 6c0 0-1 3-3 3C7 9 6 7.5 6 6 6 3 9 0 9 0Z' }),
+      ce('path', { d:'M9 24c-3.3 0-6-2.7-6-6 0-2.5 1.5-4.5 3-5.5 0 2 1.5 3.5 3 3.5s3-1.5 3-3.5c1.5 1 3 3 3 5.5 0 3.3-2.7 6-6 6Z' })
+    );
+    return ce('svg', { width:10, height:10, viewBox:'0 0 20 20', fill:w }, ce('polygon', { points:'10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7' }));
   },
 
   _mkCartIcon(inCart) {
