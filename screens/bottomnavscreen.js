@@ -40,6 +40,19 @@ window.BottomNavScreen = {
     { id:504, name:'Fresh Lemon',                   qty:'4 Pack',      pct:10, pr:5.50,  sp:4.95,  express:true,  bg:'linear-gradient(148deg,#FEFCE8 0%,#FEF08A 100%)', emoji:'🍋', bannerLabel:'SEEN BY YOU #4', bannerColor:'#52525B', bannerKind:'eye' },
   ],
 
+  // ── Daily Needs ───────────────────────────────────────────────────────────
+  _dailyNeedsData: [
+    { id:1, name:'Whole Wheat Bread',    img:'daily-bread.png',   price:'3.50',  bg:'#FFF3E8' },
+    { id:2, name:'Full Fat Milk 1L',     img:'daily-milk.png',    price:'5.50',  bg:'#EEF4FF' },
+    { id:3, name:'Free Range Eggs',      img:'daily-eggs.png',    price:'9.75',  bg:'#FFFBEB' },
+    { id:4, name:'Unsalted Butter 250g', img:'daily-butter.png',  price:'12.25', bg:'#FFF0F0' },
+    { id:5, name:'Basmati Rice 1kg',     img:'daily-rice.png',    price:'11.50', bg:'#F0FFF4' },
+    { id:6, name:'Sunflower Oil 1L',     img:'daily-oil.png',     price:'8.99',  bg:'#FFFDE7' },
+    { id:7, name:'Fresh Laban 1L',       img:'daily-laban.png',   price:'4.25',  bg:'#EEF4FF' },
+    { id:8, name:'Medjool Dates 500g',   img:'daily-dates.png',   price:'22.00', bg:'#FFF8F0' },
+  ],
+  // ─────────────────────────────────────────────────────────────────────────
+
   // ── Banner data ──────────────────────────────────────────────────────────
   _bestSellerBanners: [
     { bg:'linear-gradient(135deg,#E53935 0%,#C62828 100%)', title:'Shop Our Top Picks', subtitle:'Save up to 40% today', cta:'Shop Now' },
@@ -233,6 +246,8 @@ window.BottomNavScreen = {
       bnDot1Style: dots[1], bnDot1Click: () => setState({ bnBannerIdx: 1 }),
       bnDot2Style: dots[2], bnDot2Click: () => setState({ bnBannerIdx: 2 }),
       bnDot3Style: dots[3], bnDot3Click: () => setState({ bnBannerIdx: 3 }),
+
+      bnDailyNeeds:             this._dailyNeedsData,
 
       bnBestSellerBanners:      this._bestSellerBanners,
       bnFeaturedBanners:        this._featuredBanners,
