@@ -1226,7 +1226,7 @@
         </sc-if>
 
         <!-- SCROLLABLE CONTENT -->
-        <div id="bnHomeScroll" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;background:#F5F4F0">
+        <div id="bnHomeScroll" style="flex:1;overflow-y:auto;background:#F5F4F0">
 
           <!-- HOME TAB CONTENT -->
           <sc-if value="{{ bnIsHome }}" hint-placeholder-val="{{ true }}">
@@ -1494,7 +1494,7 @@
 
           <!-- OTHER TAB PLACEHOLDER -->
           <sc-if value="{{ notBnHome }}" hint-placeholder-val="{{ false }}">
-            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px 80px;gap:14px;animation:fadeUp 0.3s ease;min-height:420px">
+            <div style="min-height:480px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px 80px;gap:14px;animation:fadeUp 0.3s ease">
               <div style="{{ bnPlaceholderIconBgStyle }}">
                 <sc-if value="{{ bnIsCategories }}" hint-placeholder-val="{{ false }}">
                   <svg width="40" height="40" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="7" height="7" rx="2" stroke="#5C6BC0" stroke-width="1.8" fill="rgba(92,107,192,0.15)"></rect><rect x="12" y="3" width="7" height="7" rx="2" stroke="#5C6BC0" stroke-width="1.8" fill="rgba(92,107,192,0.15)"></rect><rect x="3" y="12" width="7" height="7" rx="2" stroke="#5C6BC0" stroke-width="1.8" fill="rgba(92,107,192,0.15)"></rect><rect x="12" y="12" width="7" height="7" rx="2" stroke="#5C6BC0" stroke-width="1.8" fill="rgba(92,107,192,0.15)"></rect></svg>
