@@ -25,6 +25,18 @@ This section captures decisions and preferences made during development. Update 
 | Deployment | Netlify, auto-deploys on push to `main` |
 | Target device | iPad / mobile Safari is primary preview device |
 
+## Typography Hierarchy
+
+All headings use `var(--font-heading)` (Montserrat) with **positive letter-spacing** defined by level. Never use negative letter-spacing on headings.
+
+| Level | Size | Weight | Letter-spacing variable | Use case |
+|---|---|---|---|---|
+| Display | 28–32 px | 900 | `var(--ls-display)` = 0.5 px | Screen hero titles (country, login welcome) |
+| H1 | 20–26 px | 800 | `var(--ls-h1)` = 0.25 px | Section headings, card titles |
+| H2 | 14–18 px | 700 | `var(--ls-h2)` = 0.1 px | Labels, tab headings, sub-sections |
+
+Variables are defined in `theme.css`. Apply them via inline `letterSpacing` in screen JS files.
+
 ## CSS Conventions
 
 - **Never hard-code font-family strings** in `screens/*.js` or `index.html`. Always use the CSS variables defined in `theme.css`:

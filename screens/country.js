@@ -16,7 +16,7 @@ window.CountryScreen = {
 
     const strings = {
       tagline:  isAr ? 'بقالة طازجة وأكثر' : 'Fresh Groceries & More',
-      headline: isAr ? 'بقالة طازجة،\nتوصيل سريع.' : 'Groceries,\nDelivered Fresh.',
+      headline: isAr ? 'تسوّق الطازج.\nعِش باحتراف.' : 'Shop Grand.\nLive Fresh.',
       subtitle: isAr ? 'اختر دولتك للحصول على عروض وتوصيل مخصص.' : 'Choose your country for personalised deals and delivery.',
     };
 
@@ -33,7 +33,7 @@ window.CountryScreen = {
       headlineStyle: {
         fontSize: '30px', fontWeight: '900', color: '#fff',
         whiteSpace: 'pre-line', lineHeight: '1.18',
-        letterSpacing: isAr ? '-0.2px' : '-0.8px',
+        letterSpacing: isAr ? '0.2px' : 'var(--ls-display)',
         fontFamily: ffHeading,
       },
       subtitleStyle: {
@@ -101,7 +101,6 @@ window.CountryScreen = {
             display: 'flex', alignItems: 'center', gap: '16px',
             padding: '14px 20px', cursor: 'pointer',
             background: isSel ? 'rgba(229,57,53,0.04)' : 'transparent',
-            borderBottom: '1px solid rgba(0,0,0,0.06)',
             transition: 'background 0.15s ease',
           },
           rowActiveStyle: 'background:rgba(229,57,53,0.08)',

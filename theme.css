@@ -6,6 +6,11 @@
   --font-body:    'Inter', sans-serif;
   --font-arabic:  'Cairo', sans-serif;
   --btn-height:   56px;
+
+  /* Heading letter-spacing scale */
+  --ls-display: 0.5px;   /* 28px+ hero/screen titles */
+  --ls-h1:      0.25px;  /* 20–26px section headings */
+  --ls-h2:      0.1px;   /* 14–18px card/label headings */
 }
 
 body {
