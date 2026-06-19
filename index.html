@@ -9,6 +9,7 @@
 <script src="./screens/location.js"></script>
 <script src="./screens/register.js"></script>
 <script src="./screens/forgotpassword.js"></script>
+<script src="./screens/bottomnavscreen.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -89,6 +90,9 @@
     <div style="position:absolute;width:640px;height:640px;border-radius:50%;background:#E53935;opacity:0.1;filter:blur(130px);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0"></div>
   </sc-if>
   <sc-if value="{{ isForgotPasswordScreen }}">
+    <div style="position:absolute;width:640px;height:640px;border-radius:50%;background:#E53935;opacity:0.1;filter:blur(130px);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0"></div>
+  </sc-if>
+  <sc-if value="{{ isHomeScreen }}">
     <div style="position:absolute;width:640px;height:640px;border-radius:50%;background:#E53935;opacity:0.1;filter:blur(130px);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0"></div>
   </sc-if>
 
@@ -426,7 +430,14 @@
               </div>
 
               <!-- Sign In button -->
-              <button onClick="{{ goToLocation }}" style="width:100%;height:56px;background:var(--color-primary);border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;margin-top:4px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">Sign In</button>
+              <button onClick="{{ goToLocation }}" style="width:100%;height:56px;background:var(--color-primary);border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:8px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">
+                Sign In
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <rect x="2" y="7" width="8" height="9" rx="2" stroke="white" stroke-width="1.7"></rect>
+                  <path d="M5 7V5a4 4 0 0 1 8 0v2" stroke="white" stroke-width="1.7" stroke-linecap="round"></path>
+                  <circle cx="6" cy="11.5" r="1.2" fill="white"></circle>
+                </svg>
+              </button>
 
               <!-- Don't have an account -->
               <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px">
@@ -797,7 +808,7 @@
 
           <!-- Sticky CTA -->
           <div style="padding:12px 16px 0">
-            <button style="width:100%;height:56px;background:#E53935;border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;display:flex;align-items:center;justify-content:center;gap:9px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">
+            <button onClick="{{ goToHome }}" style="width:100%;height:56px;background:#E53935;border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;display:flex;align-items:center;justify-content:center;gap:9px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">
               {{ deliverLabel }}
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M4 9h10M10.5 5.5l3.5 3.5-3.5 3.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -1134,6 +1145,187 @@
     </sc-if>
 
     <!-- ═══════════════════════════════════════════
+         SCREEN 7 — HOME (BOTTOM NAV)
+    ════════════════════════════════════════════ -->
+    <sc-if value="{{ isHomeScreen }}" hint-placeholder-val="{{ false }}">
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;background:#FAFAF8;font-family:var(--font-body);animation:fadeInUp 0.3s ease both">
+
+        <!-- RED HEADER -->
+        <div style="flex-shrink:0;background:linear-gradient(148deg,#FF5252 0%,#E53935 45%,#C62828 100%);border-radius:0 0 32px 32px;padding-bottom:20px;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(229,57,53,0.28)">
+          <div style="position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,0.07);right:-60px;top:-80px;pointer-events:none"></div>
+          <div style="position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.05);left:-40px;bottom:-30px;pointer-events:none"></div>
+
+          <!-- Status bar -->
+          <div style="height:56px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 12px;position:relative;z-index:2">
+            <span style="color:rgba(255,255,255,0.92);font-weight:700;font-size:16px;letter-spacing:-0.4px">9:41</span>
+            <div style="display:flex;gap:6px;align-items:center">
+              <svg width="18" height="12" viewBox="0 0 18 12" fill="rgba(255,255,255,0.88)">
+                <rect x="0" y="8" width="3.5" height="4" rx="1"></rect>
+                <rect x="5" y="5.5" width="3.5" height="6.5" rx="1"></rect>
+                <rect x="10" y="2.5" width="3.5" height="9.5" rx="1"></rect>
+                <rect x="15" y="0" width="3" height="12" rx="1"></rect>
+              </svg>
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <ellipse cx="8" cy="10.5" rx="1.6" ry="1.6" fill="rgba(255,255,255,0.88)"></ellipse>
+                <path d="M4.5 7.2C5.7 5.6 6.8 4.8 8 4.8S10.3 5.6 11.5 7.2" stroke="rgba(255,255,255,0.88)" stroke-width="1.4" stroke-linecap="round" fill="none"></path>
+                <path d="M1.5 4C3.3 1.8 5.5 0.6 8 0.6S12.7 1.8 14.5 4" stroke="rgba(255,255,255,0.88)" stroke-width="1.4" stroke-linecap="round" fill="none"></path>
+              </svg>
+              <svg width="26" height="12" viewBox="0 0 26 12" fill="none">
+                <rect x="0.5" y="0.5" width="22" height="11" rx="3.5" stroke="rgba(255,255,255,0.55)"></rect>
+                <rect x="23" y="4" width="2.5" height="4" rx="1" fill="rgba(255,255,255,0.55)"></rect>
+                <rect x="2" y="2" width="18" height="8" rx="2" fill="rgba(255,255,255,0.88)"></rect>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Top nav row -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:relative;z-index:2">
+            <div style="display:flex;align-items:center;gap:9px">
+              <div style="width:34px;height:34px;background:rgba(255,255,255,0.18);border-radius:11px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,0.28)">
+                <svg width="18" height="18" viewBox="0 0 22 22" fill="none">
+                  <path d="M11 3C7.5 3 4 5.5 4 9c0 2.5 1.5 4.5 4 5.5L11 19l3-4.5c2.5-1 4-3 4-5.5 0-3.5-3.5-6-7-6z" fill="white" opacity="0.9"></path>
+                  <circle cx="11" cy="9" r="2.5" fill="rgba(229,57,53,0.75)"></circle>
+                </svg>
+              </div>
+              <span style="font-size:16px;font-weight:800;color:#fff;font-family:var(--font-heading);letter-spacing:-0.3px">GrandHyper</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center">
+              <button style="width:36px;height:36px;background:rgba(255,255,255,0.16);border:1.5px solid rgba(255,255,255,0.22);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="8" cy="8" r="5.5" stroke="white" stroke-width="1.6"></circle>
+                  <path d="M12.5 12.5L16 16" stroke="white" stroke-width="1.6" stroke-linecap="round"></path>
+                </svg>
+              </button>
+              <button style="width:36px;height:36px;background:rgba(255,255,255,0.16);border:1.5px solid rgba(255,255,255,0.22);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M3 5h12M3 9h12M3 13h7" stroke="white" stroke-width="1.6" stroke-linecap="round"></path>
+                </svg>
+                <div style="position:absolute;top:5px;right:5px;width:8px;height:8px;background:#FFD740;border-radius:50%;border:1.5px solid rgba(229,57,53,1)"></div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCROLLABLE CONTENT (placeholder per tab) -->
+        <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:16px;animation:fadeUp 0.3s ease">
+
+          <!-- Placeholder icon -->
+          <div style="{{ bnPlaceholderIconBgStyle }}">
+            <sc-if value="{{ bnIsHome }}" hint-placeholder-val="{{ true }}">
+              <svg width="40" height="40" viewBox="0 0 22 22" fill="none">
+                <path d="M3 9.5L11 3l8 6.5V19a1 1 0 01-1 1H14v-5H8v5H4a1 1 0 01-1-1V9.5z" stroke="#E53935" stroke-width="1.8" stroke-linejoin="round" fill="rgba(229,57,53,0.15)"></path>
+              </svg>
+            </sc-if>
+            <sc-if value="{{ bnIsCategories }}" hint-placeholder-val="{{ false }}">
+              <svg width="40" height="40" viewBox="0 0 22 22" fill="none">
+                <rect x="3" y="3" width="7" height="7" rx="2" stroke="#5C6BC0" stroke-width="1.8" fill="rgba(92,107,192,0.15)"></rect>
+                <rect x="12" y="3" width="7" height="7" rx="2" stroke="#5C6BC0" stroke-width="1.8" fill="rgba(92,107,192,0.15)"></rect>
+                <rect x="3" y="12" width="7" height="7" rx="2" stroke="#5C6BC0" stroke-width="1.8" fill="rgba(92,107,192,0.15)"></rect>
+                <rect x="12" y="12" width="7" height="7" rx="2" stroke="#5C6BC0" stroke-width="1.8" fill="rgba(92,107,192,0.15)"></rect>
+              </svg>
+            </sc-if>
+            <sc-if value="{{ bnIsLoyalty }}" hint-placeholder-val="{{ false }}">
+              <svg width="40" height="40" viewBox="0 0 22 22" fill="none">
+                <path d="M11 3l2.2 4.5 5 .7-3.6 3.5.85 4.95L11 14.25l-4.45 2.4.85-4.95L3.8 8.2l5-.7L11 3z" stroke="#FFB300" stroke-width="1.8" stroke-linejoin="round" fill="rgba(255,179,0,0.18)"></path>
+              </svg>
+            </sc-if>
+            <sc-if value="{{ bnIsOffers }}" hint-placeholder-val="{{ false }}">
+              <svg width="40" height="40" viewBox="0 0 22 22" fill="none">
+                <circle cx="8" cy="8" r="1.5" fill="#00897B"></circle>
+                <circle cx="14" cy="14" r="1.5" fill="#00897B"></circle>
+                <path d="M5 11.5l5.5-8.5h1l5 8.5a4 4 0 01-3.6 5.5H8.6A4 4 0 015 11.5z" stroke="#00897B" stroke-width="1.8" stroke-linejoin="round" fill="rgba(0,137,123,0.12)"></path>
+                <path d="M7.5 14.5L14.5 7.5" stroke="#00897B" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+            </sc-if>
+            <sc-if value="{{ bnIsFlyer }}" hint-placeholder-val="{{ false }}">
+              <svg width="40" height="40" viewBox="0 0 22 22" fill="none">
+                <rect x="4" y="2" width="14" height="18" rx="2.5" stroke="#F06292" stroke-width="1.8" fill="rgba(240,98,146,0.12)"></rect>
+                <path d="M7.5 7h7M7.5 10.5h7M7.5 14h4.5" stroke="#F06292" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+            </sc-if>
+          </div>
+
+          <div style="font-size:22px;font-weight:800;color:#141414;font-family:var(--font-heading);letter-spacing:var(--ls-h1)">{{ bnActiveLabel }}</div>
+          <div style="font-size:14px;color:#A0A0B8;font-weight:500;text-align:center;max-width:220px;line-height:1.6;font-family:var(--font-body)">{{ bnPlaceholderDesc }}</div>
+
+        </div>
+
+        <!-- BOTTOM NAV -->
+        <div style="flex-shrink:0;background:#fff;border-top:1px solid #EEECEA;padding:10px 0 0;box-shadow:0 -4px 24px rgba(0,0,0,0.06)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-around;padding:0 8px">
+
+            <!-- Home -->
+            <button onClick="{{ bnSetHome }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;background:transparent;border:none;cursor:pointer;padding:6px 10px;min-width:56px;position:relative">
+              <div style="{{ bnHomeIconBg }}">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M3 9.5L11 3l8 6.5V19a1 1 0 01-1 1H14v-5H8v5H4a1 1 0 01-1-1V9.5z" stroke="{{ bnHomeColor }}" stroke-width="1.8" stroke-linejoin="round" fill="{{ bnHomeFill }}"></path>
+                </svg>
+              </div>
+              <span style="{{ bnHomeLabelStyle }}">Home</span>
+              <div style="{{ bnHomeActiveDot }}"></div>
+            </button>
+
+            <!-- Categories -->
+            <button onClick="{{ bnSetCategories }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;background:transparent;border:none;cursor:pointer;padding:6px 10px;min-width:56px;position:relative">
+              <div style="{{ bnCategoriesIconBg }}">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <rect x="3" y="3" width="7" height="7" rx="2" stroke="{{ bnCategoriesColor }}" stroke-width="1.8" fill="{{ bnCategoriesFill }}"></rect>
+                  <rect x="12" y="3" width="7" height="7" rx="2" stroke="{{ bnCategoriesColor }}" stroke-width="1.8" fill="{{ bnCategoriesFill }}"></rect>
+                  <rect x="3" y="12" width="7" height="7" rx="2" stroke="{{ bnCategoriesColor }}" stroke-width="1.8" fill="{{ bnCategoriesFill }}"></rect>
+                  <rect x="12" y="12" width="7" height="7" rx="2" stroke="{{ bnCategoriesColor }}" stroke-width="1.8" fill="{{ bnCategoriesFill }}"></rect>
+                </svg>
+              </div>
+              <span style="{{ bnCategoriesLabelStyle }}">Categories</span>
+              <div style="{{ bnCategoriesActiveDot }}"></div>
+            </button>
+
+            <!-- Loyalty -->
+            <button onClick="{{ bnSetLoyalty }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;background:transparent;border:none;cursor:pointer;padding:6px 10px;min-width:56px;position:relative">
+              <div style="{{ bnLoyaltyIconBg }}">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M11 3l2.2 4.5 5 .7-3.6 3.5.85 4.95L11 14.25l-4.45 2.4.85-4.95L3.8 8.2l5-.7L11 3z" stroke="{{ bnLoyaltyColor }}" stroke-width="1.8" stroke-linejoin="round" fill="{{ bnLoyaltyFill }}"></path>
+                </svg>
+              </div>
+              <span style="{{ bnLoyaltyLabelStyle }}">Loyalty</span>
+              <div style="{{ bnLoyaltyActiveDot }}"></div>
+            </button>
+
+            <!-- Offers -->
+            <button onClick="{{ bnSetOffers }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;background:transparent;border:none;cursor:pointer;padding:6px 10px;min-width:56px;position:relative">
+              <div style="{{ bnOffersIconBg }}">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <circle cx="8" cy="8" r="1.5" fill="{{ bnOffersColor }}"></circle>
+                  <circle cx="14" cy="14" r="1.5" fill="{{ bnOffersColor }}"></circle>
+                  <path d="M5 11.5l5.5-8.5h1l5 8.5a4 4 0 01-3.6 5.5H8.6A4 4 0 015 11.5z" stroke="{{ bnOffersColor }}" stroke-width="1.8" stroke-linejoin="round" fill="{{ bnOffersFill }}"></path>
+                  <path d="M7.5 14.5L14.5 7.5" stroke="{{ bnOffersColor }}" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+              </div>
+              <span style="{{ bnOffersLabelStyle }}">Offers</span>
+              <div style="{{ bnOffersActiveDot }}"></div>
+            </button>
+
+            <!-- Flyer -->
+            <button onClick="{{ bnSetFlyer }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;background:transparent;border:none;cursor:pointer;padding:6px 10px;min-width:56px;position:relative">
+              <div style="{{ bnFlyerIconBg }}">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <rect x="4" y="2" width="14" height="18" rx="2.5" stroke="{{ bnFlyerColor }}" stroke-width="1.8" fill="{{ bnFlyerFill }}"></rect>
+                  <path d="M7.5 7h7M7.5 10.5h7M7.5 14h4.5" stroke="{{ bnFlyerColor }}" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+              </div>
+              <span style="{{ bnFlyerLabelStyle }}">Flyer</span>
+              <div style="{{ bnFlyerActiveDot }}"></div>
+            </button>
+
+          </div>
+
+          <!-- Home indicator -->
+          <div style="width:134px;height:5px;background:#000;border-radius:3px;margin:12px auto 8px;opacity:0.1"></div>
+        </div>
+
+      </div>
+    </sc-if>
+
+    <!-- ═══════════════════════════════════════════
          FULLSCREEN MAP OVERLAY
     ════════════════════════════════════════════ -->
     <sc-if value="{{ mapFullscreen }}" hint-placeholder-val="{{ false }}">
@@ -1284,6 +1476,8 @@ class Component extends DCLogic {
     regShowOtpHint: false,
     // Forgot Password
     fpState: 'default',
+    // Bottom Nav
+    bnTab: 'home',
   };
 
   renderVals() {
@@ -1295,6 +1489,7 @@ class Component extends DCLogic {
       ...LocationScreen.renderVals(this.state, set),
       ...RegisterScreen.renderVals(this.state, set),
       ...ForgotPasswordScreen.renderVals(this.state, set),
+      ...BottomNavScreen.renderVals(this.state, set),
     };
   }
 }

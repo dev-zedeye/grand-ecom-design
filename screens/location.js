@@ -43,6 +43,7 @@ window.LocationScreen = {
       selectHome:   () => setState({ locationSelected: 'home' }),
       selectOffice: () => setState({ locationSelected: 'office' }),
       backToLogin:  () => setState({ currentScreen: 'login', mapFullscreen: false }),
+      goToHome:     () => setState({ currentScreen: 'home', mapFullscreen: false }),
 
       mapFullscreen:      state.mapFullscreen,
       openFullscreenMap:  () => setState({ mapFullscreen: true }),
