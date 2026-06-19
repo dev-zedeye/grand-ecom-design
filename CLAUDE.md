@@ -19,7 +19,7 @@ This section captures decisions and preferences made during development. Update 
 
 | Decision | Detail |
 |---|---|
-| Font pair | Montserrat (headings) + Inter (body) + Cairo (Arabic) |
+| Font pair | Capriola (headings) + Inter (body) + Cairo (Arabic) |
 | Font source of truth | `theme.css` — edit only the three `:root` variables to reswap fonts |
 | Button height | 56 px — all primary CTA buttons project-wide (`--btn-height: 56px`) |
 | Button shadow | None — never add `box-shadow` to any button |
@@ -42,7 +42,7 @@ Variables are defined in `theme.css`. Apply them via inline `letterSpacing` in s
 ## CSS Conventions
 
 - **Never hard-code font-family strings** in `screens/*.js` or `index.html`. Always use the CSS variables defined in `theme.css`:
-  - `var(--font-heading)` — large titles, brand name (currently Montserrat)
+  - `var(--font-heading)` — large titles, brand name (currently Capriola)
   - `var(--font-body)` — body copy, buttons, inputs, labels (currently Inter)
   - `var(--font-arabic)` — all Arabic text regardless of element size (currently Cairo)
 - To add a new screen HTML file, include `<link rel="stylesheet" href="./theme.css">` in its `<head>` and use the same variables.
