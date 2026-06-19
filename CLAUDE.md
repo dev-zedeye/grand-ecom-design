@@ -25,7 +25,7 @@ This section captures decisions and preferences made during development. Update 
 | Button shadow | None — never add `box-shadow` to any button |
 | Deployment | Netlify, auto-deploys on push to `main` |
 | Target device | iPad / mobile Safari is primary preview device |
-| Country screen title | "Fresh Picks, Delivered Daily." (EN) / "أفضل الطازجات، بتوصيل يومي." (AR) |
+| Country screen title | "Where would you like to shop?" (EN) / "من أين تريد التسوق؟" (AR) |
 
 ## Typography Hierarchy
 

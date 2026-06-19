@@ -16,7 +16,7 @@ window.CountryScreen = {
 
     const strings = {
       tagline:  isAr ? 'بقالة طازجة وأكثر' : 'Fresh Groceries & More',
-      headline: isAr ? 'أفضل الطازجات،\nبتوصيل يومي.' : 'Fresh Picks,\nDelivered Daily.',
+      headline: isAr ? 'من أين تريد\nالتسوق؟' : 'Where would you\nlike to shop?',
       subtitle: isAr ? 'اختر دولتك للحصول على عروض وتوصيل مخصص.' : 'Choose your country for personalised deals and delivery.',
     };
 
