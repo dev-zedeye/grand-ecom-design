@@ -1518,32 +1518,74 @@
                 <span style="font-size:12px;font-weight:700;color:#E53935">See All</span>
               </button>
             </div>
-            <div class="bn-banner-row" style="display:flex;gap:10px;overflow-x:auto;padding:12px 0 16px 16px">
-              <sc-for list="{{ bnDailyNeedsBanners }}" as="d">
-                <div style="flex-shrink:0;width:312px;aspect-ratio:16/9;background:{{ d.bg }};border-radius:16px;position:relative;overflow:hidden;display:flex;align-items:stretch;padding:16px">
-                  <!-- decorative bubble -->
-                  <div style="position:absolute;right:-24px;bottom:-28px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,0.1);pointer-events:none"></div>
-                  <div style="position:absolute;right:60px;top:-40px;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,0.07);pointer-events:none"></div>
-                  <!-- left: text content -->
-                  <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:1">
-                    <div style="display:inline-flex;align-items:center;background:rgba(255,255,255,0.18);border-radius:20px;padding:3px 10px;align-self:flex-start">
-                      <span style="font-size:8.5px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase">{{ d.tag }}</span>
-                    </div>
-                    <div>
-                      <div style="font-size:16px;font-weight:800;color:#fff;line-height:1.22;letter-spacing:-0.3px">{{ d.title }}</div>
-                      <div style="font-size:10px;font-weight:500;color:rgba(255,255,255,0.76);margin-top:3px">{{ d.subtitle }}</div>
-                      <div style="margin-top:10px;display:inline-block;background:rgba(255,255,255,0.22);border:1px solid rgba(255,255,255,0.35);border-radius:8px;padding:5px 13px;cursor:pointer">
-                        <span style="font-size:10px;font-weight:700;color:#fff">{{ d.cta }}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- right: emoji hero -->
-                  <div style="width:96px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1">
-                    <span style="font-size:64px;line-height:1;filter:drop-shadow(0 8px 18px rgba(0,0,0,0.22))">{{ d.emoji }}</span>
-                  </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 16px 16px">
+
+              <!-- 1. Dairy — full width landscape -->
+              <div style="grid-column:1/-1;background:linear-gradient(135deg,#0F766E 0%,#0D9488 100%);border-radius:16px;overflow:hidden;position:relative;display:flex;align-items:center;padding:16px;height:100px">
+                <div style="position:absolute;right:-20px;bottom:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.08)"></div>
+                <div style="flex:1;z-index:1">
+                  <div style="display:inline-block;background:rgba(255,255,255,0.18);border-radius:20px;padding:2px 9px;margin-bottom:5px"><span style="font-size:8px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase">Fresh Daily</span></div>
+                  <div style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.2">Dairy Essentials</div>
+                  <div style="font-size:10px;font-weight:500;color:rgba(255,255,255,0.75);margin-top:2px">Cold &amp; fresh, delivered daily</div>
                 </div>
-              </sc-for>
-              <div style="flex-shrink:0;width:6px"></div>
+                <span style="font-size:62px;line-height:1;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.2));flex-shrink:0;z-index:1">🥛</span>
+              </div>
+
+              <!-- 2. Bakery — half portrait -->
+              <div style="background:linear-gradient(155deg,#B45309 0%,#D97706 100%);border-radius:16px;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:12px;height:140px">
+                <div style="position:absolute;right:-16px;top:-16px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.1)"></div>
+                <div style="display:inline-block;background:rgba(255,255,255,0.18);border-radius:20px;padding:2px 9px;align-self:flex-start"><span style="font-size:8px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase">Baked Fresh</span></div>
+                <div style="z-index:1">
+                  <span style="font-size:40px;line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.2))">🍞</span>
+                  <div style="font-size:13px;font-weight:800;color:#fff;letter-spacing:-0.2px;margin-top:4px">Bread &amp; Bakery</div>
+                  <div style="font-size:9.5px;font-weight:500;color:rgba(255,255,255,0.75);margin-top:1px">Baked every morning</div>
+                </div>
+              </div>
+
+              <!-- 3. Eggs — half portrait -->
+              <div style="background:linear-gradient(155deg,#A16207 0%,#CA8A04 100%);border-radius:16px;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:12px;height:140px">
+                <div style="position:absolute;left:-16px;top:-16px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.1)"></div>
+                <div style="display:inline-block;background:rgba(255,255,255,0.18);border-radius:20px;padding:2px 9px;align-self:flex-start"><span style="font-size:8px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase">Farm Fresh</span></div>
+                <div style="z-index:1">
+                  <span style="font-size:40px;line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.2))">🥚</span>
+                  <div style="font-size:13px;font-weight:800;color:#fff;letter-spacing:-0.2px;margin-top:4px">Eggs &amp; Poultry</div>
+                  <div style="font-size:9.5px;font-weight:500;color:rgba(255,255,255,0.75);margin-top:1px">Free range guaranteed</div>
+                </div>
+              </div>
+
+              <!-- 4. Produce — full width landscape -->
+              <div style="grid-column:1/-1;background:linear-gradient(135deg,#166534 0%,#16A34A 100%);border-radius:16px;overflow:hidden;position:relative;display:flex;align-items:center;padding:16px;height:100px">
+                <div style="position:absolute;left:-20px;top:-30px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,0.08)"></div>
+                <div style="flex:1;z-index:1">
+                  <div style="display:inline-block;background:rgba(255,255,255,0.18);border-radius:20px;padding:2px 9px;margin-bottom:5px"><span style="font-size:8px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase">Farm to Table</span></div>
+                  <div style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.2">Fruits &amp; Vegetables</div>
+                  <div style="font-size:10px;font-weight:500;color:rgba(255,255,255,0.75);margin-top:2px">Handpicked from local farms daily</div>
+                </div>
+                <span style="font-size:62px;line-height:1;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.2));flex-shrink:0;z-index:1">🥬</span>
+              </div>
+
+              <!-- 5. Meat — half portrait -->
+              <div style="background:linear-gradient(155deg,#991B1B 0%,#DC2626 100%);border-radius:16px;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:12px;height:130px">
+                <div style="position:absolute;right:-16px;bottom:-16px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.1)"></div>
+                <div style="display:inline-block;background:rgba(255,255,255,0.18);border-radius:20px;padding:2px 9px;align-self:flex-start"><span style="font-size:8px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase">Premium</span></div>
+                <div style="z-index:1">
+                  <span style="font-size:40px;line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.2))">🥩</span>
+                  <div style="font-size:13px;font-weight:800;color:#fff;letter-spacing:-0.2px;margin-top:4px">Meat &amp; Fish</div>
+                  <div style="font-size:9.5px;font-weight:500;color:rgba(255,255,255,0.75);margin-top:1px">Halal certified</div>
+                </div>
+              </div>
+
+              <!-- 6. Beverages — half portrait -->
+              <div style="background:linear-gradient(155deg,#1E40AF 0%,#2563EB 100%);border-radius:16px;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:12px;height:130px">
+                <div style="position:absolute;left:-16px;bottom:-16px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.1)"></div>
+                <div style="display:inline-block;background:rgba(255,255,255,0.18);border-radius:20px;padding:2px 9px;align-self:flex-start"><span style="font-size:8px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase">Chilled</span></div>
+                <div style="z-index:1">
+                  <span style="font-size:40px;line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.2))">🧃</span>
+                  <div style="font-size:13px;font-weight:800;color:#fff;letter-spacing:-0.2px;margin-top:4px">Drinks &amp; Juices</div>
+                  <div style="font-size:9.5px;font-weight:500;color:rgba(255,255,255,0.75);margin-top:1px">Always cold &amp; refreshing</div>
+                </div>
+              </div>
+
             </div>
 
             <!-- FEATURED PRODUCTS -->

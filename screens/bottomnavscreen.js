@@ -40,15 +40,6 @@ window.BottomNavScreen = {
     { id:504, name:'Fresh Lemon',                   qty:'4 Pack',      pct:10, pr:5.50,  sp:4.95,  express:true,  bg:'linear-gradient(148deg,#FEFCE8 0%,#FEF08A 100%)', emoji:'🍋', bannerLabel:'SEEN BY YOU #4', bannerColor:'#52525B', bannerKind:'eye' },
   ],
 
-  // ── Daily Needs Banners ───────────────────────────────────────────────────
-  _dailyNeedsBanners: [
-    { bg:'linear-gradient(135deg,#0F766E 0%,#0D9488 100%)', tag:'Fresh Daily', emoji:'🥛', title:'Dairy & Chilled Essentials', subtitle:'Cold & fresh, delivered to your door', cta:'Shop Dairy' },
-    { bg:'linear-gradient(135deg,#B45309 0%,#D97706 100%)', tag:'Baked Fresh', emoji:'🍞', title:'Breads & Bakery', subtitle:'Baked fresh every morning', cta:'Shop Bakery' },
-    { bg:'linear-gradient(135deg,#15803D 0%,#16A34A 100%)', tag:'Farm Fresh', emoji:'🥬', title:'Fruits & Vegetables', subtitle:'Handpicked from local farms daily', cta:'Shop Produce' },
-    { bg:'linear-gradient(135deg,#B91C1C 0%,#DC2626 100%)', tag:'Protein Pack', emoji:'🥚', title:'Eggs & Poultry', subtitle:'Free range, hormone-free guaranteed', cta:'Shop Now' },
-  ],
-  // ─────────────────────────────────────────────────────────────────────────
-
   // ── Banner data ──────────────────────────────────────────────────────────
   _bestSellerBanners: [
     { bg:'linear-gradient(135deg,#E53935 0%,#C62828 100%)', title:'Shop Our Top Picks', subtitle:'Save up to 40% today', cta:'Shop Now' },
@@ -242,8 +233,6 @@ window.BottomNavScreen = {
       bnDot1Style: dots[1], bnDot1Click: () => setState({ bnBannerIdx: 1 }),
       bnDot2Style: dots[2], bnDot2Click: () => setState({ bnBannerIdx: 2 }),
       bnDot3Style: dots[3], bnDot3Click: () => setState({ bnBannerIdx: 3 }),
-
-      bnDailyNeedsBanners:      this._dailyNeedsBanners,
 
       bnBestSellerBanners:      this._bestSellerBanners,
       bnFeaturedBanners:        this._featuredBanners,
