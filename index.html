@@ -1182,29 +1182,39 @@
               </div>
             </div>
 
-            <!-- timeslot + address compact bar -->
-            <div style="margin:4px 16px 14px;background:#F8F7F4;border-radius:10px;border:1px solid #ECEAE6;display:flex;align-items:center;overflow:hidden">
+            <!-- address (70%) + timeslot (30%) bar -->
+            <div style="margin:4px 16px 14px;background:#F8F7F4;border-radius:10px;border:1px solid #ECEAE6;display:flex;align-items:stretch;overflow:hidden">
 
-              <!-- timeslot -->
-              <div style="flex:1;display:flex;align-items:center;gap:6px;padding:8px 12px;cursor:pointer;min-width:0">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0">
-                  <circle cx="7" cy="7" r="7" fill="#E53935"></circle>
-                  <path d="M7 4v3l2 1.2" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+              <!-- address — 70% -->
+              <div style="flex:7;display:flex;align-items:center;gap:8px;padding:8px 12px;cursor:pointer;min-width:0">
+                <svg width="11" height="13" viewBox="0 0 11 14" fill="#E53935" style="flex-shrink:0;margin-top:2px;align-self:flex-start">
+                  <path d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.13 5.5 8.5 5.5 8.5S11 9.63 11 5.5C11 2.46 8.54 0 5.5 0zm0 7.5a2 2 0 110-4 2 2 0 010 4z"></path>
                 </svg>
-                <span style="font-size:11px;font-weight:600;color:#141414;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Today, 12PM – 3PM</span>
-                <svg width="11" height="11" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><path d="M3 5l4 4 4-4" stroke="#A0A0B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <div style="min-width:0;flex:1">
+                  <div style="font-size:9.5px;font-weight:500;color:#9898A8;margin-bottom:2px">Deliver to</div>
+                  <div style="display:flex;align-items:center;gap:4px;min-width:0">
+                    <span style="font-size:11.5px;font-weight:700;color:#141414;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Dubai Marina, Building 7, Apt 304</span>
+                    <svg width="11" height="11" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><path d="M3 5l4 4 4-4" stroke="#A0A0B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </div>
+                </div>
               </div>
 
               <!-- vertical divider -->
-              <div style="width:1px;height:22px;background:#ECEAE6;flex-shrink:0"></div>
+              <div style="width:1px;background:#ECEAE6;flex-shrink:0;align-self:stretch;margin:6px 0"></div>
 
-              <!-- address -->
-              <div style="flex:1;display:flex;align-items:center;gap:6px;padding:8px 12px;cursor:pointer;min-width:0">
-                <svg width="11" height="13" viewBox="0 0 11 14" fill="#E53935" style="flex-shrink:0">
-                  <path d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.13 5.5 8.5 5.5 8.5S11 9.63 11 5.5C11 2.46 8.54 0 5.5 0zm0 7.5a2 2 0 110-4 2 2 0 010 4z"></path>
+              <!-- timeslot — 30% -->
+              <div style="flex:3;display:flex;align-items:center;gap:7px;padding:8px 10px;cursor:pointer;min-width:0">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:2px;align-self:flex-start">
+                  <circle cx="7" cy="7" r="7" fill="#E53935"></circle>
+                  <path d="M7 4v3l2 1.2" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
-                <span style="font-size:11px;font-weight:600;color:#141414;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Dubai Marina, Apt 304</span>
-                <svg width="11" height="11" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><path d="M3 5l4 4 4-4" stroke="#A0A0B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <div style="min-width:0">
+                  <div style="font-size:9.5px;font-weight:500;color:#9898A8;margin-bottom:2px">Today</div>
+                  <div style="display:flex;align-items:center;gap:3px">
+                    <span style="font-size:11.5px;font-weight:700;color:#141414;white-space:nowrap">12PM–3PM</span>
+                    <svg width="11" height="11" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><path d="M3 5l4 4 4-4" stroke="#A0A0B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </div>
+                </div>
               </div>
 
             </div>
