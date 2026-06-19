@@ -19,16 +19,17 @@ This section captures decisions and preferences made during development. Update 
 
 | Decision | Detail |
 |---|---|
-| Font pair | Outfit (headings) + Nunito (body) + Cairo (Arabic) |
+| Font pair | Roboto (headings) + Inter (body) + Cairo (Arabic) |
 | Font source of truth | `theme.css` — edit only the three `:root` variables to reswap fonts |
+| Button height | 56 px — all primary CTA buttons project-wide (`--btn-height: 56px`) |
 | Deployment | Netlify, auto-deploys on push to `main` |
 | Target device | iPad / mobile Safari is primary preview device |
 
 ## CSS Conventions
 
 - **Never hard-code font-family strings** in `screens/*.js` or `index.html`. Always use the CSS variables defined in `theme.css`:
-  - `var(--font-heading)` — large titles, brand name (currently Outfit)
-  - `var(--font-body)` — body copy, buttons, inputs, labels (currently Nunito)
+  - `var(--font-heading)` — large titles, brand name (currently Roboto)
+  - `var(--font-body)` — body copy, buttons, inputs, labels (currently Inter)
   - `var(--font-arabic)` — all Arabic text regardless of element size (currently Cairo)
 - To add a new screen HTML file, include `<link rel="stylesheet" href="./theme.css">` in its `<head>` and use the same variables.
 - Inline styles are the norm in this codebase. CSS variables work fine inside inline `style` attributes.

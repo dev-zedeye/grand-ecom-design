@@ -16,8 +16,8 @@ window.CountryScreen = {
 
     const strings = {
       tagline:  isAr ? 'بقالة طازجة وأكثر' : 'Fresh Groceries & More',
-      headline: isAr ? 'أين تريد التسوق؟'  : 'Where would you\nlike to shop?',
-      subtitle: isAr ? 'اختر دولتك للحصول على تجربة تسوق مخصصة' : 'Select your country to personalise your experience',
+      headline: isAr ? 'بقالة طازجة،\nتوصيل سريع.' : 'Groceries,\nDelivered Fresh.',
+      subtitle: isAr ? 'اختر دولتك للحصول على عروض وتوصيل مخصص.' : 'Choose your country for personalised deals and delivery.',
     };
 
     return {
@@ -31,9 +31,9 @@ window.CountryScreen = {
       btnEnabled: !!selected,
 
       headlineStyle: {
-        fontSize: '26px', fontWeight: '800', color: '#fff',
-        whiteSpace: 'pre-line', lineHeight: '1.2',
-        letterSpacing: isAr ? '-0.2px' : '-0.7px',
+        fontSize: '30px', fontWeight: '900', color: '#fff',
+        whiteSpace: 'pre-line', lineHeight: '1.18',
+        letterSpacing: isAr ? '-0.2px' : '-0.8px',
         fontFamily: ffHeading,
       },
       subtitleStyle: {
@@ -47,9 +47,9 @@ window.CountryScreen = {
       },
 
       btnStyle: {
-        width: '100%', height: '58px',
+        width: '100%', height: '56px',
         background: selected ? '#E53935' : '#DCDCDC',
-        border: 'none', borderRadius: '29px',
+        border: 'none', borderRadius: '28px',
         color: selected ? '#fff' : '#aaa',
         fontSize: '16px', fontWeight: '700',
         cursor: selected ? 'pointer' : 'default',
@@ -107,9 +107,9 @@ window.CountryScreen = {
           rowActiveStyle: 'background:rgba(229,57,53,0.08)',
 
           flagWrapStyle: {
-            width: '68px', height: '46px', borderRadius: '8px',
+            width: '52px', height: '52px', borderRadius: '50%',
             overflow: 'hidden', flexShrink: '0', position: 'relative',
-            boxShadow: '0 1px 6px rgba(0,0,0,0.18), inset 0 0 0 0.5px rgba(0,0,0,0.08)',
+            border: '1.5px solid rgba(0,0,0,0.07)',
           },
 
           nameStyle: {
