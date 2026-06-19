@@ -1,9 +1,9 @@
 window.CountryScreen = {
   countries: [
-    { id: 'uae', flag: '🇦🇪', nameEn: 'United Arab Emirates', nameAr: 'الإمارات العربية المتحدة', shortEn: 'UAE',    shortAr: 'الإمارات' },
-    { id: 'kw',  flag: '🇰🇼', nameEn: 'Kuwait',               nameAr: 'الكويت',                  shortEn: 'Kuwait', shortAr: 'الكويت'   },
-    { id: 'qa',  flag: '🇶🇦', nameEn: 'Qatar',                nameAr: 'قطر',                      shortEn: 'Qatar',  shortAr: 'قطر'      },
-    { id: 'sa',  flag: '🇸🇦', nameEn: 'Saudi Arabia',         nameAr: 'المملكة العربية السعودية', shortEn: 'KSA',    shortAr: 'السعودية' },
+    { id: 'uae', flag: 'https://flagcdn.com/w160/ae.png', nameEn: 'United Arab Emirates', nameAr: 'الإمارات العربية المتحدة', shortEn: 'UAE',    shortAr: 'الإمارات' },
+    { id: 'kw',  flag: 'https://flagcdn.com/w160/kw.png', nameEn: 'Kuwait',               nameAr: 'الكويت',                  shortEn: 'Kuwait', shortAr: 'الكويت'   },
+    { id: 'qa',  flag: 'https://flagcdn.com/w160/qa.png', nameEn: 'Qatar',                nameAr: 'قطر',                      shortEn: 'Qatar',  shortAr: 'قطر'      },
+    { id: 'sa',  flag: 'https://flagcdn.com/w160/sa.png', nameEn: 'Saudi Arabia',         nameAr: 'المملكة العربية السعودية', shortEn: 'KSA',    shortAr: 'السعودية' },
   ],
 
   renderVals(state, setState) {

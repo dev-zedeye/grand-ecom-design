@@ -143,7 +143,7 @@
             <sc-for list="{{ countryCards }}" as="card" hint-placeholder-count="4">
               <div onClick="{{ card.onSelect }}" style="{{ card.rowStyle }}" style-active="{{ card.rowActiveStyle }}">
                 <div style="{{ card.flagWrapStyle }}">
-                  <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:78px;line-height:1;display:block">{{ card.flag }}</span>
+                  <img src="{{ card.flag }}" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover" />
                 </div>
                 <div style="flex:1;min-width:0">
                   <div style="{{ card.nameStyle }}">{{ card.name }}</div>
