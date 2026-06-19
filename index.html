@@ -7,6 +7,7 @@
 <script src="./screens/onboarding.js"></script>
 <script src="./screens/login.js"></script>
 <script src="./screens/location.js"></script>
+<script src="./screens/register.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -74,6 +75,9 @@
     <div style="position:absolute;width:640px;height:640px;border-radius:50%;background:#E53935;opacity:0.1;filter:blur(130px);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0"></div>
   </sc-if>
   <sc-if value="{{ isLocationScreen }}">
+    <div style="position:absolute;width:640px;height:640px;border-radius:50%;background:#E53935;opacity:0.1;filter:blur(130px);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0"></div>
+  </sc-if>
+  <sc-if value="{{ isRegisterScreen }}">
     <div style="position:absolute;width:640px;height:640px;border-radius:50%;background:#E53935;opacity:0.1;filter:blur(130px);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0"></div>
   </sc-if>
 
@@ -416,7 +420,7 @@
               <!-- Don't have an account -->
               <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px">
                 <span style="font-size:14px;color:#9898A8;font-weight:500">Don't have an account?</span>
-                <button style="background:transparent;border:none;font-size:14px;font-weight:700;color:#E53935;cursor:pointer;font-family:var(--font-body);padding:0">Sign Up</button>
+                <button onClick="{{ goToRegister }}" style="background:transparent;border:none;font-size:14px;font-weight:700;color:#E53935;cursor:pointer;font-family:var(--font-body);padding:0">Sign Up</button>
               </div>
 
               <!-- Continue as Guest -->
@@ -465,7 +469,7 @@
               <!-- Don't have an account -->
               <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px">
                 <span style="font-size:14px;color:#9898A8;font-weight:500">Don't have an account?</span>
-                <button style="background:transparent;border:none;font-size:14px;font-weight:700;color:#E53935;cursor:pointer;font-family:var(--font-body);padding:0">Sign Up</button>
+                <button onClick="{{ goToRegister }}" style="background:transparent;border:none;font-size:14px;font-weight:700;color:#E53935;cursor:pointer;font-family:var(--font-body);padding:0">Sign Up</button>
               </div>
 
               <!-- Continue as Guest -->
@@ -796,6 +800,184 @@
     </sc-if>
 
     <!-- ═══════════════════════════════════════════
+         SCREEN 5 — REGISTER
+    ════════════════════════════════════════════ -->
+    <sc-if value="{{ isRegisterScreen }}" hint-placeholder-val="{{ false }}">
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;background:#FAFAF8;font-family:var(--font-body);animation:fadeInUp 0.3s ease both">
+
+        <!-- RED HEADER -->
+        <div style="flex-shrink:0;background:linear-gradient(148deg,#FF5252 0%,#E53935 45%,#C62828 100%);border-radius:0 0 32px 32px;padding-bottom:28px;position:relative;overflow:hidden">
+
+          <!-- Decorative circles -->
+          <div style="position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,0.07);right:-60px;top:-80px;pointer-events:none"></div>
+          <div style="position:absolute;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.05);left:-40px;bottom:-40px;pointer-events:none"></div>
+
+          <!-- Status bar -->
+          <div style="height:56px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 12px;position:relative;z-index:2">
+            <span style="color:rgba(255,255,255,0.92);font-weight:700;font-size:16px;letter-spacing:-0.4px">9:41</span>
+            <div style="display:flex;gap:6px;align-items:center">
+              <svg width="18" height="12" viewBox="0 0 18 12" fill="rgba(255,255,255,0.88)">
+                <rect x="0" y="8" width="3.5" height="4" rx="1"></rect><rect x="5" y="5.5" width="3.5" height="6.5" rx="1"></rect><rect x="10" y="2.5" width="3.5" height="9.5" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1"></rect>
+              </svg>
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <ellipse cx="8" cy="10.5" rx="1.6" ry="1.6" fill="rgba(255,255,255,0.88)"></ellipse>
+                <path d="M4.5 7.2C5.7 5.6 6.8 4.8 8 4.8S10.3 5.6 11.5 7.2" stroke="rgba(255,255,255,0.88)" stroke-width="1.4" stroke-linecap="round"></path>
+                <path d="M1.5 4C3.3 1.8 5.5 0.6 8 0.6S12.7 1.8 14.5 4" stroke="rgba(255,255,255,0.88)" stroke-width="1.4" stroke-linecap="round"></path>
+              </svg>
+              <svg width="26" height="12" viewBox="0 0 26 12" fill="none">
+                <rect x="0.5" y="0.5" width="22" height="11" rx="3.5" stroke="rgba(255,255,255,0.5)"></rect>
+                <rect x="23" y="4" width="2.5" height="4" rx="1" fill="rgba(255,255,255,0.5)"></rect>
+                <rect x="2" y="2" width="18" height="8" rx="2" fill="rgba(255,255,255,0.88)"></rect>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Back + Logo row -->
+          <div style="display:flex;align-items:center;gap:10px;padding:0 24px;position:relative;z-index:2">
+            <button onClick="{{ backToLogin }}" style="width:36px;height:36px;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.28);border-radius:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s ease" style-hover="background:rgba(255,255,255,0.28)">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 3.5L5.5 8 10 12.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+            <div style="display:flex;align-items:center;gap:8px;margin-left:4px">
+              <div style="width:32px;height:32px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,0.3)">
+                <svg width="18" height="18" viewBox="0 0 22 22" fill="none">
+                  <path d="M11 3C7.5 3 4 5.5 4 9c0 2.5 1.5 4.5 4 5.5L11 19l3-4.5c2.5-1 4-3 4-5.5 0-3.5-3.5-6-7-6z" fill="white" opacity="0.9"></path>
+                  <circle cx="11" cy="9" r="2.5" fill="rgba(229,57,53,0.75)"></circle>
+                </svg>
+              </div>
+              <span style="font-size:15px;font-weight:800;color:#fff;font-family:var(--font-heading);letter-spacing:0.1px">GrandHyper</span>
+            </div>
+          </div>
+
+          <!-- Heading -->
+          <div style="padding:18px 24px 0;position:relative;z-index:2">
+            <div style="font-size:32px;font-weight:800;font-family:var(--font-heading);color:#fff;line-height:1.14;letter-spacing:var(--ls-display)">Create Your<br>Account ✨</div>
+            <div style="font-size:13.5px;color:rgba(255,255,255,0.7);margin-top:7px;line-height:1.55;font-weight:400">Fill in the details to get started with GrandHyper</div>
+          </div>
+        </div>
+
+        <!-- FORM BODY (scrollable) -->
+        <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;padding:24px 24px 0;background:#FAFAF8">
+
+          <div style="display:flex;flex-direction:column;gap:11px;animation:fadeUp 0.22s ease">
+
+            <!-- Full Name -->
+            <div style="display:flex;align-items:center;gap:12px;background:#EEECEA;border-radius:16px;height:58px;padding:0 18px;border:1.5px solid transparent;transition:border-color 0.15s ease" style-focus-within="border-color:#E53935">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0">
+                <circle cx="9" cy="6" r="3.5" stroke="#A0A0B8" stroke-width="1.5"></circle>
+                <path d="M2.5 16c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6" stroke="#A0A0B8" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+              <input type="text" placeholder="Full name" style="flex:1;background:transparent;border:none;font-size:15px;color:#141414;font-family:var(--font-body);font-weight:500;height:100%" />
+            </div>
+
+            <!-- Email -->
+            <div style="display:flex;align-items:center;gap:12px;background:#EEECEA;border-radius:16px;height:58px;padding:0 18px;border:1.5px solid transparent;transition:border-color 0.15s ease" style-focus-within="border-color:#E53935">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0">
+                <rect x="1" y="4" width="16" height="11" rx="2.5" stroke="#A0A0B8" stroke-width="1.5"></rect>
+                <path d="M1 6l8 5.5L17 6" stroke="#A0A0B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <input type="email" placeholder="Email address" style="flex:1;background:transparent;border:none;font-size:15px;color:#141414;font-family:var(--font-body);font-weight:500;height:100%" />
+            </div>
+
+            <!-- Phone Number + Verify -->
+            <div style="display:flex;align-items:center;gap:12px;background:#EEECEA;border-radius:16px;height:58px;padding:0 8px 0 18px;border:1.5px solid transparent;transition:border-color 0.15s ease" style-focus-within="border-color:#E53935">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0">
+                <rect x="4" y="1" width="10" height="16" rx="2.5" stroke="#A0A0B8" stroke-width="1.5"></rect>
+                <circle cx="9" cy="14" r="0.9" fill="#A0A0B8"></circle>
+              </svg>
+              <input type="tel" placeholder="Phone number" style="flex:1;background:transparent;border:none;font-size:15px;color:#141414;font-family:var(--font-body);font-weight:500;height:100%;min-width:0" />
+              <button onClick="{{ regVerifyPhone }}" style="{{ regVerifyBtnStyle }}" style-hover="opacity:0.88" style-active="transform:scale(0.96)">{{ regVerifyLabel }}</button>
+            </div>
+
+            <!-- OTP hint -->
+            <sc-if value="{{ regShowOtpHint }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:flex-start;gap:10px;padding:12px 16px;background:rgba(229,57,53,0.07);border-radius:14px;border:1px solid rgba(229,57,53,0.12);animation:fadeUp 0.2s ease">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px">
+                  <circle cx="8" cy="8" r="7" stroke="#E53935" stroke-width="1.4"></circle>
+                  <path d="M8 5v3.5M8 10.5v.5" stroke="#E53935" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+                <span style="font-size:13px;color:#C62828;line-height:1.5;font-weight:500;font-family:var(--font-body)">A 6-digit OTP has been sent to your number via SMS.</span>
+              </div>
+            </sc-if>
+
+            <!-- Password -->
+            <div style="display:flex;align-items:center;gap:12px;background:#EEECEA;border-radius:16px;height:58px;padding:0 18px;border:1.5px solid transparent;transition:border-color 0.15s ease" style-focus-within="border-color:#E53935">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0">
+                <rect x="3" y="8" width="12" height="9" rx="2.5" stroke="#A0A0B8" stroke-width="1.5"></rect>
+                <path d="M6 8V6a3 3 0 0 1 6 0v2" stroke="#A0A0B8" stroke-width="1.5" stroke-linecap="round"></path>
+                <circle cx="9" cy="12.5" r="1.2" fill="#A0A0B8"></circle>
+              </svg>
+              <input type="{{ regPwType }}" placeholder="Password" style="flex:1;background:transparent;border:none;font-size:15px;color:#141414;font-family:var(--font-body);font-weight:500;height:100%" />
+              <button onClick="{{ regTogglePw }}" style="background:transparent;border:none;cursor:pointer;padding:4px;display:flex;align-items:center;flex-shrink:0">
+                <sc-if value="{{ regShowPw }}" hint-placeholder-val="{{ false }}">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M1 10s3-6 9-6 9 6 9 6-3 6-9 6-9-6-9-6z" stroke="#A0A0B8" stroke-width="1.5"></path>
+                    <circle cx="10" cy="10" r="2.5" stroke="#A0A0B8" stroke-width="1.5"></circle>
+                  </svg>
+                </sc-if>
+                <sc-if value="{{ regHidePw }}" hint-placeholder-val="{{ true }}">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M3 3l14 14M8.5 8.7A2.5 2.5 0 0013.3 13M6.2 6a9.4 9.4 0 00-5.2 4s3 6 9 6c1.7 0 3.2-.5 4.6-1.2" stroke="#A0A0B8" stroke-width="1.5" stroke-linecap="round"></path>
+                    <path d="M11.5 5.1A9 9 0 0119 10s-1 2.2-2.8 3.8" stroke="#A0A0B8" stroke-width="1.5" stroke-linecap="round"></path>
+                  </svg>
+                </sc-if>
+              </button>
+            </div>
+
+            <!-- Confirm Password -->
+            <div style="display:flex;align-items:center;gap:12px;background:#EEECEA;border-radius:16px;height:58px;padding:0 18px;border:1.5px solid transparent;transition:border-color 0.15s ease" style-focus-within="border-color:#E53935">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0">
+                <rect x="3" y="8" width="12" height="9" rx="2.5" stroke="#A0A0B8" stroke-width="1.5"></rect>
+                <path d="M6 8V6a3 3 0 0 1 6 0v2" stroke="#A0A0B8" stroke-width="1.5" stroke-linecap="round"></path>
+                <path d="M7 12.5l1.5 1.5 3-3" stroke="#A0A0B8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <input type="{{ regConfirmPwType }}" placeholder="Confirm password" style="flex:1;background:transparent;border:none;font-size:15px;color:#141414;font-family:var(--font-body);font-weight:500;height:100%" />
+              <button onClick="{{ regToggleConfirmPw }}" style="background:transparent;border:none;cursor:pointer;padding:4px;display:flex;align-items:center;flex-shrink:0">
+                <sc-if value="{{ regShowConfirmPw }}" hint-placeholder-val="{{ false }}">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M1 10s3-6 9-6 9 6 9 6-3 6-9 6-9-6-9-6z" stroke="#A0A0B8" stroke-width="1.5"></path>
+                    <circle cx="10" cy="10" r="2.5" stroke="#A0A0B8" stroke-width="1.5"></circle>
+                  </svg>
+                </sc-if>
+                <sc-if value="{{ regHideConfirmPw }}" hint-placeholder-val="{{ true }}">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M3 3l14 14M8.5 8.7A2.5 2.5 0 0013.3 13M6.2 6a9.4 9.4 0 00-5.2 4s3 6 9 6c1.7 0 3.2-.5 4.6-1.2" stroke="#A0A0B8" stroke-width="1.5" stroke-linecap="round"></path>
+                    <path d="M11.5 5.1A9 9 0 0119 10s-1 2.2-2.8 3.8" stroke="#A0A0B8" stroke-width="1.5" stroke-linecap="round"></path>
+                  </svg>
+                </sc-if>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Terms note -->
+          <div style="font-size:12px;color:#B8B8C8;line-height:1.6;margin-top:14px;text-align:center;font-family:var(--font-body)">
+            By signing up you agree to our <span style="color:#E53935;font-weight:600">Terms of Service</span> and <span style="color:#E53935;font-weight:600">Privacy Policy</span>
+          </div>
+
+          <!-- Create Account CTA -->
+          <button onClick="{{ goToLocation }}" style="width:100%;height:56px;background:#E53935;border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;margin-top:14px;flex-shrink:0" style-hover="opacity:0.92" style-active="transform:scale(0.97)">
+            Create Account
+          </button>
+
+          <!-- Spacer -->
+          <div style="flex:1;min-height:14px"></div>
+
+          <!-- Sign in row -->
+          <div style="display:flex;align-items:center;justify-content:center;gap:6px;flex-shrink:0">
+            <span style="font-size:14px;color:#9898A8;font-weight:500;font-family:var(--font-body)">Already have an account?</span>
+            <button onClick="{{ backToLogin }}" style="background:transparent;border:none;font-size:14px;font-weight:700;color:#E53935;cursor:pointer;font-family:var(--font-body);padding:0">Sign In</button>
+          </div>
+
+          <!-- Home indicator -->
+          <div style="width:134px;height:5px;background:#000;border-radius:3px;margin:14px auto 16px;opacity:0.1;flex-shrink:0"></div>
+
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ═══════════════════════════════════════════
          FULLSCREEN MAP OVERLAY
     ════════════════════════════════════════════ -->
     <sc-if value="{{ mapFullscreen }}" hint-placeholder-val="{{ false }}">
@@ -939,6 +1121,11 @@ class Component extends DCLogic {
     // Location
     locationSelected: 'home',
     mapFullscreen: false,
+    // Register
+    regShowPw: false,
+    regShowConfirmPw: false,
+    regPhoneVerified: false,
+    regShowOtpHint: false,
   };
 
   renderVals() {
@@ -948,6 +1135,7 @@ class Component extends DCLogic {
       ...OnboardingScreen.renderVals(this.state, set),
       ...LoginScreen.renderVals(this.state, set),
       ...LocationScreen.renderVals(this.state, set),
+      ...RegisterScreen.renderVals(this.state, set),
     };
   }
 }
