@@ -1,6 +1,6 @@
 window.BottomNavScreen = {
   renderVals(state, setState) {
-    const { bnTab = 'home' } = state;
+    const { bnTab = 'home', bnBannerIdx = 0 } = state;
 
     const tabs = {
       home:       { label: 'Home',       desc: 'Your personalized home feed will appear here' },
@@ -60,6 +60,13 @@ window.BottomNavScreen = {
     const ns = (t) => navStyle(t);
     const tab = tabs[bnTab];
 
+    const dotBase = { height: '6px', borderRadius: '3px', transition: 'all 0.3s ease', cursor: 'pointer' };
+    const dots = [0,1,2,3].map(i =>
+      i === bnBannerIdx
+        ? { ...dotBase, width: '18px', background: '#E53935' }
+        : { ...dotBase, width: '6px', background: 'rgba(0,0,0,0.15)' }
+    );
+
     return {
       isHomeScreen: state.currentScreen === 'home',
 
@@ -84,6 +91,17 @@ window.BottomNavScreen = {
       bnIsLoyalty:    bnTab === 'loyalty',
       bnIsOffers:     bnTab === 'offers',
       bnIsFlyer:      bnTab === 'flyer',
+      notBnHome:      bnTab !== 'home',
+
+      bnCarouselTrackStyle: {
+        display: 'flex',
+        transition: 'transform 0.45s cubic-bezier(0.25,0.1,0.25,1)',
+        transform: `translateX(-${bnBannerIdx * 100}%)`,
+      },
+      bnDot0Style: dots[0], bnDot0Click: () => setState({ bnBannerIdx: 0 }),
+      bnDot1Style: dots[1], bnDot1Click: () => setState({ bnBannerIdx: 1 }),
+      bnDot2Style: dots[2], bnDot2Click: () => setState({ bnBannerIdx: 2 }),
+      bnDot3Style: dots[3], bnDot3Click: () => setState({ bnBannerIdx: 3 }),
 
       bnSetHome:       () => setState({ bnTab: 'home' }),
       bnSetCategories: () => setState({ bnTab: 'categories' }),
