@@ -1,6 +1,36 @@
 window.BottomNavScreen = {
+
+  _productData: [
+    { id: 1, name: 'Almarai Full Fat Milk',       qty: '1 Litre',   pct: 24, pr: 7.25,  sp: 5.50,  express: true,  bg: 'linear-gradient(148deg,#EEF4FF 0%,#D2E6FF 100%)', emoji: '🥛', bannerLabel: 'BUNDLE DEAL',  bannerColor: '#5B21B6', bannerKind: 'star'  },
+    { id: 2, name: "Driscoll's Fresh Strawberries", qty: '500g Pack', pct: 36, pr: 14.99, sp: 9.75,  express: true,  bg: 'linear-gradient(148deg,#FFF0F2 0%,#FFD5DA 100%)', emoji: '🍓', bannerLabel: 'FLASH SALE',   bannerColor: '#DC2626', bannerKind: 'bolt'  },
+    { id: 3, name: 'Premium Blueberries',          qty: '250g Pack', pct: 28, pr: 12.50, sp: 8.99,  express: false, bg: 'linear-gradient(148deg,#F3EEFF 0%,#E2D0FF 100%)', emoji: '🫐', bannerLabel: 'MEMBER PRICE', bannerColor: '#92400E', bannerKind: 'crown' },
+    { id: 4, name: 'Hass Avocados',                qty: 'Pack of 3', pct: 20, pr: 17.99, sp: 14.50, express: true,  bg: 'linear-gradient(148deg,#EDFAEE 0%,#C9EDD0 100%)', emoji: '🥑', bannerLabel: 'FRESH PICK',   bannerColor: '#15803D', bannerKind: 'leaf'  },
+  ],
+
+  _mkBannerIcon(kind) {
+    const w = 'rgba(255,255,255,0.95)';
+    const ce = React.createElement.bind(React);
+    if (kind === 'bolt')  return ce('svg', { width:7,  height:11, viewBox:'0 0 7 11',  fill:w }, ce('polygon', { points:'4.2,0 0,5.8 3.2,5.8 2.2,11 7,5.2 3.8,5.2' }));
+    if (kind === 'star')  return ce('svg', { width:10, height:10, viewBox:'0 0 20 20', fill:w }, ce('polygon', { points:'10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7' }));
+    if (kind === 'crown') return ce('svg', { width:12, height:9,  viewBox:'0 0 12 9',  fill:w }, ce('path', { d:'M0.5 8.5L2 2L5 6L6 0.5L7 6L10 2L11.5 8.5H0.5Z' }));
+    return ce('svg', { width:10, height:10, viewBox:'0 0 10 10', fill:w },
+      ce('path', { d:'M9 1C4 1 1 4.5 1 9.5C6.5 9 9.5 6 9 1Z' }),
+      ce('path', { d:'M1 9.5L5 5.5', stroke:w, strokeWidth:1.3, strokeLinecap:'round', fill:'none' })
+    );
+  },
+
+  _mkCartIcon(inCart) {
+    const ce = React.createElement.bind(React);
+    if (inCart) return ce('svg', { width:13, height:13, viewBox:'0 0 24 24', fill:'none', stroke:'#16A34A', strokeWidth:2.8, strokeLinecap:'round', strokeLinejoin:'round' }, ce('polyline', { points:'20 6 9 17 4 12' }));
+    return ce('svg', { width:13, height:13, viewBox:'0 0 24 24', fill:'none', stroke:'#fff', strokeWidth:2, strokeLinecap:'round', strokeLinejoin:'round' },
+      ce('path', { d:'M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z' }),
+      ce('line', { x1:'3', y1:'6', x2:'21', y2:'6' }),
+      ce('path', { d:'M16 10a4 4 0 01-8 0' })
+    );
+  },
+
   renderVals(state, setState) {
-    const { bnTab = 'home', bnBannerIdx = 0 } = state;
+    const { bnTab = 'home', bnBannerIdx = 0, bnWl = {}, bnCart = {} } = state;
 
     const tabs = {
       home:       { label: 'Home',       desc: 'Your personalized home feed will appear here' },
@@ -102,6 +132,30 @@ window.BottomNavScreen = {
       bnDot1Style: dots[1], bnDot1Click: () => setState({ bnBannerIdx: 1 }),
       bnDot2Style: dots[2], bnDot2Click: () => setState({ bnBannerIdx: 2 }),
       bnDot3Style: dots[3], bnDot3Click: () => setState({ bnBannerIdx: 3 }),
+
+      bnProducts: this._productData.map(p => {
+        const inWL   = !!bnWl[p.id];
+        const inCart = !!bnCart[p.id];
+        return {
+          ...p,
+          discLabel:    `-${p.pct}%`,
+          spStr:        p.sp.toFixed(2),
+          prStr:        p.pr.toFixed(2),
+          bannerIconEl: this._mkBannerIcon(p.bannerKind),
+          bannerStyle:  { display:'flex', alignItems:'center', justifyContent:'center', gap:'5px', height:'26px', background:p.bannerColor, flexShrink:0 },
+          imgStyle:     { height:'98px', background:p.bg, position:'relative', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden', flexShrink:0 },
+          nameStyle:    { fontSize:'11.5px', fontWeight:'700', color:'#141414', lineHeight:'1.38', letterSpacing:'-0.2px', display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden', minHeight:'32px' },
+          wlStyle:      { position:'absolute', top:'7px', right:'7px', width:'28px', height:'28px', background: inWL ? '#FFF0F0' : 'rgba(255,255,255,0.92)', border:'none', borderRadius:'50%', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 1px 6px rgba(0,0,0,0.14)', animation: inWL ? 'heartPop 0.32s ease' : 'none' },
+          heartFill:    inWL ? '#E53935' : 'none',
+          heartStroke:  inWL ? '#E53935' : '#C0BFCA',
+          cartIconEl:   this._mkCartIcon(inCart),
+          cartStyle:    { width:'100%', height:'36px', background: inCart ? '#F0FFF4' : '#E53935', border: inCart ? '1.5px solid #22C55E' : '1.5px solid transparent', borderRadius:'10px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:'5px', animation: inCart ? 'cartBounce 0.3s ease' : 'none' },
+          cartLblStyle: { fontSize:'10.5px', fontWeight:'700', color: inCart ? '#16A34A' : '#fff' },
+          cartLbl:      inCart ? 'Added to Cart' : 'Add to Cart',
+          onWishlist:   () => setState(s => { const n={...s.bnWl}; n[p.id]=!n[p.id]; return { bnWl:n }; }),
+          onCart:       () => setState(s => { const n={...s.bnCart}; n[p.id]=!n[p.id]; return { bnCart:n }; }),
+        };
+      }),
 
       bnSetHome:       () => setState({ bnTab: 'home' }),
       bnSetCategories: () => setState({ bnTab: 'categories' }),
