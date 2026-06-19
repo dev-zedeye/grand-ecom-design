@@ -66,6 +66,67 @@ window.BottomNavScreen = {
     { bg:'linear-gradient(135deg,#1D4ED8 0%,#1e40af 100%)', title:'You Might Also Like', subtitle:'Based on your browsing', cta:'Explore' },
     { bg:'linear-gradient(135deg,#15803D 0%,#166534 100%)', title:'Back in Stock', subtitle:'Your favourites are back', cta:'Buy Now' },
   ],
+
+  // Trending Now — same products as Best Sellers, trending-up icon, rose/orange/cyan/violet
+  _trendingData: [
+    { id:601, name:'Almarai Full Fat Milk',         qty:'1 Litre',    pct:24, pr:7.25,  sp:5.50,  express:true,  bg:'linear-gradient(148deg,#FFF0F2 0%,#FFD5DA 100%)', emoji:'🥛', bannerLabel:'TRENDING #1', bannerColor:'#E11D48', bannerKind:'trending' },
+    { id:602, name:"Driscoll's Fresh Strawberries", qty:'500g Pack',  pct:36, pr:14.99, sp:9.75,  express:true,  bg:'linear-gradient(148deg,#FFF7ED 0%,#FED7AA 100%)', emoji:'🍓', bannerLabel:'TRENDING #2', bannerColor:'#EA580C', bannerKind:'trending' },
+    { id:603, name:'Premium Blueberries',           qty:'250g Pack',  pct:28, pr:12.50, sp:8.99,  express:false, bg:'linear-gradient(148deg,#ECFEFF 0%,#A5F3FC 100%)', emoji:'🫐', bannerLabel:'TRENDING #3', bannerColor:'#0891B2', bannerKind:'trending' },
+    { id:604, name:'Hass Avocados',                 qty:'Pack of 3',  pct:20, pr:17.99, sp:14.50, express:true,  bg:'linear-gradient(148deg,#F5F3FF 0%,#DDD6FE 100%)', emoji:'🥑', bannerLabel:'TRENDING #4', bannerColor:'#7C3AED', bannerKind:'trending' },
+  ],
+
+  _trendingBanners: [
+    { bg:'linear-gradient(135deg,#E11D48 0%,#9F1239 100%)', title:'Trending This Week',   subtitle:'Most added to cart right now', cta:'Shop Now'   },
+    { bg:'linear-gradient(135deg,#EA580C 0%,#C2410C 100%)', title:'Flying Off Shelves',   subtitle:'Don\'t miss out before it\'s gone', cta:'Grab It'    },
+    { bg:'linear-gradient(135deg,#7C3AED 0%,#4C1D95 100%)', title:'Everyone\'s Favourite', subtitle:'Rated 4.8★ by our customers',   cta:'See Why'    },
+  ],
+
+  _brandSlides: [
+    {
+      bg: 'linear-gradient(160deg,#064E3B 0%,#065F46 40%,#047857 100%)',
+      accent: '#34D399', tag: 'GRAND FRESH',
+      headline: 'Farm-Fresh\nDelivered',
+      sub: 'Handpicked daily from local farms straight to your door',
+      cta: 'Shop Fresh',
+      deco1: 'rgba(52,211,153,0.18)', deco2: 'rgba(0,0,0,0.22)',
+      badge: '🌿', badgeBg: 'rgba(52,211,153,0.2)',
+    },
+    {
+      bg: 'linear-gradient(160deg,#7F1D1D 0%,#991B1B 40%,#DC2626 100%)',
+      accent: '#FCA5A5', tag: 'GRAND DEALS',
+      headline: 'Up to 60%\nOff Today',
+      sub: 'Flash savings on hundreds of everyday essentials',
+      cta: 'Grab Deals',
+      deco1: 'rgba(252,165,165,0.18)', deco2: 'rgba(0,0,0,0.25)',
+      badge: '🔥', badgeBg: 'rgba(252,165,165,0.2)',
+    },
+    {
+      bg: 'linear-gradient(160deg,#312E81 0%,#3730A3 40%,#4F46E5 100%)',
+      accent: '#A5B4FC', tag: 'GRAND PREMIUM',
+      headline: 'Curated\nFor You',
+      sub: 'Premium international brands at competitive prices',
+      cta: 'Explore',
+      deco1: 'rgba(165,180,252,0.18)', deco2: 'rgba(0,0,0,0.25)',
+      badge: '⭐', badgeBg: 'rgba(165,180,252,0.2)',
+    },
+    {
+      bg: 'linear-gradient(160deg,#78350F 0%,#92400E 40%,#B45309 100%)',
+      accent: '#FCD34D', tag: 'GRAND ORGANICS',
+      headline: '100% Certified\nOrganic',
+      sub: 'Chemical-free, natural goodness for your family',
+      cta: 'Shop Organic',
+      deco1: 'rgba(252,211,77,0.18)', deco2: 'rgba(0,0,0,0.25)',
+      badge: '🌱', badgeBg: 'rgba(252,211,77,0.2)',
+    },
+  ],
+
+  _portraitBanners: [
+    { bg:'linear-gradient(160deg,#B91C1C 0%,#EF4444 100%)', tag:'Flash Sale',    emoji:'⚡', title:'Up to 50% Off',   subtitle:'Today only — grab it fast',     cta:'Shop Now'   },
+    { bg:'linear-gradient(160deg,#1D4ED8 0%,#60A5FA 100%)', tag:'Free Delivery', emoji:'🚚', title:'Zero Fees Today',  subtitle:'On orders above 30 AED',        cta:'Order Now'  },
+    { bg:'linear-gradient(160deg,#6D28D9 0%,#A78BFA 100%)', tag:'Bonus Points',  emoji:'⭐', title:'Triple Points',    subtitle:'Earn 3× on selected items',     cta:'Earn Now'   },
+    { bg:'linear-gradient(160deg,#065F46 0%,#10B981 100%)', tag:'Fresh Drop',    emoji:'🌿', title:'New Arrivals',     subtitle:'Freshly stocked — first picks', cta:'Explore'    },
+    { bg:'linear-gradient(160deg,#78350F 0%,#F59E0B 100%)', tag:'Weekend Deal',  emoji:'🎯', title:'Weekend Picks',    subtitle:'Handpicked savings for you',    cta:'View Deals' },
+  ],
   // ─────────────────────────────────────────────────────────────────────────
 
   _mkBannerIcon(kind) {
@@ -92,6 +153,11 @@ window.BottomNavScreen = {
     if (kind === 'eye') return ce('svg', { width:13, height:9, viewBox:'0 0 26 18', fill:'none', stroke:w, strokeWidth:2, strokeLinecap:'round' },
       ce('path', { d:'M1 9C1 9 6 1 13 1s12 8 12 8-5 8-12 8S1 9 1 9Z', fill:w, stroke:'none' }),
       ce('circle', { cx:13, cy:9, r:3.5, fill:'rgba(0,0,0,0.25)' })
+    );
+    // trending — Trending Now
+    if (kind === 'trending') return ce('svg', { width:13, height:11, viewBox:'0 0 24 20', fill:'none', stroke:w, strokeWidth:2.5, strokeLinecap:'round', strokeLinejoin:'round' },
+      ce('polyline', { points:'23 3 13 13 9 9 1 17' }),
+      ce('polyline', { points:'17 3 23 3 23 9' })
     );
     return ce('svg', { width:11, height:11, viewBox:'0 0 24 24', fill:w }, ce('path', { d:'M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2Z' }));
   },
@@ -131,7 +197,7 @@ window.BottomNavScreen = {
   },
 
   renderVals(state, setState) {
-    const { bnTab = 'home', bnBannerIdx = 0, bnWl = {}, bnCart = {}, bnFeatWl = {}, bnFeatCart = {}, bnNewWl = {}, bnNewCart = {}, bnSoWl = {}, bnSoCart = {}, bnRvWl = {}, bnRvCart = {} } = state;
+    const { bnTab = 'home', bnBannerIdx = 0, bnBrandIdx = 0, bnWl = {}, bnCart = {}, bnFeatWl = {}, bnFeatCart = {}, bnNewWl = {}, bnNewCart = {}, bnSoWl = {}, bnSoCart = {}, bnRvWl = {}, bnRvCart = {}, bnTrendWl = {}, bnTrendCart = {} } = state;
 
     const tabs = {
       home:       { label: 'Home',       desc: 'Your personalized home feed will appear here' },
@@ -239,6 +305,26 @@ window.BottomNavScreen = {
       bnNewArrivalBanners:      this._newArrivalBanners,
       bnSpecialOfferBanners:    this._specialOfferBanners,
       bnRecentlyViewedBanners:  this._recentlyViewedBanners,
+      bnPortraitBanners:        this._portraitBanners,
+
+      bnBrandTrackStyle: {
+        display: 'flex',
+        transition: 'transform 0.55s cubic-bezier(0.25,0.1,0.25,1)',
+        transform: `translateX(-${bnBrandIdx * 100}%)`,
+      },
+      ...(() => {
+        const db = { height:'6px', borderRadius:'3px', transition:'all 0.3s ease', flexShrink:0, cursor:'pointer', border:'none', padding:0, background:'rgba(255,255,255,0.4)' };
+        const active = { ...db, width:'20px', background:'#fff' };
+        const inactive = { ...db, width:'6px' };
+        return {
+          bnBrandDot0Style: bnBrandIdx===0 ? active : inactive, bnBrandDot0Click: () => setState({ bnBrandIdx:0 }),
+          bnBrandDot1Style: bnBrandIdx===1 ? active : inactive, bnBrandDot1Click: () => setState({ bnBrandIdx:1 }),
+          bnBrandDot2Style: bnBrandIdx===2 ? active : inactive, bnBrandDot2Click: () => setState({ bnBrandIdx:2 }),
+          bnBrandDot3Style: bnBrandIdx===3 ? active : inactive, bnBrandDot3Click: () => setState({ bnBrandIdx:3 }),
+        };
+      })(),
+      bnTrendingBanners:        this._trendingBanners,
+      bnTrendingProducts:       this._mapProducts(this._trendingData, bnTrendWl, bnTrendCart, setState, 'bnTrendWl', 'bnTrendCart'),
 
       bnProducts:             this._mapProducts(this._bestSellersData,   bnWl,      bnCart,     setState, 'bnWl',     'bnCart'),
       bnFeaturedProducts:     this._mapProducts(this._featuredData,       bnFeatWl,  bnFeatCart, setState, 'bnFeatWl', 'bnFeatCart'),
