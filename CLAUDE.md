@@ -22,6 +22,7 @@ This section captures decisions and preferences made during development. Update 
 | Font pair | Montserrat (headings) + Inter (body) + Cairo (Arabic) |
 | Font source of truth | `theme.css` — edit only the three `:root` variables to reswap fonts |
 | Button height | 56 px — all primary CTA buttons project-wide (`--btn-height: 56px`) |
+| Button shadow | None — never add `box-shadow` to any button |
 | Deployment | Netlify, auto-deploys on push to `main` |
 | Target device | iPad / mobile Safari is primary preview device |
 | Country screen title | "Fresh Picks, Delivered Daily." (EN) / "أفضل الطازجات، بتوصيل يومي." (AR) |

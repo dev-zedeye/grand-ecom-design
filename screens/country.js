@@ -56,7 +56,7 @@ window.CountryScreen = {
         fontFamily: ffBody,
         letterSpacing: isAr ? '0' : '0.2px',
         transition: 'background 0.3s ease, color 0.3s ease, transform 0.12s ease',
-        boxShadow: selected ? '0 8px 28px rgba(229,57,53,0.35)' : 'none',
+        boxShadow: 'none',
       },
       btnActiveStyle: selected ? 'transform:scale(0.97)' : '',
 
