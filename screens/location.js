@@ -53,11 +53,12 @@ window.LocationScreen = {
         ? t('Deliver to Home',    'التوصيل إلى المنزل')
         : t('Deliver to Office',  'التوصيل إلى المكتب'),
 
-      locHeaderTitle:    t('Select Location',             'اختر الموقع'),
+      locHeaderTitle:    t('Delivery Location',            'موقع التسليم'),
       locHeaderSubtitle: t('Choose your delivery address', 'اختر عنوان التوصيل'),
       locSavedTitle:     t('Saved Addresses',             'العناوين المحفوظة'),
-      locAddNew:         t('Add New',                     'إضافة جديد'),
       locUseMyLocation:  t('Use My Location',             'استخدم موقعي'),
+      locPinnedLabel:    t('Pinned Location',             'الموقع المحدد'),
+      locPinnedAddress:  t('Al Barsha 1, Dubai, UAE',     'الغبيبة 1، دبي، الإمارات'),
     };
   },
 };
