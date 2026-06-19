@@ -58,11 +58,12 @@ window.LoginScreen = {
       hidePw: !showPw,
       pwType: showPw ? 'text' : 'password',
 
-      togglePw:      () => setState({ showPw: !state.showPw }),
-      switchToEmail: () => setState({ activeTab: 'email' }),
-      switchToPhone: () => setState({ activeTab: 'phone' }),
-      backToCountry: () => setState({ currentScreen: 'country' }),
-      goToLocation:  () => setState({ currentScreen: 'location' }),
+      togglePw:           () => setState({ showPw: !state.showPw }),
+      switchToEmail:      () => setState({ activeTab: 'email' }),
+      switchToPhone:      () => setState({ activeTab: 'phone' }),
+      backToCountry:      () => setState({ currentScreen: 'country' }),
+      goToLocation:       () => setState({ currentScreen: 'location' }),
+      goToForgotPassword: () => setState({ currentScreen: 'forgotPassword', fpState: 'default' }),
 
       showSocialLogin: false,
       showGuestLogin: true,
