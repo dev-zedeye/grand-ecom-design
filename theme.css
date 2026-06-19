@@ -21,22 +21,22 @@
   --color-primary-rgb:   229, 57, 53; /* use with rgba() for shadows/glows */
 
   /* Accent — amber/orange (energy, deals, badges, flash-sale CTAs) */
-  --color-accent:        #FF8C00;
-  --color-accent-dark:   #E65100;  /* hover / pressed */
+  --color-accent:        #FFB30F;
+  --color-accent-dark:   #efa606;  /* hover / pressed */
   --color-accent-light:  #FFF3E0;  /* chip backgrounds, tag fills */
   --color-accent-rgb:    255, 140, 0;
 
   /* Secondary — teal (fresh produce, success, delivery, health) */
-  --color-secondary:       #009688;
-  --color-secondary-dark:  #00695C;  /* hover / pressed */
+  --color-secondary:       #437F97;
+  --color-secondary-dark:  #376e84;  /* hover / pressed */
   --color-secondary-light: #E0F2F1;  /* subtle fills, in-stock badges */
-  --color-secondary-rgb:   0, 150, 136;
+  --color-secondary-rgb:   67, 127, 151;
 
   /* ─── Neutral surface & text scale ────────────────────────────────────── */
   --color-bg:         #FAFAF8;  /* app canvas */
   --color-surface:    #EEECEA;  /* input fills, tab bars */
   --color-border:     #E8E7E2;  /* dividers, card borders */
-  --color-text:       #141414;  /* primary text */
+  --color-text:       #121213;  /* primary text */
   --color-text-muted: #686868;  /* body copy */
   --color-text-faint: #9898A8;  /* placeholders, helper text */
 }
