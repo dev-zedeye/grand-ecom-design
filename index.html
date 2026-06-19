@@ -119,22 +119,8 @@
 
           <!-- Logo row (always LTR) -->
           <div dir="ltr" style="display:flex;align-items:center;gap:10px;padding:0 24px">
-            <!-- Grand logo: sun icon + wordmark stacked -->
-            <div style="display:flex;flex-direction:column;align-items:center;gap:3px">
-              <svg width="58" height="46" viewBox="0 0 130 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Sun rays (tapering polygons) -->
-                <polygon points="61,30 69,30 65,8" fill="#FFBA00"/>
-                <polygon points="75,35 83,31 93,11" fill="#FFBA00"/>
-                <polygon points="55,31 47,35 37,11" fill="#FFBA00"/>
-                <polygon points="87,47 92,40 110,32" fill="#FFBA00"/>
-                <polygon points="43,40 48,47 20,32" fill="#FFBA00"/>
-                <!-- Sun semicircle body (filled) -->
-                <path d="M37 62 A28 28 0 0 1 93 62 Z" fill="#FFBA00"/>
-                <!-- Wave (white, adapted for red bg) -->
-                <path d="M6 74 C24 63 44 82 65 73 C86 64 106 80 124 73" stroke="rgba(255,255,255,0.86)" stroke-width="7" stroke-linecap="round" fill="none"/>
-              </svg>
-              <div style="font-size:16px;font-weight:900;font-family:var(--font-heading);color:#fff;letter-spacing:1.5px;line-height:1;text-transform:uppercase">Grand</div>
-            </div>
+            <!-- Grand logo -->
+            <img src="./grand-logo.png" alt="Grand" style="height:52px;width:auto;object-fit:contain"/>
             <div dir="ltr" style="margin-left:auto;background:rgba(255,255,255,0.16);border-radius:22px;padding:3px;display:flex;gap:2px;border:1px solid rgba(255,255,255,0.2)">
               <button onClick="{{ switchToEn }}" style="{{ toggleEnStyle }}">EN</button>
               <button onClick="{{ switchToAr }}" style="{{ toggleArStyle }}">عربي</button>
