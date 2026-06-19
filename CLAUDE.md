@@ -13,6 +13,16 @@ Open `index.html` directly in a browser to run the prototype.
 - **Always work on and push to `main` branch** after every edit session.
 - Use: `git add <files> && git commit -m "..." && git push origin main`
 
+## Design Bucket
+
+New design files (`.dc.html` templates and their companion `.js` logic) are dropped into:
+
+```
+/Users/shibinkalliatt/Downloads/Intro slider design/
+```
+
+When a new file appears there, extract its HTML template into the appropriate `<sc-if>` block in `index.html` and create a matching `screens/<name>.js` module following the Screen Module Pattern.
+
 ## Memory Bank
 
 This section captures decisions and preferences made during development. Update it whenever a meaningful design, tooling, or structural decision is made.
@@ -97,7 +107,7 @@ All application state lives in a single object inside the `Component` class:
 
 | Key | Purpose |
 |---|---|
-| `currentScreen` | Active screen: `'country'`, `'onboarding'`, or `'login'` |
+| `currentScreen` | Active screen: `'country'`, `'onboarding'`, `'login'`, or `'location'` |
 | `selectedCountry` | Currently selected GCC country object |
 | `lang` | Language: `'en'` or `'ar'` |
 | `currentSlide` | Active slide index in the onboarding carousel |
@@ -105,6 +115,7 @@ All application state lives in a single object inside the `Component` class:
 | `onboardingDone` | Whether onboarding has been completed |
 | `activeTab` | Login tab: `'email'` or `'phone'` |
 | `showPw` | Password visibility toggle |
+| `locationSelected` | Location screen: `'home'` or `'office'` |
 
 ### Bilingual / RTL Support
 

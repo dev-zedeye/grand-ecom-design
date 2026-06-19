@@ -6,6 +6,7 @@
 <script src="./screens/country.js"></script>
 <script src="./screens/onboarding.js"></script>
 <script src="./screens/login.js"></script>
+<script src="./screens/location.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -13,6 +14,10 @@
 <helmet>
   <link rel="stylesheet" href="./theme.css">
   <style>
+    @keyframes locPulse {
+      0%   { transform:scale(1);   opacity:0.55; }
+      100% { transform:scale(2.4); opacity:0; }
+    }
     @keyframes cardPop {
       0%   { transform:scale(0.97); opacity:0.7; }
       60%  { transform:scale(1.01); }
@@ -66,6 +71,9 @@
     <div style="position:absolute;width:640px;height:640px;border-radius:50%;background:#E53935;opacity:0.1;filter:blur(130px);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0"></div>
   </sc-if>
   <sc-if value="{{ isLoginScreen }}">
+    <div style="position:absolute;width:640px;height:640px;border-radius:50%;background:#E53935;opacity:0.1;filter:blur(130px);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0"></div>
+  </sc-if>
+  <sc-if value="{{ isLocationScreen }}">
     <div style="position:absolute;width:640px;height:640px;border-radius:50%;background:#E53935;opacity:0.1;filter:blur(130px);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0"></div>
   </sc-if>
 
@@ -295,7 +303,7 @@
         <!-- RED HEADER -->
         <div style="flex-shrink:0;background:linear-gradient(148deg,#FF5252 0%,#E53935 45%,#C62828 100%);border-radius:0 0 32px 32px;padding-bottom:32px;position:relative;overflow:hidden">
 
-          // TODO: can change the faded logo display options
+          
           <!-- Faded brand mark -->
           <img src="./images/logo-mask.png" style="position:absolute;right:-5px;bottom:40px;height:140px;width:auto;opacity:0.2;pointer-events:none;z-index:1" />
 
@@ -403,7 +411,7 @@
               </div>
 
               <!-- Sign In button -->
-              <button style="width:100%;height:56px;background:#E53935;border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;margin-top:4px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">Sign In</button>
+              <button onClick="{{ goToLocation }}" style="width:100%;height:56px;background:var(--color-primary);border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;margin-top:4px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">Sign In</button>
 
               <!-- Don't have an account -->
               <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px">
@@ -438,7 +446,7 @@
               </div>
 
               <!-- Send code button -->
-              <button style="width:100%;height:56px;background:#E53935;border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">
+              <button onClick="{{ goToLocation }}" style="width:100%;height:56px;background:var(--color-primary);border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                   <path d="M2 9l14-6-6 14-2-5z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
@@ -506,6 +514,273 @@
       </div>
     </sc-if>
 
+    <!-- ═══════════════════════════════════════════
+         SCREEN 4 — LOCATION SELECTION
+    ════════════════════════════════════════════ -->
+    <sc-if value="{{ isLocationScreen }}" hint-placeholder-val="{{ false }}">
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;background:#F2F1EE;font-family:var(--font-body);animation:fadeInUp 0.3s ease both">
+
+        <!-- RED HEADER -->
+        <div style="flex-shrink:0;background:linear-gradient(148deg,#FF5252 0%,#E53935 45%,#C62828 100%);border-radius:0 0 32px 32px;box-shadow:0 8px 30px rgba(229,57,53,0.30);position:relative;overflow:hidden">
+          <div style="position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.06);right:-60px;top:-80px;pointer-events:none"></div>
+
+          <!-- Status bar -->
+          <div style="height:56px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 12px;position:relative;z-index:2">
+            <span style="color:rgba(255,255,255,0.92);font-weight:700;font-size:16px;letter-spacing:-0.4px">9:41</span>
+            <div style="display:flex;gap:6px;align-items:center">
+              <svg width="18" height="12" viewBox="0 0 18 12" fill="rgba(255,255,255,0.88)">
+                <rect x="0" y="8" width="3.5" height="4" rx="1"></rect>
+                <rect x="5" y="5.5" width="3.5" height="6.5" rx="1"></rect>
+                <rect x="10" y="2.5" width="3.5" height="9.5" rx="1"></rect>
+                <rect x="15" y="0" width="3" height="12" rx="1"></rect>
+              </svg>
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <ellipse cx="8" cy="10.5" rx="1.6" ry="1.6" fill="rgba(255,255,255,0.88)"></ellipse>
+                <path d="M4.5 7.2C5.7 5.6 6.8 4.8 8 4.8S10.3 5.6 11.5 7.2" stroke="rgba(255,255,255,0.88)" stroke-width="1.4" stroke-linecap="round" fill="none"></path>
+                <path d="M1.5 4C3.3 1.8 5.5 0.6 8 0.6S12.7 1.8 14.5 4" stroke="rgba(255,255,255,0.88)" stroke-width="1.4" stroke-linecap="round" fill="none"></path>
+              </svg>
+              <svg width="26" height="12" viewBox="0 0 26 12" fill="none">
+                <rect x="0.5" y="0.5" width="22" height="11" rx="3.5" stroke="rgba(255,255,255,0.55)"></rect>
+                <rect x="23" y="4" width="2.5" height="4" rx="1" fill="rgba(255,255,255,0.55)"></rect>
+                <rect x="2" y="2" width="18" height="8" rx="2" fill="rgba(255,255,255,0.88)"></rect>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Nav row -->
+          <div style="display:flex;align-items:center;padding:0 20px 20px;gap:12px;position:relative;z-index:2">
+            <button onClick="{{ backToLogin }}" style="width:38px;height:38px;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.28);border-radius:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background 0.15s" style-hover="background:rgba(255,255,255,0.28)">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 3.5L5.5 8 10 12.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+            <div style="flex:1">
+              <div style="font-size:18px;font-weight:800;color:#fff;letter-spacing:var(--ls-h1);line-height:1.15;font-family:var(--font-heading)">{{ locHeaderTitle }}</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.62);margin-top:2px;font-weight:400;font-family:var(--font-body)">{{ locHeaderSubtitle }}</div>
+            </div>
+            <button style="width:38px;height:38px;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.28);border-radius:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background 0.15s" style-hover="background:rgba(255,255,255,0.28)">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M2.5 5h13M2.5 9h13M2.5 13h8" stroke="white" stroke-width="1.7" stroke-linecap="round"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- MAP -->
+        <div style="flex-shrink:0;height:256px;position:relative;overflow:hidden">
+
+          <!-- Map SVG -->
+          <svg viewBox="0 0 390 256" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;width:100%;height:100%">
+            <rect width="390" height="256" fill="#E9E3D5"></rect>
+            <!-- Building blocks row 1 -->
+            <rect x="0"   y="0"  width="90"  height="76" fill="#EDE8DB"></rect>
+            <rect x="100" y="0"  width="82"  height="76" fill="#EDE8DB"></rect>
+            <rect x="192" y="0"  width="90"  height="76" fill="#EDE8DB"></rect>
+            <rect x="292" y="0"  width="98"  height="76" fill="#EDE8DB"></rect>
+            <!-- Building blocks row 2 — park in second slot -->
+            <rect x="0"   y="86" width="90"  height="65" fill="#EDE8DB"></rect>
+            <rect x="100" y="86" width="82"  height="65" fill="#C8DFA8"></rect>
+            <rect x="192" y="86" width="90"  height="65" fill="#EDE8DB"></rect>
+            <rect x="292" y="86" width="98"  height="65" fill="#EDE8DB"></rect>
+            <!-- Building blocks row 3 -->
+            <rect x="0"   y="161" width="90"  height="95" fill="#EDE8DB"></rect>
+            <rect x="100" y="161" width="82"  height="95" fill="#EDE8DB"></rect>
+            <rect x="192" y="161" width="90"  height="95" fill="#EDE8DB"></rect>
+            <rect x="292" y="161" width="98"  height="95" fill="#EDE8DB"></rect>
+            <!-- Park trees -->
+            <circle cx="126" cy="108" r="7"   fill="#A6CA7C"></circle>
+            <circle cx="146" cy="99"  r="5.5" fill="#A6CA7C"></circle>
+            <circle cx="163" cy="113" r="7.5" fill="#A6CA7C"></circle>
+            <circle cx="148" cy="123" r="5"   fill="#A6CA7C"></circle>
+            <circle cx="130" cy="124" r="4.5" fill="#A6CA7C"></circle>
+            <circle cx="176" cy="103" r="6"   fill="#A6CA7C"></circle>
+            <!-- Buildings row 1 -->
+            <rect x="6"   y="6"  width="76" height="62" rx="2" fill="#E0D9C8"></rect>
+            <rect x="106" y="6"  width="36" height="30" rx="2" fill="#E0D9C8"></rect>
+            <rect x="148" y="6"  width="28" height="30" rx="2" fill="#E0D9C8"></rect>
+            <rect x="106" y="42" width="68" height="28" rx="2" fill="#E0D9C8"></rect>
+            <rect x="198" y="6"  width="76" height="30" rx="2" fill="#E0D9C8"></rect>
+            <rect x="198" y="42" width="76" height="28" rx="2" fill="#E0D9C8"></rect>
+            <rect x="298" y="6"  width="82" height="62" rx="2" fill="#E0D9C8"></rect>
+            <!-- Buildings row 2 -->
+            <rect x="6"   y="91"  width="76" height="53" rx="2" fill="#E0D9C8"></rect>
+            <rect x="198" y="91"  width="76" height="53" rx="2" fill="#E0D9C8"></rect>
+            <rect x="298" y="91"  width="82" height="53" rx="2" fill="#E0D9C8"></rect>
+            <!-- Buildings row 3 -->
+            <rect x="6"   y="167" width="76" height="76" rx="2" fill="#E0D9C8"></rect>
+            <rect x="106" y="167" width="68" height="76" rx="2" fill="#E0D9C8"></rect>
+            <rect x="198" y="167" width="76" height="76" rx="2" fill="#E0D9C8"></rect>
+            <rect x="298" y="167" width="82" height="76" rx="2" fill="#E0D9C8"></rect>
+            <!-- Horizontal roads -->
+            <rect x="0" y="76"  width="390" height="10" fill="white"></rect>
+            <rect x="0" y="151" width="390" height="10" fill="white"></rect>
+            <line x1="0" y1="81"  x2="390" y2="81"  stroke="#D6D0C2" stroke-width="1" stroke-dasharray="14,10"></line>
+            <line x1="0" y1="156" x2="390" y2="156" stroke="#D6D0C2" stroke-width="1" stroke-dasharray="14,10"></line>
+            <!-- Vertical roads -->
+            <rect x="90"  y="0" width="10" height="256" fill="white"></rect>
+            <rect x="182" y="0" width="10" height="256" fill="white"></rect>
+            <rect x="282" y="0" width="10" height="256" fill="white"></rect>
+            <line x1="95"  y1="0" x2="95"  y2="256" stroke="#D6D0C2" stroke-width="1" stroke-dasharray="14,10"></line>
+            <line x1="187" y1="0" x2="187" y2="256" stroke="#D6D0C2" stroke-width="1" stroke-dasharray="14,10"></line>
+            <line x1="287" y1="0" x2="287" y2="256" stroke="#D6D0C2" stroke-width="1" stroke-dasharray="14,10"></line>
+            <!-- Route dashed line -->
+            <path d="M152,118 C182,104 212,96 246,80" stroke="#E53935" stroke-width="2" stroke-dasharray="5,4" fill="none" opacity="0.36"></path>
+            <!-- Blue current-location pulse rings -->
+            <circle cx="152" cy="118" r="20" fill="rgba(66,133,244,0.10)" style="animation:locPulse 2.2s ease-out infinite"></circle>
+            <circle cx="152" cy="118" r="13" fill="rgba(66,133,244,0.18)"></circle>
+            <circle cx="152" cy="118" r="7"  fill="white"></circle>
+            <circle cx="152" cy="118" r="5"  fill="#4285F4"></circle>
+            <!-- Red destination pin -->
+            <ellipse cx="246" cy="92" rx="5" ry="2.5" fill="rgba(0,0,0,0.18)"></ellipse>
+            <path d="M246,58 C237,58 230,65 230,74 C230,85 246,92 246,92 C246,92 262,85 262,74 C262,65 255,58 246,58 Z" fill="#E53935"></path>
+            <path d="M246,58 C237,58 230,65 230,74 C232,69 238,64 246,64 C254,64 260,69 262,74 C262,65 255,58 246,58 Z" fill="rgba(255,255,255,0.2)"></path>
+            <circle cx="246" cy="73" r="7" fill="white"></circle>
+            <circle cx="246" cy="73" r="3" fill="#E53935"></circle>
+          </svg>
+
+          <!-- Use My Location -->
+          <button style="position:absolute;bottom:14px;left:14px;display:flex;align-items:center;gap:8px;background:white;border:none;border-radius:16px;padding:9px 15px;box-shadow:0 4px 18px rgba(0,0,0,0.16);cursor:pointer;font-family:var(--font-body);font-size:12px;font-weight:700;color:#141414;letter-spacing:0.1px;transition:transform 0.12s ease" style-active="transform:scale(0.96)">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+              <circle cx="7.5" cy="7.5" r="2.8" fill="#E53935"></circle>
+              <circle cx="7.5" cy="7.5" r="4.8" stroke="#E53935" stroke-width="1.3" fill="none"></circle>
+              <line x1="7.5" y1="1"    x2="7.5" y2="3.2"  stroke="#E53935" stroke-width="1.4" stroke-linecap="round"></line>
+              <line x1="7.5" y1="11.8" x2="7.5" y2="14"   stroke="#E53935" stroke-width="1.4" stroke-linecap="round"></line>
+              <line x1="1"   y1="7.5"  x2="3.2" y2="7.5"  stroke="#E53935" stroke-width="1.4" stroke-linecap="round"></line>
+              <line x1="11.8" y1="7.5" x2="14"  y2="7.5"  stroke="#E53935" stroke-width="1.4" stroke-linecap="round"></line>
+            </svg>
+            {{ locUseMyLocation }}
+          </button>
+
+          <!-- Zoom controls -->
+          <div style="position:absolute;bottom:14px;right:14px;background:white;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.14);display:flex;flex-direction:column">
+            <button style="width:34px;height:32px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:#444;font-weight:400;line-height:1;font-family:var(--font-body)" style-hover="background:rgba(0,0,0,0.04)">+</button>
+            <div style="height:1px;background:#EBEBEB;margin:0 5px"></div>
+            <button style="width:34px;height:32px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;color:#444;font-weight:300;line-height:0.8;font-family:var(--font-body)" style-hover="background:rgba(0,0,0,0.04)">−</button>
+          </div>
+
+          <!-- Maps label -->
+          <div style="position:absolute;bottom:5px;right:58px;font-size:9px;color:rgba(0,0,0,0.4);font-family:var(--font-body);font-weight:500;letter-spacing:0.1px">Google Maps</div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+
+          <!-- Search box -->
+          <div style="padding:14px 16px 0">
+            <div style="display:flex;align-items:center;gap:11px;background:#fff;border-radius:16px;height:52px;padding:0 15px;border:1.5px solid #E8E5DE;box-shadow:0 2px 10px rgba(0,0,0,0.06)">
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none" style="flex-shrink:0">
+                <circle cx="7.2" cy="7.2" r="5.2" stroke="#B2B2C0" stroke-width="1.6"></circle>
+                <path d="M11.2 11.2L14.8 14.8" stroke="#B2B2C0" stroke-width="1.6" stroke-linecap="round"></path>
+              </svg>
+              <input type="text" placeholder="Search for area, street name..." style="flex:1;background:transparent;border:none;font-size:13px;color:#141414;font-family:var(--font-body);font-weight:500;height:100%" />
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;cursor:pointer">
+                <rect x="5" y="1" width="6" height="8.5" rx="3" stroke="#B2B2C0" stroke-width="1.4" fill="none"></rect>
+                <path d="M2.5 8c0 2.8 2.5 5 5.5 5s5.5-2.2 5.5-5" stroke="#B2B2C0" stroke-width="1.4" stroke-linecap="round" fill="none"></path>
+                <line x1="8" y1="13" x2="8" y2="15.5" stroke="#B2B2C0" stroke-width="1.4" stroke-linecap="round"></line>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Section header -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px">
+            <span style="font-size:13.5px;font-weight:800;color:#141414;letter-spacing:var(--ls-h2);font-family:var(--font-heading)">{{ locSavedTitle }}</span>
+            <button style="display:flex;align-items:center;gap:4px;background:transparent;border:none;font-size:12px;font-weight:700;color:#E53935;cursor:pointer;font-family:var(--font-body);padding:0">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <line x1="6" y1="1" x2="6" y2="11" stroke="#E53935" stroke-width="1.8" stroke-linecap="round"></line>
+                <line x1="1" y1="6" x2="11" y2="6" stroke="#E53935" stroke-width="1.8" stroke-linecap="round"></line>
+              </svg>
+              {{ locAddNew }}
+            </button>
+          </div>
+
+          <!-- Address cards -->
+          <div style="display:flex;flex-direction:column;gap:10px;padding:0 16px">
+
+            <!-- HOME CARD -->
+            <div onClick="{{ selectHome }}" style="{{ homeCardStyle }}" style-hover="border-color:#E53935;box-shadow:0 4px 18px rgba(229,57,53,0.10)" style-active="transform:scale(0.99)">
+              <div style="width:46px;height:46px;border-radius:16px;background:rgba(229,57,53,0.09);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M3.5 10.5L11 3.5L18.5 10.5V19.5H14V14H8V19.5H3.5V10.5Z" fill="rgba(229,57,53,0.1)" stroke="#E53935" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <rect x="9" y="16" width="4" height="3.5" rx="0.5" fill="#E53935" opacity="0.5"></rect>
+                </svg>
+              </div>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
+                  <span style="font-size:11px;font-weight:800;color:#E53935;letter-spacing:0.9px;font-family:var(--font-body)">HOME</span>
+                  <span style="font-size:9px;font-weight:700;color:#fff;background:#E53935;padding:2px 7px;border-radius:10px;letter-spacing:0.2px;flex-shrink:0;font-family:var(--font-body)">DEFAULT</span>
+                </div>
+                <div style="font-size:12px;color:#505060;font-weight:400;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--font-body)">Villa 14, Palm Heights, Al Barsha 1, Dubai</div>
+                <div style="display:flex;align-items:center;gap:6px;margin-top:5px">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0">
+                    <path d="M10.5 8.5c0 .2-.05.4-.16.6-.11.2-.26.38-.44.52-.3.26-.62.38-.97.38-.25 0-.5-.06-.78-.18s-.56-.28-.84-.5a13.4 13.4 0 0 1-.82-.72 13.2 13.2 0 0 1-.71-.82c-.22-.28-.38-.56-.5-.84-.12-.28-.18-.55-.18-.8 0-.24.06-.47.17-.68.11-.21.27-.4.5-.56.27-.18.57-.27.88-.27.12 0 .24.02.35.07.11.05.21.13.29.25l.98 1.38c.08.11.14.22.18.32.04.1.06.19.06.28 0 .11-.03.22-.09.33-.06.11-.14.22-.25.33l-.33.34c-.05.05-.07.1-.07.16 0 .03 0 .06.02.1.01.03.03.06.05.09.1.18.27.41.51.68.24.27.5.55.77.82.27.26.54.5.82.72.27.21.5.36.69.45.03.01.06.02.1.03.04.01.07.01.1.01.07 0 .12-.03.17-.08l.34-.35c.12-.12.23-.2.34-.25.11-.05.22-.08.33-.08.09 0 .18.02.28.07.1.04.21.11.32.2L10.2 7.7c.12.09.2.19.24.3.04.12.06.24.06.5Z" fill="#9898A8"></path>
+                  </svg>
+                  <span style="font-size:11px;color:#9898A8;font-weight:500;font-family:var(--font-body)">+971 50 123 4567</span>
+                </div>
+              </div>
+              <div style="{{ homeTickStyle }}">
+                <sc-if value="{{ homeSelected }}" hint-placeholder-val="{{ true }}">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </sc-if>
+              </div>
+            </div>
+
+            <!-- OFFICE CARD -->
+            <div onClick="{{ selectOffice }}" style="{{ officeCardStyle }}" style-hover="border-color:#1565C0;box-shadow:0 4px 18px rgba(21,101,192,0.10)" style-active="transform:scale(0.99)">
+              <div style="width:46px;height:46px;border-radius:16px;background:rgba(21,101,192,0.09);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <rect x="2" y="4" width="18" height="16" rx="2" fill="rgba(21,101,192,0.08)" stroke="#1565C0" stroke-width="1.7"></rect>
+                  <rect x="5"   y="8"    width="3" height="2.5" rx="0.5" fill="#1565C0" opacity="0.6"></rect>
+                  <rect x="9.5" y="8"    width="3" height="2.5" rx="0.5" fill="#1565C0" opacity="0.6"></rect>
+                  <rect x="14"  y="8"    width="3" height="2.5" rx="0.5" fill="#1565C0" opacity="0.6"></rect>
+                  <rect x="5"   y="12.5" width="3" height="2.5" rx="0.5" fill="#1565C0" opacity="0.6"></rect>
+                  <rect x="9.5" y="12.5" width="3" height="2.5" rx="0.5" fill="#1565C0" opacity="0.6"></rect>
+                  <rect x="14"  y="12.5" width="3" height="2.5" rx="0.5" fill="#1565C0" opacity="0.6"></rect>
+                  <rect x="8.5" y="17"   width="5" height="3"   rx="0.5" fill="#1565C0" opacity="0.45"></rect>
+                </svg>
+              </div>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px">
+                  <span style="font-size:11px;font-weight:800;color:#1565C0;letter-spacing:0.9px;font-family:var(--font-body)">OFFICE</span>
+                </div>
+                <div style="font-size:12px;color:#505060;font-weight:400;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--font-body)">Office 302, Business Bay Tower, Business Bay, Dubai</div>
+                <div style="display:flex;align-items:center;gap:6px;margin-top:5px">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0">
+                    <path d="M10.5 8.5c0 .2-.05.4-.16.6-.11.2-.26.38-.44.52-.3.26-.62.38-.97.38-.25 0-.5-.06-.78-.18s-.56-.28-.84-.5a13.4 13.4 0 0 1-.82-.72 13.2 13.2 0 0 1-.71-.82c-.22-.28-.38-.56-.5-.84-.12-.28-.18-.55-.18-.8 0-.24.06-.47.17-.68.11-.21.27-.4.5-.56.27-.18.57-.27.88-.27.12 0 .24.02.35.07.11.05.21.13.29.25l.98 1.38c.08.11.14.22.18.32.04.1.06.19.06.28 0 .11-.03.22-.09.33-.06.11-.14.22-.25.33l-.33.34c-.05.05-.07.1-.07.16 0 .03 0 .06.02.1.01.03.03.06.05.09.1.18.27.41.51.68.24.27.5.55.77.82.27.26.54.5.82.72.27.21.5.36.69.45.03.01.06.02.1.03.04.01.07.01.1.01.07 0 .12-.03.17-.08l.34-.35c.12-.12.23-.2.34-.25.11-.05.22-.08.33-.08.09 0 .18.02.28.07.1.04.21.11.32.2L10.2 7.7c.12.09.2.19.24.3.04.12.06.24.06.5Z" fill="#9898A8"></path>
+                  </svg>
+                  <span style="font-size:11px;color:#9898A8;font-weight:500;font-family:var(--font-body)">+971 55 987 6543</span>
+                </div>
+              </div>
+              <div style="{{ officeTickStyle }}">
+                <sc-if value="{{ officeSelected }}" hint-placeholder-val="{{ false }}">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </sc-if>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Spacer -->
+          <div style="flex:1"></div>
+
+          <!-- CTA -->
+          <div style="padding:0 16px">
+            <button style="width:100%;height:56px;background:#E53935;border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;display:flex;align-items:center;justify-content:center;gap:9px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">
+              {{ deliverLabel }}
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M4 9h10M10.5 5.5l3.5 3.5-3.5 3.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+            <div style="width:134px;height:5px;background:#000;border-radius:3px;margin:14px auto 18px;opacity:0.1"></div>
+          </div>
+
+        </div>
+      </div>
+    </sc-if>
+
   </div>
   <!-- END PHONE BEZEL -->
 
@@ -526,6 +801,8 @@ class Component extends DCLogic {
     // Login
     activeTab: 'email',
     showPw: false,
+    // Location
+    locationSelected: 'home',
   };
 
   renderVals() {
@@ -534,6 +811,7 @@ class Component extends DCLogic {
       ...CountryScreen.renderVals(this.state, set),
       ...OnboardingScreen.renderVals(this.state, set),
       ...LoginScreen.renderVals(this.state, set),
+      ...LocationScreen.renderVals(this.state, set),
     };
   }
 }
