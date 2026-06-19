@@ -11,6 +11,34 @@
   --ls-display: 0.5px;   /* 28px+ hero/screen titles */
   --ls-h1:      0.25px;  /* 20–26px section headings */
   --ls-h2:      0.1px;   /* 14–18px card/label headings */
+
+  /* ─── Brand colour palette ─────────────────────────────────────────────── */
+
+  /* Primary — GrandHyper red */
+  --color-primary:       #E53935;
+  --color-primary-dark:  #C62828;  /* hover / pressed states */
+  --color-primary-light: #FFEBEE;  /* tinted backgrounds, highlight fills */
+  --color-primary-rgb:   229, 57, 53; /* use with rgba() for shadows/glows */
+
+  /* Accent — amber/orange (energy, deals, badges, flash-sale CTAs) */
+  --color-accent:        #FF8C00;
+  --color-accent-dark:   #E65100;  /* hover / pressed */
+  --color-accent-light:  #FFF3E0;  /* chip backgrounds, tag fills */
+  --color-accent-rgb:    255, 140, 0;
+
+  /* Secondary — teal (fresh produce, success, delivery, health) */
+  --color-secondary:       #009688;
+  --color-secondary-dark:  #00695C;  /* hover / pressed */
+  --color-secondary-light: #E0F2F1;  /* subtle fills, in-stock badges */
+  --color-secondary-rgb:   0, 150, 136;
+
+  /* ─── Neutral surface & text scale ────────────────────────────────────── */
+  --color-bg:         #FAFAF8;  /* app canvas */
+  --color-surface:    #EEECEA;  /* input fills, tab bars */
+  --color-border:     #E8E7E2;  /* dividers, card borders */
+  --color-text:       #141414;  /* primary text */
+  --color-text-muted: #686868;  /* body copy */
+  --color-text-faint: #9898A8;  /* placeholders, helper text */
 }
 
 body {

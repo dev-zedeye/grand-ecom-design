@@ -120,7 +120,7 @@
           <!-- Logo row (always LTR) -->
           <div dir="ltr" style="display:flex;align-items:center;gap:10px;padding:0 24px">
             <!-- Grand logo -->
-            <img src="./grand-logo.png" alt="Grand" style="height:34px;width:auto;object-fit:contain"/>
+            <img src="./images/grand-logo.png" alt="Grand" style="height:34px;width:auto;object-fit:contain"/>
             <div dir="ltr" style="margin-left:auto;background:rgba(255,255,255,0.16);border-radius:12px;padding:2px;display:flex;gap:1px;border:1px solid rgba(255,255,255,0.2)">
               <button onClick="{{ switchToEn }}" style="{{ toggleEnStyle }}">EN</button>
               <button onClick="{{ switchToAr }}" style="{{ toggleArStyle }}">عربي</button>
@@ -295,9 +295,9 @@
         <!-- RED HEADER -->
         <div style="flex-shrink:0;background:linear-gradient(148deg,#FF5252 0%,#E53935 45%,#C62828 100%);border-radius:0 0 32px 32px;padding-bottom:32px;position:relative;overflow:hidden">
 
-          <!-- Subtle bg circles -->
-          <div style="position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,0.07);right:-60px;top:-80px;pointer-events:none"></div>
-          <div style="position:absolute;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.05);left:-40px;bottom:-40px;pointer-events:none"></div>
+          // TODO: can change the faded logo display options
+          <!-- Faded brand mark -->
+          <img src="./images/logo-mask.png" style="position:absolute;right:-5px;bottom:40px;height:140px;width:auto;opacity:0.2;pointer-events:none;z-index:1" />
 
           <!-- Status bar -->
           <div style="height:56px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 12px;position:relative;z-index:2">
@@ -329,15 +329,6 @@
                 <path d="M10 3.5L5.5 8 10 12.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
-            <div style="display:flex;align-items:center;gap:8px;margin-left:4px">
-              <div style="width:36px;height:36px;background:rgba(255,255,255,0.18);border-radius:16px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,0.3)">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <path d="M11 3C7.5 3 4 5.5 4 9c0 2.5 1.5 4.5 4 5.5L11 19l3-4.5c2.5-1 4-3 4-5.5 0-3.5-3.5-6-7-6z" fill="white" opacity="0.9"></path>
-                  <circle cx="11" cy="9" r="2.5" fill="rgba(229,57,53,0.75)"></circle>
-                </svg>
-              </div>
-              <span style="font-size:17px;font-weight:800;font-family:var(--font-heading);color:#fff;letter-spacing:-0.4px">GrandHyper</span>
-            </div>
           </div>
 
           <!-- Welcome heading -->
