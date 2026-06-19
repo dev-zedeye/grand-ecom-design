@@ -49,7 +49,7 @@ window.CountryScreen = {
       btnStyle: {
         width: '100%', height: '56px',
         background: selected ? '#E53935' : '#DCDCDC',
-        border: 'none', borderRadius: '28px',
+        border: 'none', borderRadius: '16px',
         color: selected ? '#fff' : '#aaa',
         fontSize: '16px', fontWeight: '700',
         cursor: selected ? 'pointer' : 'default',
@@ -61,7 +61,7 @@ window.CountryScreen = {
       btnActiveStyle: selected ? 'transform:scale(0.97)' : '',
 
       toggleEnStyle: {
-        padding: '7px 14px', borderRadius: '18px',
+        padding: '7px 14px', borderRadius: '16px',
         background: !isAr ? '#fff' : 'transparent',
         color: !isAr ? '#E53935' : 'rgba(255,255,255,0.75)',
         border: 'none', fontWeight: !isAr ? '700' : '500',
@@ -70,7 +70,7 @@ window.CountryScreen = {
         fontFamily: 'var(--font-body)', letterSpacing: '0.3px',
       },
       toggleArStyle: {
-        padding: '7px 14px', borderRadius: '18px',
+        padding: '7px 14px', borderRadius: '16px',
         background: isAr ? '#fff' : 'transparent',
         color: isAr ? '#E53935' : 'rgba(255,255,255,0.75)',
         border: 'none', fontWeight: isAr ? '700' : '400',

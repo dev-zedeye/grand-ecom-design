@@ -7,7 +7,7 @@ window.LoginScreen = {
     const activeTabStyle = {
       flex: 1,
       height: '48px',
-      borderRadius: '12px',
+      borderRadius: '16px',
       background: '#fff',
       border: 'none',
       display: 'flex',
@@ -27,7 +27,7 @@ window.LoginScreen = {
     const inactiveTabStyle = {
       flex: 1,
       height: '48px',
-      borderRadius: '12px',
+      borderRadius: '16px',
       background: 'transparent',
       border: 'none',
       display: 'flex',

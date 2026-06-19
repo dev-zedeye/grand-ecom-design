@@ -92,7 +92,7 @@
       <div style="width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;background:#FAFAF8;animation:fadeInUp 0.3s ease both">
 
         <!-- RED HEADER -->
-        <div style="flex-shrink:0;background:linear-gradient(148deg,#FF5252 0%,#E53935 45%,#C62828 100%);border-radius:0 0 38px 38px;padding-bottom:24px">
+        <div style="flex-shrink:0;background:linear-gradient(148deg,#FF5252 0%,#E53935 45%,#C62828 100%);padding-bottom:24px">
 
           <!-- Status bar (always LTR) -->
           <div dir="ltr" style="height:56px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 12px">
@@ -121,7 +121,7 @@
           <div dir="ltr" style="display:flex;align-items:center;gap:10px;padding:0 24px">
             <!-- Grand logo -->
             <img src="./grand-logo.png" alt="Grand" style="height:44px;width:auto;object-fit:contain"/>
-            <div dir="ltr" style="margin-left:auto;background:rgba(255,255,255,0.16);border-radius:22px;padding:3px;display:flex;gap:2px;border:1px solid rgba(255,255,255,0.2)">
+            <div dir="ltr" style="margin-left:auto;background:rgba(255,255,255,0.16);border-radius:16px;padding:3px;display:flex;gap:2px;border:1px solid rgba(255,255,255,0.2)">
               <button onClick="{{ switchToEn }}" style="{{ toggleEnStyle }}">EN</button>
               <button onClick="{{ switchToAr }}" style="{{ toggleArStyle }}">عربي</button>
             </div>
@@ -209,7 +209,7 @@
           <!-- Skip button -->
           <button
             onClick="{{ skip }}"
-            style="position:absolute;top:60px;right:20px;z-index:20;background:rgba(255,255,255,0.24);border:none;border-radius:24px;padding:9px 22px;font-size:14px;font-weight:600;color:rgba(20,20,20,0.88);cursor:pointer;font-family:var(--font-body);letter-spacing:0.1px;transition:background 0.15s ease;backdrop-filter:blur(6px)"
+            style="position:absolute;top:60px;right:20px;z-index:20;background:rgba(255,255,255,0.24);border:none;border-radius:16px;padding:9px 22px;font-size:14px;font-weight:600;color:rgba(20,20,20,0.88);cursor:pointer;font-family:var(--font-body);letter-spacing:0.1px;transition:background 0.15s ease;backdrop-filter:blur(6px)"
             style-hover="background:rgba(255,255,255,0.38)">Skip</button>
 
           <!-- Fading layer: circle + items + card -->
@@ -226,7 +226,7 @@
             </div>
 
             <!-- White bottom card -->
-            <div style="position:absolute;bottom:0;left:0;right:0;height:360px;background:#FAFAF8;border-radius:32px 32px 0 0;padding:26px 28px 32px;display:flex;flex-direction:column">
+            <div style="position:absolute;bottom:0;left:0;right:0;height:360px;background:#FAFAF8;border-radius:16px 16px 0 0;padding:26px 28px 32px;display:flex;flex-direction:column">
 
               <!-- Pagination dots -->
               <div style="display:flex;gap:7px;align-items:center">
@@ -242,22 +242,40 @@
               <p style="font-size:15px;line-height:1.65;color:#686868;font-weight:400;margin:10px 0 0">{{ slideSubtitle }}</p>
 
               <!-- CTA buttons -->
-              <div style="display:flex;gap:12px;align-items:center;margin-top:auto;padding-top:12px">
-                <button
-                  onClick="{{ goNext }}"
-                  style="flex:1;height:56px;background:#E53935;border:none;border-radius:28px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.3px;transition:transform 0.12s ease,opacity 0.12s ease"
-                  style-hover="opacity:0.92"
-                  style-active="transform:scale(0.97)">{{ btnLabel }}</button>
-                <button
-                  onClick="{{ goNext }}"
-                  style="width:56px;height:56px;background:#141414;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.12s ease,opacity 0.12s ease"
-                  style-hover="opacity:0.78"
-                  style-active="transform:scale(0.93)">
-                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                    <path d="M8 5l7 6-7 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
-                  </svg>
-                </button>
-              </div>
+              <sc-if value="{{ isLast }}">
+                <div style="display:flex;align-items:center;margin-top:auto;padding-top:12px">
+                  <button
+                    onClick="{{ goNext }}"
+                    style="flex:1;height:56px;background:#E53935;border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.3px;transition:transform 0.12s ease,opacity 0.12s ease"
+                    style-hover="opacity:0.92"
+                    style-active="transform:scale(0.97)">Get Started</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isNotLast }}">
+                <div style="display:flex;align-items:center;margin-top:auto;padding-top:12px">
+                  <div style="flex:1"></div>
+                  <sc-if value="{{ isNotFirst }}">
+                    <button
+                      onClick="{{ goPrev }}"
+                      style="width:56px;height:56px;background:#141414;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:10px;transition:transform 0.12s ease,opacity 0.12s ease"
+                      style-hover="opacity:0.78"
+                      style-active="transform:scale(0.93)">
+                      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path d="M14 5l-7 6 7 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </button>
+                  </sc-if>
+                  <button
+                    onClick="{{ goNext }}"
+                    style="width:56px;height:56px;background:#141414;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.12s ease,opacity 0.12s ease"
+                    style-hover="opacity:0.78"
+                    style-active="transform:scale(0.93)">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                      <path d="M8 5l7 6-7 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </button>
+                </div>
+              </sc-if>
 
               <!-- Home indicator -->
               <div style="width:134px;height:5px;background:#000;border-radius:3px;margin:18px auto 0;opacity:0.1"></div>
@@ -275,7 +293,7 @@
       <div style="width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;background:#FAFAF8;font-family:var(--font-body);animation:fadeInUp 0.3s ease both">
 
         <!-- RED HEADER -->
-        <div style="flex-shrink:0;background:linear-gradient(148deg,#FF5252 0%,#E53935 45%,#C62828 100%);border-radius:0 0 38px 38px;padding-bottom:32px;position:relative;overflow:hidden">
+        <div style="flex-shrink:0;background:linear-gradient(148deg,#FF5252 0%,#E53935 45%,#C62828 100%);padding-bottom:32px;position:relative;overflow:hidden">
 
           <!-- Subtle bg circles -->
           <div style="position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,0.07);right:-60px;top:-80px;pointer-events:none"></div>
@@ -305,14 +323,14 @@
           <div style="display:flex;align-items:center;gap:10px;padding:0 24px;position:relative;z-index:2">
             <button
               onClick="{{ backToCountry }}"
-              style="width:36px;height:36px;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.28);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s ease"
+              style="width:36px;height:36px;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.28);border-radius:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s ease"
               style-hover="background:rgba(255,255,255,0.28)">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M10 3.5L5.5 8 10 12.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
             <div style="display:flex;align-items:center;gap:8px;margin-left:4px">
-              <div style="width:36px;height:36px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,0.3)">
+              <div style="width:36px;height:36px;background:rgba(255,255,255,0.18);border-radius:16px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,0.3)">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
                   <path d="M11 3C7.5 3 4 5.5 4 9c0 2.5 1.5 4.5 4 5.5L11 19l3-4.5c2.5-1 4-3 4-5.5 0-3.5-3.5-6-7-6z" fill="white" opacity="0.9"></path>
                   <circle cx="11" cy="9" r="2.5" fill="rgba(229,57,53,0.75)"></circle>
@@ -394,7 +412,20 @@
               </div>
 
               <!-- Sign In button -->
-              <button style="width:100%;height:56px;background:#E53935;border:none;border-radius:28px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;margin-top:4px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">Sign In</button>
+              <button style="width:100%;height:56px;background:#E53935;border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;margin-top:4px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">Sign In</button>
+
+              <!-- Don't have an account -->
+              <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px">
+                <span style="font-size:14px;color:#9898A8;font-weight:500">Don't have an account?</span>
+                <button style="background:transparent;border:none;font-size:14px;font-weight:700;color:#E53935;cursor:pointer;font-family:var(--font-body);padding:0">Sign Up</button>
+              </div>
+
+              <!-- Continue as Guest -->
+              <sc-if value="{{ showGuestLogin }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;justify-content:center">
+                  <button style="background:transparent;border:none;font-size:14px;font-weight:600;color:#9898A8;cursor:pointer;font-family:var(--font-body);padding:4px 0;transition:color 0.15s ease" style-hover="color:#141414">Continue as Guest</button>
+                </div>
+              </sc-if>
 
             </div>
           </sc-if>
@@ -415,22 +446,35 @@
                 <input type="tel" placeholder="Phone number" style="flex:1;background:transparent;border:none;padding:0 16px;font-size:15px;color:#141414;font-family:var(--font-body);font-weight:500" />
               </div>
 
-              <!-- OTP info -->
-              <div style="display:flex;align-items:flex-start;gap:10px;padding:13px 16px;background:rgba(229,57,53,0.07);border-radius:14px;border:1px solid rgba(229,57,53,0.12)">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px">
-                  <circle cx="8" cy="8" r="7" stroke="#E53935" stroke-width="1.4"></circle>
-                  <path d="M8 5v3.5M8 10.5v.5" stroke="#E53935" stroke-width="1.5" stroke-linecap="round"></path>
-                </svg>
-                <span style="font-size:13px;color:#C62828;line-height:1.5;font-weight:500">A 6-digit OTP will be sent to your number via SMS.</span>
-              </div>
-
               <!-- Send code button -->
-              <button style="width:100%;height:56px;background:#E53935;border:none;border-radius:28px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">
+              <button style="width:100%;height:56px;background:#E53935;border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font-body);letter-spacing:0.2px;transition:transform 0.12s ease,opacity 0.12s ease;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px" style-hover="opacity:0.92" style-active="transform:scale(0.97)">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                   <path d="M2 9l14-6-6 14-2-5z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
                 Send Verification Code
               </button>
+
+              <!-- OTP info -->
+              <div style="display:flex;align-items:center;gap:9px;padding:11px 14px;background:rgba(0,0,0,0.03);border-radius:12px;border:1px solid rgba(0,0,0,0.07)">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style="flex-shrink:0">
+                  <circle cx="8" cy="8" r="7" stroke="#9898A8" stroke-width="1.4"></circle>
+                  <path d="M8 6.5v.5M8 8.5v3" stroke="#9898A8" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+                <span style="font-size:13px;color:#9898A8;line-height:1.5;font-weight:500">A 6-digit OTP will be sent to your number via SMS.</span>
+              </div>
+
+              <!-- Don't have an account -->
+              <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px">
+                <span style="font-size:14px;color:#9898A8;font-weight:500">Don't have an account?</span>
+                <button style="background:transparent;border:none;font-size:14px;font-weight:700;color:#E53935;cursor:pointer;font-family:var(--font-body);padding:0">Sign Up</button>
+              </div>
+
+              <!-- Continue as Guest -->
+              <sc-if value="{{ showGuestLogin }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;justify-content:center">
+                  <button style="background:transparent;border:none;font-size:14px;font-weight:600;color:#9898A8;cursor:pointer;font-family:var(--font-body);padding:4px 0;transition:color 0.15s ease" style-hover="color:#141414">Continue as Guest</button>
+                </div>
+              </sc-if>
 
             </div>
           </sc-if>
@@ -456,19 +500,6 @@
                   Apple
                 </button>
               </div>
-            </div>
-          </sc-if>
-
-          <!-- Sign up row -->
-          <div style="display:flex;align-items:center;justify-content:center;gap:6px;flex-shrink:0">
-            <span style="font-size:14px;color:#9898A8;font-weight:500">Don't have an account?</span>
-            <button style="background:transparent;border:none;font-size:14px;font-weight:700;color:#E53935;cursor:pointer;font-family:var(--font-body);padding:0">Sign Up</button>
-          </div>
-
-          <!-- Continue as Guest -->
-          <sc-if value="{{ showGuestLogin }}" hint-placeholder-val="{{ true }}">
-            <div style="display:flex;justify-content:center;margin-top:12px;flex-shrink:0">
-              <button style="background:transparent;border:none;font-size:14px;font-weight:600;color:#9898A8;cursor:pointer;font-family:var(--font-body);padding:4px 0;transition:color 0.15s ease" style-hover="color:#141414">Continue as Guest</button>
             </div>
           </sc-if>
 

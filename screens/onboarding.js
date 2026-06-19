@@ -3,7 +3,7 @@ window.OnboardingScreen = {
     {
       bg: '#FFB300',
       title: 'Fresh Groceries\nDelivered Fast',
-      subtitle: 'Farm-fresh produce and 20,000+ products at your door in as little as 15 minutes.',
+      subtitle: 'Farm-fresh produce and 20,000+ products at your door in as little as 15 minutes. From local farms to trusted brands, we bring the freshest picks straight to your kitchen.',
       items: [
         { emoji: '🍓', size: 112, x: '52%', y: '54%', anim: 'floatA', dur: 3.6, delay: '0s'   },
         { emoji: '🍅', size: 64,  x: '23%', y: '28%', anim: 'floatB', dur: 4.2, delay: '0.4s' },
@@ -14,7 +14,7 @@ window.OnboardingScreen = {
     {
       bg: '#FF6B35',
       title: 'Exclusive Deals\nEvery Day',
-      subtitle: 'Save up to 40% on fresh produce, dairy, and pantry essentials with daily flash deals.',
+      subtitle: 'Save up to 40% on fresh produce, dairy, and pantry essentials with daily flash deals. Unlock member coupons, bundle offers, and new discounts every single day.',
       items: [
         { emoji: '🍊', size: 112, x: '50%', y: '52%', anim: 'floatB', dur: 3.7, delay: '0s'   },
         { emoji: '🍋', size: 64,  x: '78%', y: '27%', anim: 'floatA', dur: 4.0, delay: '0.5s' },
@@ -25,7 +25,7 @@ window.OnboardingScreen = {
     {
       bg: '#00897B',
       title: 'Track Orders\nin Real Time',
-      subtitle: 'Live delivery tracking, instant status updates, and a 30-minute delivery guarantee.',
+      subtitle: 'Live delivery tracking, instant status updates, and a 30-minute delivery guarantee. Know exactly where your order is — from store shelf to your front door.',
       items: [
         { emoji: '🥑', size: 112, x: '50%', y: '53%', anim: 'floatC', dur: 3.8, delay: '0s'   },
         { emoji: '🥝', size: 64,  x: '24%', y: '30%', anim: 'floatA', dur: 4.1, delay: '0.6s' },
@@ -56,6 +56,7 @@ window.OnboardingScreen = {
     const { currentSlide, fading, onboardingDone } = state;
     const slide = this.slides[currentSlide];
     const isLast = currentSlide === this.slides.length - 1;
+    const isFirst = currentSlide === 0;
 
     return {
       isOnboardingScreen: state.currentScreen === 'onboarding',
@@ -144,9 +145,13 @@ window.OnboardingScreen = {
 
       slideTitle: slide.title,
       slideSubtitle: slide.subtitle,
-      btnLabel: isLast ? 'Get Started' : 'Continue',
+      isFirst,
+      isNotFirst: !isFirst,
+      isLast,
+      isNotLast: !isLast,
 
       goNext: () => this.advance(1, state, setState),
+      goPrev: () => this.advance(-1, state, setState),
 
       skip: () => {
         if (state.fading) return;
