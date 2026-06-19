@@ -74,6 +74,8 @@
     #bnHomeScroll { scrollbar-width:none; }
     .bn-tile-row::-webkit-scrollbar { display:none; }
     .bn-tile-row { scrollbar-width:none; }
+    .bn-banner-row::-webkit-scrollbar { display:none; }
+    .bn-banner-row { scrollbar-width:none; }
     @keyframes heartPop { 0%{transform:scale(1)} 35%{transform:scale(1.45)} 65%{transform:scale(0.88)} 100%{transform:scale(1)} }
     @keyframes cartBounce { 0%{transform:scale(1)} 30%{transform:scale(0.91)} 65%{transform:scale(1.06)} 100%{transform:scale(1)} }
   </style>
@@ -1490,6 +1492,22 @@
               <div style="flex-shrink:0;width:4px"></div>
             </div>
 
+
+            <!-- BANNER ROW -->
+            <div class="bn-banner-row" style="display:flex;gap:10px;overflow-x:auto;padding:0 0 16px 16px">
+              <sc-for list="{{ bnBestSellerBanners }}" as="b">
+                <div style="flex-shrink:0;width:312px;aspect-ratio:16/9;background:{{ b.bg }};border-radius:16px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:14px 16px">
+                  <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.08);pointer-events:none"></div>
+                  <div style="position:absolute;left:-15px;bottom:-40px;width:110px;height:110px;border-radius:50%;background:rgba(0,0,0,0.12);pointer-events:none"></div>
+                  <div style="position:relative;z-index:1">
+                    <div style="font-size:15px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.25">{{ b.title }}</div>
+                    <div style="font-size:10.5px;font-weight:500;color:rgba(255,255,255,0.78);margin-top:2px">{{ b.subtitle }}</div>
+                    <div style="margin-top:10px;display:inline-block;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.35);border-radius:8px;padding:5px 13px;cursor:pointer"><span style="font-size:10.5px;font-weight:700;color:#fff">{{ b.cta }}</span></div>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="flex-shrink:0;width:6px"></div>
+            </div>
             <!-- FEATURED PRODUCTS -->
             <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:4px 16px 0">
               <div>
@@ -1521,6 +1539,22 @@
               <div style="flex-shrink:0;width:4px"></div>
             </div>
 
+
+            <!-- BANNER ROW -->
+            <div class="bn-banner-row" style="display:flex;gap:10px;overflow-x:auto;padding:0 0 16px 16px">
+              <sc-for list="{{ bnFeaturedBanners }}" as="b">
+                <div style="flex-shrink:0;width:312px;aspect-ratio:16/9;background:{{ b.bg }};border-radius:16px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:14px 16px">
+                  <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.08);pointer-events:none"></div>
+                  <div style="position:absolute;left:-15px;bottom:-40px;width:110px;height:110px;border-radius:50%;background:rgba(0,0,0,0.12);pointer-events:none"></div>
+                  <div style="position:relative;z-index:1">
+                    <div style="font-size:15px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.25">{{ b.title }}</div>
+                    <div style="font-size:10.5px;font-weight:500;color:rgba(255,255,255,0.78);margin-top:2px">{{ b.subtitle }}</div>
+                    <div style="margin-top:10px;display:inline-block;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.35);border-radius:8px;padding:5px 13px;cursor:pointer"><span style="font-size:10.5px;font-weight:700;color:#fff">{{ b.cta }}</span></div>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="flex-shrink:0;width:6px"></div>
+            </div>
             <!-- NEW ARRIVALS -->
             <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:4px 16px 0">
               <div>
@@ -1552,6 +1586,22 @@
               <div style="flex-shrink:0;width:4px"></div>
             </div>
 
+
+            <!-- BANNER ROW -->
+            <div class="bn-banner-row" style="display:flex;gap:10px;overflow-x:auto;padding:0 0 16px 16px">
+              <sc-for list="{{ bnNewArrivalBanners }}" as="b">
+                <div style="flex-shrink:0;width:312px;aspect-ratio:16/9;background:{{ b.bg }};border-radius:16px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:14px 16px">
+                  <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.08);pointer-events:none"></div>
+                  <div style="position:absolute;left:-15px;bottom:-40px;width:110px;height:110px;border-radius:50%;background:rgba(0,0,0,0.12);pointer-events:none"></div>
+                  <div style="position:relative;z-index:1">
+                    <div style="font-size:15px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.25">{{ b.title }}</div>
+                    <div style="font-size:10.5px;font-weight:500;color:rgba(255,255,255,0.78);margin-top:2px">{{ b.subtitle }}</div>
+                    <div style="margin-top:10px;display:inline-block;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.35);border-radius:8px;padding:5px 13px;cursor:pointer"><span style="font-size:10.5px;font-weight:700;color:#fff">{{ b.cta }}</span></div>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="flex-shrink:0;width:6px"></div>
+            </div>
             <!-- SPECIAL OFFER PRODUCTS -->
             <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:4px 16px 0">
               <div>
@@ -1583,6 +1633,22 @@
               <div style="flex-shrink:0;width:4px"></div>
             </div>
 
+
+            <!-- BANNER ROW -->
+            <div class="bn-banner-row" style="display:flex;gap:10px;overflow-x:auto;padding:0 0 16px 16px">
+              <sc-for list="{{ bnSpecialOfferBanners }}" as="b">
+                <div style="flex-shrink:0;width:312px;aspect-ratio:16/9;background:{{ b.bg }};border-radius:16px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:14px 16px">
+                  <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.08);pointer-events:none"></div>
+                  <div style="position:absolute;left:-15px;bottom:-40px;width:110px;height:110px;border-radius:50%;background:rgba(0,0,0,0.12);pointer-events:none"></div>
+                  <div style="position:relative;z-index:1">
+                    <div style="font-size:15px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.25">{{ b.title }}</div>
+                    <div style="font-size:10.5px;font-weight:500;color:rgba(255,255,255,0.78);margin-top:2px">{{ b.subtitle }}</div>
+                    <div style="margin-top:10px;display:inline-block;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.35);border-radius:8px;padding:5px 13px;cursor:pointer"><span style="font-size:10.5px;font-weight:700;color:#fff">{{ b.cta }}</span></div>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="flex-shrink:0;width:6px"></div>
+            </div>
             <!-- RECENTLY VIEWED -->
             <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:4px 16px 0">
               <div>
@@ -1614,6 +1680,22 @@
               <div style="flex-shrink:0;width:4px"></div>
             </div>
 
+
+            <!-- BANNER ROW -->
+            <div class="bn-banner-row" style="display:flex;gap:10px;overflow-x:auto;padding:0 0 16px 16px">
+              <sc-for list="{{ bnRecentlyViewedBanners }}" as="b">
+                <div style="flex-shrink:0;width:312px;aspect-ratio:16/9;background:{{ b.bg }};border-radius:16px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:14px 16px">
+                  <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.08);pointer-events:none"></div>
+                  <div style="position:absolute;left:-15px;bottom:-40px;width:110px;height:110px;border-radius:50%;background:rgba(0,0,0,0.12);pointer-events:none"></div>
+                  <div style="position:relative;z-index:1">
+                    <div style="font-size:15px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.25">{{ b.title }}</div>
+                    <div style="font-size:10.5px;font-weight:500;color:rgba(255,255,255,0.78);margin-top:2px">{{ b.subtitle }}</div>
+                    <div style="margin-top:10px;display:inline-block;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.35);border-radius:8px;padding:5px 13px;cursor:pointer"><span style="font-size:10.5px;font-weight:700;color:#fff">{{ b.cta }}</span></div>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="flex-shrink:0;width:6px"></div>
+            </div>
           </sc-if>
 
           <!-- OTHER TAB PLACEHOLDER -->

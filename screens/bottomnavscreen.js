@@ -40,6 +40,34 @@ window.BottomNavScreen = {
     { id:504, name:'Fresh Lemon',                   qty:'4 Pack',      pct:10, pr:5.50,  sp:4.95,  express:true,  bg:'linear-gradient(148deg,#FEFCE8 0%,#FEF08A 100%)', emoji:'🍋', bannerLabel:'SEEN BY YOU #4', bannerColor:'#52525B', bannerKind:'eye' },
   ],
 
+  // ── Banner data ──────────────────────────────────────────────────────────
+  _bestSellerBanners: [
+    { bg:'linear-gradient(135deg,#E53935 0%,#C62828 100%)', title:'Shop Our Top Picks', subtitle:'Save up to 40% today', cta:'Shop Now' },
+    { bg:'linear-gradient(135deg,#7C3AED 0%,#5B21B6 100%)', title:'GrandMe Members Save More', subtitle:'Exclusive member prices inside', cta:'Join Now' },
+    { bg:'linear-gradient(135deg,#EA580C 0%,#C2410C 100%)', title:'Weekend Flash Sale', subtitle:'Limited time, unlimited savings', cta:'Grab Deals' },
+  ],
+  _featuredBanners: [
+    { bg:'linear-gradient(135deg,#B45309 0%,#92400E 100%)', title:"Chef's Selection", subtitle:'Premium handpicked ingredients', cta:'Explore' },
+    { bg:'linear-gradient(135deg,#15803D 0%,#166534 100%)', title:'Farm to Table Fresh', subtitle:'Straight from local suppliers', cta:'Order Now' },
+    { bg:'linear-gradient(135deg,#0369A1 0%,#075985 100%)', title:'Premium Brands', subtitle:"World's finest grocery brands", cta:'Discover' },
+  ],
+  _newArrivalBanners: [
+    { bg:'linear-gradient(135deg,#0F766E 0%,#115E59 100%)', title:'Just Landed', subtitle:'Be the first to explore', cta:'Shop New' },
+    { bg:'linear-gradient(135deg,#0284C7 0%,#0369A1 100%)', title:'Seasonal Specials', subtitle:'Fresh picks this season', cta:"See What's New" },
+    { bg:'linear-gradient(135deg,#6D28D9 0%,#5B21B6 100%)', title:'Try Something New', subtitle:'Expand your grocery horizons', cta:'Try Now' },
+  ],
+  _specialOfferBanners: [
+    { bg:'linear-gradient(135deg,#DC2626 0%,#B91C1C 100%)', title:"Today's Best Deals", subtitle:'Up to 50% off selected items', cta:'Shop Now' },
+    { bg:'linear-gradient(135deg,#BE123C 0%,#9F1239 100%)', title:'Buy 2 Get 1 Free', subtitle:'On hundreds of products', cta:'See Offers' },
+    { bg:'linear-gradient(135deg,#C2410C 0%,#9A3412 100%)', title:'Flash Sale Ending Soon', subtitle:"Don't miss out", cta:'Hurry Now' },
+  ],
+  _recentlyViewedBanners: [
+    { bg:'linear-gradient(135deg,#475569 0%,#334155 100%)', title:'Complete Your Cart', subtitle:'Items still waiting for you', cta:'Continue' },
+    { bg:'linear-gradient(135deg,#1D4ED8 0%,#1e40af 100%)', title:'You Might Also Like', subtitle:'Based on your browsing', cta:'Explore' },
+    { bg:'linear-gradient(135deg,#15803D 0%,#166534 100%)', title:'Back in Stock', subtitle:'Your favourites are back', cta:'Buy Now' },
+  ],
+  // ─────────────────────────────────────────────────────────────────────────
+
   _mkBannerIcon(kind) {
     const w = 'rgba(255,255,255,0.95)';
     const ce = React.createElement.bind(React);
@@ -205,6 +233,12 @@ window.BottomNavScreen = {
       bnDot1Style: dots[1], bnDot1Click: () => setState({ bnBannerIdx: 1 }),
       bnDot2Style: dots[2], bnDot2Click: () => setState({ bnBannerIdx: 2 }),
       bnDot3Style: dots[3], bnDot3Click: () => setState({ bnBannerIdx: 3 }),
+
+      bnBestSellerBanners:      this._bestSellerBanners,
+      bnFeaturedBanners:        this._featuredBanners,
+      bnNewArrivalBanners:      this._newArrivalBanners,
+      bnSpecialOfferBanners:    this._specialOfferBanners,
+      bnRecentlyViewedBanners:  this._recentlyViewedBanners,
 
       bnProducts:             this._mapProducts(this._bestSellersData,   bnWl,      bnCart,     setState, 'bnWl',     'bnCart'),
       bnFeaturedProducts:     this._mapProducts(this._featuredData,       bnFeatWl,  bnFeatCart, setState, 'bnFeatWl', 'bnFeatCart'),
