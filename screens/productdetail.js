@@ -282,12 +282,15 @@ window.ProductDetailScreen = {
       pdpIsDesc:    pdpTab === 'desc',
       pdpIsSpecs:   pdpTab === 'specs',
       pdpIsReviews: pdpTab === 'reviews',
+      pdpIsTags:    pdpTab === 'tags',
       pdpTabDescStyle:    this._tabStyle(pdpTab, 'desc'),
       pdpTabSpecsStyle:   this._tabStyle(pdpTab, 'specs'),
       pdpTabReviewsStyle: this._tabStyle(pdpTab, 'reviews'),
+      pdpTabTagsStyle:    this._tabStyle(pdpTab, 'tags'),
       pdpSetTabDesc:    () => setState({ pdpTab: 'desc' }),
       pdpSetTabSpecs:   () => setState({ pdpTab: 'specs' }),
       pdpSetTabReviews: () => setState({ pdpTab: 'reviews' }),
+      pdpSetTabTags:    () => setState({ pdpTab: 'tags' }),
 
       pdpGoBack: () => setState({ currentScreen: 'home' }),
     };
