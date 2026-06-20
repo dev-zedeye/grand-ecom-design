@@ -180,7 +180,7 @@ window.BottomNavScreen = {
         spStr:        p.sp.toFixed(2),
         prStr:        p.pr.toFixed(2),
         bannerIconEl: this._mkBannerIcon(p.bannerKind),
-        bannerStyle:  { display:'flex', alignItems:'center', justifyContent:'center', gap:'5px', height:'26px', background:p.bannerColor, flexShrink:0 },
+        bannerStyle:  { display:'flex', alignItems:'center', justifyContent:'center', gap:'5px', height:'26px', background:'#16A34A', flexShrink:0 },
         imgStyle:     { height:'98px', background:p.bg, position:'relative', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden', flexShrink:0 },
         nameStyle:    { fontSize:'11.5px', fontWeight:'700', color:'#141414', lineHeight:'1.38', letterSpacing:'-0.2px', display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden', minHeight:'32px' },
         wlStyle:      { position:'absolute', top:'7px', right:'7px', width:'28px', height:'28px', background: inWL ? '#FFF0F0' : 'rgba(255,255,255,0.92)', border:'none', borderRadius:'50%', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 1px 6px rgba(0,0,0,0.14)', animation: inWL ? 'heartPop 0.32s ease' : 'none' },
