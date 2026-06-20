@@ -11,6 +11,7 @@
 <script src="./screens/forgotpassword.js"></script>
 <script src="./screens/bottomnavscreen.js"></script>
 <script src="./screens/productdetail.js"></script>
+<script src="./screens/loyalty.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -66,6 +67,10 @@
     }
     @keyframes spin {
       to { transform:rotate(360deg); }
+    }
+    @keyframes shimmer {
+      0%   { transform:translateX(-100%); }
+      100% { transform:translateX(200%); }
     }
     * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
     body { margin:0; }
@@ -1267,6 +1272,36 @@
           <div style="height:1px;background:#E8E6E1;flex-shrink:0"></div>
         </sc-if>
 
+        <!-- LOYALTY APP BAR -->
+        <sc-if value="{{ bnIsLoyalty }}" hint-placeholder-val="{{ false }}">
+          <div style="flex-shrink:0;background:linear-gradient(148deg,#FF5252 0%,#E53935 45%,#C62828 100%);padding-bottom:16px;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(229,57,53,0.28);border-radius:0 0 32px 32px">
+            <div style="position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,0.07);right:-60px;top:-80px;pointer-events:none"></div>
+            <div style="position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.05);left:-40px;bottom:-30px;pointer-events:none"></div>
+            <!-- status bar -->
+            <div style="height:56px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 10px;position:relative;z-index:2">
+              <span style="color:rgba(255,255,255,0.92);font-weight:700;font-size:16px;letter-spacing:-0.4px">9:41</span>
+              <div style="display:flex;gap:6px;align-items:center">
+                <svg width="18" height="12" viewBox="0 0 18 12" fill="rgba(255,255,255,0.88)"><rect x="0" y="8" width="3.5" height="4" rx="1"></rect><rect x="5" y="5.5" width="3.5" height="6.5" rx="1"></rect><rect x="10" y="2.5" width="3.5" height="9.5" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1"></rect></svg>
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><ellipse cx="8" cy="10.5" rx="1.6" ry="1.6" fill="rgba(255,255,255,0.88)"></ellipse><path d="M4.5 7.2C5.7 5.6 6.8 4.8 8 4.8S10.3 5.6 11.5 7.2" stroke="rgba(255,255,255,0.88)" stroke-width="1.4" stroke-linecap="round"></path><path d="M1.5 4C3.3 1.8 5.5 0.6 8 0.6S12.7 1.8 14.5 4" stroke="rgba(255,255,255,0.88)" stroke-width="1.4" stroke-linecap="round"></path></svg>
+                <svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="22" height="11" rx="3.5" stroke="rgba(255,255,255,0.5)"></rect><rect x="23" y="4" width="2.5" height="4" rx="1" fill="rgba(255,255,255,0.5)"></rect><rect x="2" y="2" width="18" height="8" rx="2" fill="rgba(255,255,255,0.88)"></rect></svg>
+              </div>
+            </div>
+            <!-- nav row -->
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:0 20px 4px;position:relative;z-index:2">
+              <div style="width:36px;height:36px;background:rgba(255,255,255,0.16);border:1.5px solid rgba(255,255,255,0.22);border-radius:12px;display:flex;align-items:center;justify-content:center">
+                <svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M11 3l2.2 4.5 5 .7-3.6 3.5.85 4.95L11 14.25l-4.45 2.4.85-4.95L3.8 8.2l5-.7L11 3z" stroke="white" stroke-width="1.8" stroke-linejoin="round" fill="rgba(255,255,255,0.2)"></path></svg>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:1px">
+                <span style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.4px;font-family:var(--font-heading)">My GrandMe Card</span>
+                <span style="font-size:10.5px;font-weight:500;color:rgba(255,255,255,0.65);letter-spacing:0.2px;font-family:var(--font-body)">Loyalty &amp; Rewards</span>
+              </div>
+              <button style="width:36px;height:36px;background:rgba(255,255,255,0.16);border:1.5px solid rgba(255,255,255,0.22);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="1.5" fill="white"></circle><circle cx="4" cy="9" r="1.5" fill="white"></circle><circle cx="14" cy="9" r="1.5" fill="white"></circle></svg>
+              </button>
+            </div>
+          </div>
+        </sc-if>
+
         <!-- SCROLLABLE CONTENT -->
         <div id="bnHomeScroll" style="flex:1;overflow-y:auto;background:#F5F4F0">
 
@@ -2166,6 +2201,172 @@
             </div>
           </sc-if>
 
+          <!-- LOYALTY TAB CONTENT -->
+          <sc-if value="{{ bnIsLoyalty }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:16px;padding:20px 16px 24px;animation:fadeUp 0.35s ease">
+
+              <!-- GRANDME CARD -->
+              <div style="border-radius:22px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.18)">
+                <!-- red face -->
+                <div style="background:linear-gradient(140deg,#D32F2F 0%,#B71C1C 55%,#C62828 100%);padding:22px 22px 24px;position:relative;overflow:hidden">
+                  <div style="position:absolute;right:-30px;top:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.07)"></div>
+                  <div style="position:absolute;left:-20px;bottom:-50px;width:130px;height:130px;border-radius:50%;background:rgba(0,0,0,0.12)"></div>
+                  <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+                    <div style="position:absolute;top:0;bottom:0;width:60px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.07),transparent);animation:shimmer 3.5s ease-in-out infinite"></div>
+                  </div>
+                  <!-- brand + icon -->
+                  <div style="display:flex;align-items:flex-start;justify-content:space-between;position:relative;z-index:1">
+                    <span style="font-size:26px;font-weight:800;color:#fff;letter-spacing:-0.6px;font-family:var(--font-heading)">GrandMe</span>
+                    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+                      <svg width="24" height="24" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="4" fill="rgba(255,255,255,0.9)"></circle><path d="M11 2v3M11 17v3M2 11h3M17 11h3M4.93 4.93l2.12 2.12M14.95 14.95l2.12 2.12M4.93 17.07l2.12-2.12M14.95 7.05l2.12-2.12" stroke="rgba(255,255,255,0.8)" stroke-width="1.3" stroke-linecap="round"></path></svg>
+                      <span style="font-size:6.5px;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:1.8px;text-transform:uppercase;font-family:var(--font-body)">Member Rewards Card</span>
+                    </div>
+                  </div>
+                  <!-- card number + chip -->
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-top:22px;position:relative;z-index:1">
+                    <span style="font-size:15px;font-weight:500;color:rgba(255,255,255,0.88);letter-spacing:3px;font-family:var(--font-body)">••• ••• ••• 4029</span>
+                    <div style="width:44px;height:32px;background:linear-gradient(145deg,#FFE082,#FFB300);border-radius:7px;box-shadow:inset 0 1px 2px rgba(255,255,255,0.4),0 2px 8px rgba(0,0,0,0.2)"></div>
+                  </div>
+                  <!-- member name + tier -->
+                  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:18px;position:relative;z-index:1">
+                    <div>
+                      <div style="font-size:9px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:1.4px;text-transform:uppercase;margin-bottom:3px;font-family:var(--font-body)">Card Holder</div>
+                      <div style="font-size:14px;font-weight:700;color:#fff;letter-spacing:-0.2px;font-family:var(--font-body)">Shibin Ahmed</div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:5px 10px">
+                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.5 3.2 3.5.5-2.5 2.4.6 3.4L7 8.9 3.9 10.5l.6-3.4L2 4.7l3.5-.5L7 1z" fill="#FFD740" stroke="#FFB300" stroke-width="0.8"></path></svg>
+                      <span style="font-size:10px;font-weight:700;color:#FFE082;letter-spacing:0.3px;font-family:var(--font-body)">Gold Member</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- points strip -->
+                <div style="background:#fff;padding:14px 18px;display:flex;align-items:center">
+                  <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                    <div style="font-size:10.5px;font-weight:600;color:#A0A0B0;letter-spacing:0.2px;font-family:var(--font-body)">Available Points</div>
+                    <div style="font-size:22px;font-weight:800;color:#141414;letter-spacing:-0.5px;font-family:var(--font-body)">2,480 <span style="font-size:12px;font-weight:600;color:#E53935">pts</span></div>
+                  </div>
+                  <div style="width:1px;height:36px;background:#ECEAE6;margin:0 16px"></div>
+                  <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                    <div style="font-size:10.5px;font-weight:600;color:#A0A0B0;letter-spacing:0.2px;font-family:var(--font-body)">Cashback Saved</div>
+                    <div style="font-size:22px;font-weight:800;color:#141414;letter-spacing:-0.5px;font-family:var(--font-body)">AED <span style="font-size:18px">34.50</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BARCODE SECTION -->
+              <div style="background:#fff;border-radius:18px;padding:20px 20px 22px;box-shadow:0 2px 12px rgba(0,0,0,0.07)">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+                  <div>
+                    <div style="font-size:13px;font-weight:800;color:#141414;letter-spacing:-0.2px;font-family:var(--font-heading)">Scan to Earn &amp; Redeem</div>
+                    <div style="font-size:11px;font-weight:500;color:#A0A0B0;margin-top:2px;font-family:var(--font-body)">Show at checkout to collect points</div>
+                  </div>
+                  <div style="background:#FFF0F0;border-radius:10px;padding:6px 10px;display:flex;align-items:center;gap:5px">
+                    <div style="width:7px;height:7px;border-radius:50%;background:#E53935"></div>
+                    <span style="font-size:10px;font-weight:700;color:#E53935;font-family:var(--font-body)">ACTIVE</span>
+                  </div>
+                </div>
+                <!-- barcode SVG -->
+                <div style="background:#fff;border-radius:10px;padding:14px 10px 10px;display:flex;flex-direction:column;align-items:center;border:1.5px solid #F0EEE9">
+                  <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="0" width="3" height="70" fill="#111"></rect><rect x="8" y="0" width="1.5" height="70" fill="#111"></rect><rect x="11" y="0" width="3" height="70" fill="#111"></rect>
+                    <rect x="17" y="0" width="2" height="62" fill="#111"></rect><rect x="21" y="0" width="1.5" height="62" fill="#111"></rect><rect x="24" y="0" width="3.5" height="62" fill="#111"></rect>
+                    <rect x="29" y="0" width="1" height="62" fill="#111"></rect><rect x="32" y="0" width="2.5" height="62" fill="#111"></rect><rect x="37" y="0" width="1.5" height="62" fill="#111"></rect>
+                    <rect x="40" y="0" width="3" height="62" fill="#111"></rect><rect x="45" y="0" width="2" height="62" fill="#111"></rect><rect x="49" y="0" width="1" height="62" fill="#111"></rect>
+                    <rect x="52" y="0" width="3.5" height="62" fill="#111"></rect><rect x="58" y="0" width="1.5" height="62" fill="#111"></rect><rect x="62" y="0" width="2" height="62" fill="#111"></rect>
+                    <rect x="66" y="0" width="1" height="62" fill="#111"></rect><rect x="69" y="0" width="4" height="62" fill="#111"></rect><rect x="75" y="0" width="1.5" height="62" fill="#111"></rect>
+                    <rect x="79" y="0" width="2" height="62" fill="#111"></rect><rect x="83" y="0" width="1" height="62" fill="#111"></rect><rect x="86" y="0" width="3" height="62" fill="#111"></rect>
+                    <rect x="91" y="0" width="2.5" height="62" fill="#111"></rect><rect x="96" y="0" width="1" height="62" fill="#111"></rect><rect x="99" y="0" width="3.5" height="62" fill="#111"></rect>
+                    <rect x="105" y="0" width="1.5" height="62" fill="#111"></rect><rect x="109" y="0" width="2" height="62" fill="#111"></rect><rect x="113" y="0" width="3" height="62" fill="#111"></rect>
+                    <rect x="118" y="0" width="1.5" height="62" fill="#111"></rect><rect x="122" y="0" width="1" height="62" fill="#111"></rect><rect x="125" y="0" width="4" height="62" fill="#111"></rect>
+                    <rect x="131" y="0" width="2" height="62" fill="#111"></rect><rect x="135" y="0" width="1.5" height="62" fill="#111"></rect><rect x="139" y="0" width="3" height="62" fill="#111"></rect>
+                    <rect x="144" y="0" width="1" height="62" fill="#111"></rect><rect x="147" y="0" width="2.5" height="62" fill="#111"></rect><rect x="152" y="0" width="1.5" height="62" fill="#111"></rect>
+                    <rect x="156" y="0" width="3" height="62" fill="#111"></rect><rect x="161" y="0" width="1" height="62" fill="#111"></rect><rect x="164" y="0" width="4" height="62" fill="#111"></rect>
+                    <rect x="170" y="0" width="1.5" height="62" fill="#111"></rect><rect x="174" y="0" width="2" height="62" fill="#111"></rect><rect x="178" y="0" width="1" height="62" fill="#111"></rect>
+                    <rect x="181" y="0" width="3.5" height="62" fill="#111"></rect><rect x="187" y="0" width="1.5" height="62" fill="#111"></rect><rect x="191" y="0" width="2" height="62" fill="#111"></rect>
+                    <rect x="195" y="0" width="3" height="62" fill="#111"></rect><rect x="200" y="0" width="1" height="62" fill="#111"></rect><rect x="203" y="0" width="2.5" height="62" fill="#111"></rect>
+                    <rect x="208" y="0" width="1.5" height="62" fill="#111"></rect><rect x="212" y="0" width="3" height="62" fill="#111"></rect><rect x="217" y="0" width="2" height="62" fill="#111"></rect>
+                    <rect x="221" y="0" width="1" height="62" fill="#111"></rect><rect x="224" y="0" width="3.5" height="62" fill="#111"></rect><rect x="230" y="0" width="1.5" height="62" fill="#111"></rect>
+                    <rect x="234" y="0" width="2" height="62" fill="#111"></rect><rect x="238" y="0" width="4" height="62" fill="#111"></rect><rect x="244" y="0" width="1" height="62" fill="#111"></rect>
+                    <rect x="247" y="0" width="2.5" height="62" fill="#111"></rect><rect x="252" y="0" width="1.5" height="62" fill="#111"></rect><rect x="256" y="0" width="3" height="62" fill="#111"></rect>
+                    <rect x="261" y="0" width="1" height="62" fill="#111"></rect><rect x="264" y="0" width="2" height="62" fill="#111"></rect><rect x="268" y="0" width="3.5" height="62" fill="#111"></rect>
+                    <rect x="274" y="0" width="1.5" height="62" fill="#111"></rect><rect x="278" y="0" width="2" height="62" fill="#111"></rect><rect x="282" y="0" width="1" height="62" fill="#111"></rect>
+                    <rect x="287" y="0" width="1.5" height="70" fill="#111"></rect><rect x="291" y="0" width="3" height="70" fill="#111"></rect><rect x="296" y="0" width="1.5" height="70" fill="#111"></rect><rect x="300" y="0" width="3" height="70" fill="#111"></rect>
+                  </svg>
+                  <div style="font-size:12.5px;font-weight:600;color:#5A5A6E;letter-spacing:3.5px;margin-top:6px;font-family:var(--font-body)">GH-4029-0628-UAE</div>
+                </div>
+                <!-- action row -->
+                <div style="display:flex;gap:8px;margin-top:14px">
+                  <button style="flex:1;background:#F5F4F0;border:none;border-radius:12px;padding:11px 0;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M11 1H5a1 1 0 00-1 1v12a1 1 0 001 1h6a1 1 0 001-1V2a1 1 0 00-1-1z" stroke="#5A5A6E" stroke-width="1.4"></path><circle cx="8" cy="12" r="1" fill="#5A5A6E"></circle></svg>
+                    <span style="font-size:12px;font-weight:700;color:#5A5A6E;font-family:var(--font-body)">Add to Wallet</span>
+                  </button>
+                  <button style="flex:1;background:linear-gradient(135deg,#FF5252,#E53935);border:none;border-radius:12px;padding:11px 0;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2.5 8H13.5M9.5 4L13.5 8L9.5 12" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    <span style="font-size:12px;font-weight:700;color:#fff;font-family:var(--font-body)">Redeem Points</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- TERMS & CONDITIONS -->
+              <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07)">
+                <div onClick="{{ loyaltyToggleTC }}" style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;cursor:pointer">
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <div style="width:34px;height:34px;border-radius:10px;background:#FFF0F0;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                      <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><rect x="3" y="1.5" width="12" height="15" rx="2.5" stroke="#E53935" stroke-width="1.4"></rect><path d="M6 6h6M6 9h6M6 12h4" stroke="#E53935" stroke-width="1.3" stroke-linecap="round"></path></svg>
+                    </div>
+                    <div>
+                      <div style="font-size:13px;font-weight:800;color:#141414;letter-spacing:-0.2px;font-family:var(--font-heading)">Terms &amp; Conditions</div>
+                      <div style="font-size:10.5px;font-weight:500;color:#A0A0B0;margin-top:1px;font-family:var(--font-body)">GrandMe Loyalty Programme</div>
+                    </div>
+                  </div>
+                  <div style="{{ loyaltyTcChevronStyle }}">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 6.5L8 9.5L11 6.5" stroke="#A0A0B0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </div>
+                </div>
+                <sc-if value="{{ loyaltyTcOpen }}" hint-placeholder-val="{{ false }}">
+                  <div style="padding:0 18px 20px;display:flex;flex-direction:column;gap:14px;animation:fadeUp 0.25s ease">
+                    <div style="height:1px;background:#F0EEE9"></div>
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                      <div style="font-size:11.5px;font-weight:800;color:#E53935;letter-spacing:0.5px;text-transform:uppercase;font-family:var(--font-body)">1. Programme Eligibility</div>
+                      <p style="font-size:11.5px;font-weight:500;color:#5A5A6E;line-height:1.7;margin:0;font-family:var(--font-body)">The GrandMe Loyalty Programme is open to all registered GrandHyper customers aged 18 and above. Membership is personal, non-transferable, and may only be used by the registered cardholder.</p>
+                    </div>
+                    <div style="height:1px;background:#F0EEE9"></div>
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                      <div style="font-size:11.5px;font-weight:800;color:#E53935;letter-spacing:0.5px;text-transform:uppercase;font-family:var(--font-body)">2. Earning Points</div>
+                      <p style="font-size:11.5px;font-weight:500;color:#5A5A6E;line-height:1.7;margin:0;font-family:var(--font-body)">Members earn 1 point for every AED 1 spent on eligible purchases. Points are credited within 24 hours of a completed transaction. Purchases of tobacco, alcohol, lottery tickets, and gift cards are excluded from points earning.</p>
+                    </div>
+                    <div style="height:1px;background:#F0EEE9"></div>
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                      <div style="font-size:11.5px;font-weight:800;color:#E53935;letter-spacing:0.5px;text-transform:uppercase;font-family:var(--font-body)">3. Redeeming Points</div>
+                      <p style="font-size:11.5px;font-weight:500;color:#5A5A6E;line-height:1.7;margin:0;font-family:var(--font-body)">Points can be redeemed at a rate of 100 points = AED 1. A minimum of 500 points is required for any redemption. Redeemed points are non-reversible and cannot be exchanged for cash or transferred to another account.</p>
+                    </div>
+                    <div style="height:1px;background:#F0EEE9"></div>
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                      <div style="font-size:11.5px;font-weight:800;color:#E53935;letter-spacing:0.5px;text-transform:uppercase;font-family:var(--font-body)">4. Points Expiry</div>
+                      <p style="font-size:11.5px;font-weight:500;color:#5A5A6E;line-height:1.7;margin:0;font-family:var(--font-body)">Points expire 12 months from the date of earning if no qualifying transaction is made. GrandHyper will notify members via app notification or email 30 days before expiry. Expired points cannot be reinstated.</p>
+                    </div>
+                    <div style="height:1px;background:#F0EEE9"></div>
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                      <div style="font-size:11.5px;font-weight:800;color:#E53935;letter-spacing:0.5px;text-transform:uppercase;font-family:var(--font-body)">5. Membership Tiers</div>
+                      <p style="font-size:11.5px;font-weight:500;color:#5A5A6E;line-height:1.7;margin:0;font-family:var(--font-body)">GrandMe offers three tiers: Silver (0–4,999 pts), Gold (5,000–14,999 pts), and Platinum (15,000+ pts). Higher tiers unlock exclusive benefits including priority delivery, bonus point events, and dedicated customer support.</p>
+                    </div>
+                    <div style="height:1px;background:#F0EEE9"></div>
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                      <div style="font-size:11.5px;font-weight:800;color:#E53935;letter-spacing:0.5px;text-transform:uppercase;font-family:var(--font-body)">6. Programme Changes</div>
+                      <p style="font-size:11.5px;font-weight:500;color:#5A5A6E;line-height:1.7;margin:0;font-family:var(--font-body)">GrandHyper reserves the right to modify, suspend, or terminate the GrandMe programme at any time with 30 days prior notice. Continued use of the card after notice constitutes acceptance of the revised terms.</p>
+                    </div>
+                    <div style="background:#F5F4F0;border-radius:10px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between">
+                      <span style="font-size:10.5px;font-weight:600;color:#A0A0B0;font-family:var(--font-body)">Last updated: 1 January 2025</span>
+                      <span style="font-size:10.5px;font-weight:700;color:#E53935;cursor:pointer;font-family:var(--font-body)">Full Policy →</span>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+
+              <div style="height:8px"></div>
+            </div>
+          </sc-if>
+
           <!-- OTHER TAB PLACEHOLDER -->
           <sc-if value="{{ bnIsNonHomeOrCategories }}" hint-placeholder-val="{{ false }}">
             <div style="min-height:480px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px 80px;gap:14px;animation:fadeUp 0.3s ease">
@@ -2676,6 +2877,7 @@ class Component extends DCLogic {
       ...ForgotPasswordScreen.renderVals(this.state, set),
       ...BottomNavScreen.renderVals(this.state, set),
       ...ProductDetailScreen.renderVals(this.state, set),
+      ...LoyaltyScreen.renderVals(this.state, set),
     };
   }
 }

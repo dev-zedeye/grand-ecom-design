@@ -367,7 +367,7 @@ window.BottomNavScreen = {
         };
       })(),
 
-      bnIsNonHomeOrCategories: bnTab !== 'home' && bnTab !== 'categories',
+      bnIsNonHomeOrCategories: bnTab !== 'home' && bnTab !== 'categories' && bnTab !== 'loyalty',
 
       bnSetHome:       () => setState({ bnTab: 'home' }),
       bnSetCategories: () => setState({ bnTab: 'categories' }),
