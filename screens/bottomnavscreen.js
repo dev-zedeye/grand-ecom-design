@@ -132,52 +132,27 @@ window.BottomNavScreen = {
   // ── Category groups ──────────────────────────────────────────────────────
 
   _catFresh: [
-    { name: 'Fresh Produce',      emoji: '🥦', id: '1512621776951-a57ef244cefa', bg: '#E8F5E9' },
-    { name: 'Dairy & Eggs',       emoji: '🥛', id: '1550583724-b2692b85b150',    bg: '#EEF4FF' },
-    { name: 'Meat & Poultry',     emoji: '🥩', id: '1607623814075-a5f1551d4b30', bg: '#FFEEEE' },
-    { name: 'Seafood',            emoji: '🦐', id: '1565680018434-b513d5e5fd47', bg: '#E1F5FE' },
-    { name: 'Cheese',             emoji: '🧀', id: '1486297678162-eb2a19b0a32d', bg: '#FFFDE7' },
-    { name: 'Deli & Charcuterie', emoji: '🥓', id: '1546549032-9759e4315e07',    bg: '#FBE9E7' },
+    { name: 'Fresh Produce',      emoji: '🥦', img: 'ca-fresh-produce.jpg',  bg: '#E8F5E9' },
+    { name: 'Dairy & Eggs',       emoji: '🥛', img: 'ca-dairy-eggs.jpg',     bg: '#EEF4FF' },
+    { name: 'Meat & Poultry',     emoji: '🥩', img: 'ca-meat-poultry.jpg',   bg: '#FFEEEE' },
+    { name: 'Seafood',            emoji: '🦐', img: 'ca-seafood.jpg',        bg: '#E1F5FE' },
+    { name: 'Cheese',             emoji: '🧀', img: 'ca-cheese.jpg',         bg: '#FFFDE7' },
+    { name: 'Deli & Charcuterie', emoji: '🥓', img: 'ca-deli.jpg',           bg: '#FBE9E7' },
+    { name: 'Frozen Foods',       emoji: '🧊', img: 'ca-frozen.jpg',         bg: '#E8EAF6' },
+    { name: 'Ice Cream',          emoji: '🍦', img: 'ca-ice-cream.jpg',      bg: '#E3F2FD' },
+    { name: 'Ready Meals',        emoji: '🍱', img: 'ca-ready-meals.jpg',    bg: '#FFF3E0' },
   ],
 
   _catPantry: [
-    { name: 'Bakery',             emoji: '🍞', id: '1509440159596-0249088772ff', bg: '#FFF8E1' },
-    { name: 'Breakfast',          emoji: '🥞', id: '1533089860892-a7c6f0a88666', bg: '#FFF3E0' },
-    { name: 'Rice & Pasta',       emoji: '🍝', id: '1512058564366-18510be2db19', bg: '#FFFDE7' },
-    { name: 'Canned Goods',       emoji: '🥫', id: '1534483509719-3feaee7c30da', bg: '#EFEBE9' },
-    { name: 'Sauces',             emoji: '🫙', id: '1472476443507-c4ef9cd8b617', bg: '#FCE4EC' },
-    { name: 'Oils & Vinegars',    emoji: '🫒', id: '1474979353478-e0eb3199462d', bg: '#FFFDE7' },
-    { name: 'Organic',            emoji: '🌿', id: '1542838132-92e7ad5cb294',    bg: '#E8F5E9' },
-    { name: 'World Foods',        emoji: '🌍', id: '1455619452474-d2be8097228c', bg: '#F3E5F5' },
-  ],
-
-  _catDrinks: [
-    { name: 'Beverages',          emoji: '🧃', id: '1544145945-f90425340c7e',    bg: '#E0F7FA' },
-    { name: 'Coffee & Tea',       emoji: '☕', id: '1495474472287-4d71bcdd2085', bg: '#EFEBE9' },
-    { name: 'Juices',             emoji: '🍊', id: '1613478223719-2ab802602423', bg: '#FFF8E1' },
-    { name: 'Soft Drinks',        emoji: '🥤', id: '1567108709905-ba1b45f60a46', bg: '#E8F5E9' },
-    { name: 'Water',              emoji: '💧', id: '1548407260-da850faa41e3',    bg: '#E3F2FD' },
-    { name: 'Snacks & Chips',     emoji: '🍿', id: '1527960471890-50f4d59d92c8', bg: '#FCE4EC' },
-    { name: 'Candy & Sweets',     emoji: '🍬', id: '1559181567-c3190dc2100d',    bg: '#FCE4EC' },
-  ],
-
-  _catFrozen: [
-    { name: 'Frozen Foods',       emoji: '🧊', id: '1519708227418-1e5b28f91b5a', bg: '#E8EAF6' },
-    { name: 'Ice Cream',          emoji: '🍦', id: '1497034825349-c44503cc0c34', bg: '#E3F2FD' },
-    { name: 'Ready Meals',        emoji: '🍱', id: '1547592180-85f173990554',    bg: '#FFF3E0' },
-  ],
-
-  _catLifestyle: [
-    { name: 'Personal Care',      emoji: '🧴', id: '1556228578-8c89e6adf1b7',    bg: '#F3E5F5' },
-    { name: 'Household',          emoji: '🧹', id: '1563453392212-326f349e4d17', bg: '#E8F5E9' },
-    { name: 'Baby & Kids',        emoji: '🍼', id: '1515488042361-ee00e0ddd4e4', bg: '#E3F2FD' },
-    { name: 'Health & Vitamins',  emoji: '💊', id: '1584308666744-4d8b2cac3a0b', bg: '#E8F5E9' },
-    { name: 'Pharmacy',           emoji: '🏥', id: '1587854692152-cbe660dbde88', bg: '#E3F2FD' },
-    { name: 'Pet Care',           emoji: '🐾', id: '1587300003388-59208cc962cb', bg: '#FFF8E1' },
-    { name: 'Sports Nutrition',   emoji: '💪', id: '1571019613454-1cb2f99b2d8b', bg: '#FFF3E0' },
-    { name: 'Flowers & Plants',   emoji: '🌸', id: '1490750967868-88df5691240e', bg: '#FCE4EC' },
-    { name: 'Electronics',        emoji: '📱', id: '1518770660439-4636190af475', bg: '#E8EAF6' },
-    { name: 'Stationery',         emoji: '✏️', id: '1518455027359-f3f8164ba6bd', bg: '#EDE7F6' },
+    { name: 'Bakery',             emoji: '🍞', img: 'ca-bakery.jpg',         bg: '#FFF8E1' },
+    { name: 'Breakfast',          emoji: '🥞', img: 'ca-breakfast.jpg',      bg: '#FFF3E0' },
+    { name: 'Rice & Pasta',       emoji: '🍝', img: 'ca-rice-pasta.jpg',     bg: '#FFFDE7' },
+    { name: 'Canned Goods',       emoji: '🥫', img: 'ca-canned-goods.jpg',   bg: '#EFEBE9' },
+    { name: 'Sauces',             emoji: '🫙', img: 'ca-sauces.jpg',         bg: '#FCE4EC' },
+    { name: 'Oils & Vinegars',    emoji: '🫒', img: 'ca-oils-vinegars.jpg',  bg: '#FFFDE7' },
+    { name: 'Organic',            emoji: '🌿', img: 'ca-organic.jpg',        bg: '#E8F5E9' },
+    { name: 'World Foods',        emoji: '🌍', img: 'ca-world-foods.jpg',    bg: '#F3E5F5' },
+    { name: 'Snacks & Chips',     emoji: '🍿', img: 'ca-snacks.jpg',         bg: '#FCE4EC' },
   ],
 
   _mkBannerIcon(kind) {
@@ -385,13 +360,10 @@ window.BottomNavScreen = {
       bnRecentlyViewedProducts: this._mapProducts(this._recentlyViewedData, bnRvWl,  bnRvCart,   setState, 'bnRvWl',   'bnRvCart'),
 
       ...(() => {
-        const mc = c => ({ name: c.name, emoji: c.emoji, bg: c.bg, imgSrc: 'https://images.unsplash.com/photo-' + c.id + '?auto=format&fit=crop&w=300&h=220&q=80' });
+        const mc = c => ({ name: c.name, emoji: c.emoji, bg: c.bg, imgSrc: './images/' + c.img });
         return {
-          bnCatFresh:     this._catFresh.map(mc),
-          bnCatPantry:    this._catPantry.map(mc),
-          bnCatDrinks:    this._catDrinks.map(mc),
-          bnCatFrozen:    this._catFrozen.map(mc),
-          bnCatLifestyle: this._catLifestyle.map(mc),
+          bnCatFresh:  this._catFresh.map(mc),
+          bnCatPantry: this._catPantry.map(mc),
         };
       })(),
 
