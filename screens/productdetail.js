@@ -132,16 +132,12 @@ window.ProductDetailScreen = {
     };
   },
 
-  _dotStyle(imgDot, i) {
-    const active = imgDot === i;
-    return {
-      height: '5px', borderRadius: '3px',
-      background: active ? '#fff' : 'rgba(255,255,255,0.4)',
-      width: active ? '16px' : '5px',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-    };
-  },
+  _thumbBgs: [
+    'linear-gradient(148deg,#EEF4FF 0%,#C8DCFF 100%)',
+    'linear-gradient(148deg,#E8F0FF 0%,#BDD0FF 100%)',
+    'linear-gradient(148deg,#F2EEFF 0%,#D4C4FF 100%)',
+    'linear-gradient(148deg,#EFF8FF 0%,#BCDEFF 100%)',
+  ],
 
   renderVals(state, setState) {
     const { pdpWl = false, pdpInCart = false, pdpQty = 1, pdpTab = 'desc', pdpImgDot = 0 } = state;
@@ -198,10 +194,22 @@ window.ProductDetailScreen = {
 
       pdpQty,
 
-      pdpDot0Style: this._dotStyle(pdpImgDot, 0),
-      pdpDot1Style: this._dotStyle(pdpImgDot, 1),
-      pdpDot2Style: this._dotStyle(pdpImgDot, 2),
-      pdpDot3Style: this._dotStyle(pdpImgDot, 3),
+      pdpHeroBg: this._thumbBgs[pdpImgDot] || this._thumbBgs[0],
+
+      pdpThumbnails: this._thumbBgs.map((bg, i) => ({
+        bg,
+        containerStyle: {
+          flexShrink: 0,
+          width: '68px', height: '68px', borderRadius: '12px',
+          background: bg,
+          border: pdpImgDot === i ? '2px solid #E53935' : '2px solid #ECEAE6',
+          boxShadow: pdpImgDot === i ? '0 2px 10px rgba(229,57,53,0.2)' : 'none',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          cursor: 'pointer', overflow: 'hidden',
+          transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+        },
+        onTap: () => setState({ pdpImgDot: i }),
+      })),
 
       pdpWishlistBtnStyle: {
         width: '38px', height: '38px',

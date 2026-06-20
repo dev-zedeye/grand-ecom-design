@@ -83,6 +83,8 @@
     @keyframes qtyPop { 0%{transform:scale(1)} 40%{transform:scale(1.18)} 100%{transform:scale(1)} }
     #pdpScroll::-webkit-scrollbar { display:none; }
     #pdpScroll { scrollbar-width:none; }
+    #pdpThumbScroll::-webkit-scrollbar { display:none; }
+    #pdpThumbScroll { scrollbar-width:none; }
   </style>
 </helmet>
 
@@ -2315,7 +2317,7 @@
       <div style="width:100%;height:100%;display:flex;flex-direction:column;background:#F5F4F0;font-family:var(--font-body);animation:fadeInUp 0.3s ease both;overflow:hidden">
 
         <!-- HERO IMAGE AREA -->
-        <div style="flex-shrink:0;position:relative;background:{{ pdpProduct.heroBg }};height:292px;overflow:hidden">
+        <div style="flex-shrink:0;position:relative;background:{{ pdpHeroBg }};height:260px;overflow:hidden">
 
           <!-- bg orbs -->
           <div style="position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,0.08);right:-80px;top:-100px;pointer-events:none"></div>
@@ -2354,16 +2356,19 @@
             <span style="font-size:110px;line-height:1;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.18));user-select:none">{{ pdpProduct.emoji }}</span>
           </div>
 
-          <!-- image dots -->
-          <div style="position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:5px;align-items:center">
-            <div style="{{ pdpDot0Style }}"></div>
-            <div style="{{ pdpDot1Style }}"></div>
-            <div style="{{ pdpDot2Style }}"></div>
-            <div style="{{ pdpDot3Style }}"></div>
-          </div>
-
           <!-- bottom fade -->
           <div style="position:absolute;bottom:0;left:0;right:0;height:48px;background:linear-gradient(to top,rgba(0,0,0,0.08),transparent);pointer-events:none"></div>
+        </div>
+
+        <!-- THUMBNAIL STRIP -->
+        <div style="flex-shrink:0;background:#fff;padding:10px 14px 12px;border-bottom:1px solid #F0EEE9">
+          <div id="pdpThumbScroll" style="display:flex;gap:8px;overflow-x:auto">
+            <sc-for list="{{ pdpThumbnails }}" as="thumb" hint-placeholder-count="4">
+              <div onClick="{{ thumb.onTap }}" style="{{ thumb.containerStyle }}">
+                <span style="font-size:34px;line-height:1;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.16));user-select:none">{{ pdpProduct.emoji }}</span>
+              </div>
+            </sc-for>
+          </div>
         </div>
 
         <!-- SCROLLABLE CONTENT -->
