@@ -2420,29 +2420,6 @@
             </div>
           </div>
 
-          <!-- QUANTITY + ACTIONS -->
-          <div style="background:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #F0EEE9">
-            <div style="display:flex;flex-direction:column;gap:2px">
-              <span style="font-size:10px;font-weight:600;color:#9898A8;text-transform:uppercase;letter-spacing:0.8px">Quantity</span>
-              <div style="display:flex;align-items:center">
-                <button onClick="{{ pdpDecQty }}" style="{{ pdpDecStyle }}">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="{{ pdpDecColor }}" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"></path></svg>
-                </button>
-                <div style="width:44px;height:40px;display:flex;align-items:center;justify-content:center;background:#F5F4F0;border-top:1.5px solid #E8E6E1;border-bottom:1.5px solid #E8E6E1">
-                  <span style="{{ pdpQtyNumStyle }}">{{ pdpQty }}</span>
-                </div>
-                <button onClick="{{ pdpIncQty }}" style="{{ pdpIncStyle }}">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="{{ pdpIncColor }}" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
-                </button>
-              </div>
-            </div>
-            <div style="display:flex;flex:1;justify-content:flex-end">
-              <button onClick="{{ pdpOnCart }}" style="{{ pdpCartBtnStyle }}">
-                {{ pdpCartIconEl }}<span style="{{ pdpCartLblStyle }}">{{ pdpCartLbl }}</span>
-              </button>
-            </div>
-          </div>
-
           <!-- TAGS -->
           <sc-if value="{{ pdpHasTags }}" hint-placeholder-val="{{ true }}">
             <div style="background:#fff;padding:12px 18px;border-bottom:1px solid #F0EEE9">
