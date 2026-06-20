@@ -4,7 +4,7 @@ window.ProductDetailScreen = {
     name: "Almarai Full Fat Fresh Milk",
     manufacturerName: "Almarai",
     sku: "ALM-FLK-001",
-    emoji: "🥛",
+    emoji: "🍎",
     heroBg: "linear-gradient(148deg,#EEF4FF 0%,#C8DCFF 100%)",
     pr: 7.25,
     sp: 5.50,
