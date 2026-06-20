@@ -137,6 +137,8 @@ window.ProductDetailScreen = {
     'linear-gradient(148deg,#E8F0FF 0%,#BDD0FF 100%)',
     'linear-gradient(148deg,#F2EEFF 0%,#D4C4FF 100%)',
     'linear-gradient(148deg,#EFF8FF 0%,#BCDEFF 100%)',
+    'linear-gradient(148deg,#E8FFF4 0%,#B8F0D8 100%)',
+    'linear-gradient(148deg,#FFF8E8 0%,#FFE8B0 100%)',
   ],
 
   renderVals(state, setState) {
