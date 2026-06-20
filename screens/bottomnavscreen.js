@@ -129,6 +129,43 @@ window.BottomNavScreen = {
   ],
   // ─────────────────────────────────────────────────────────────────────────
 
+  _catsData: [
+    { name: 'Fresh Produce',      id: '1540420153489-fd5285b14c4c', bg: '#E8F5E9' },
+    { name: 'Dairy & Eggs',       id: '1550583724-b2692b85b150',    bg: '#EEF4FF' },
+    { name: 'Meat & Poultry',     id: '1529193591184-b1d58069ecdd', bg: '#FFEEEE' },
+    { name: 'Seafood',            id: '1519708227418-1e5b28f91b5a', bg: '#E1F5FE' },
+    { name: 'Bakery',             id: '1509440159596-0249088772ff', bg: '#FFF8E1' },
+    { name: 'Beverages',          id: '1595295333158-4742f28fbd85', bg: '#E0F7FA' },
+    { name: 'Snacks & Chips',     id: '1553978297-833f4e09f9f9',    bg: '#FCE4EC' },
+    { name: 'Frozen Foods',       id: '1589985270826-4b7bb135bc9d', bg: '#E8EAF6' },
+    { name: 'Breakfast',          id: '1556909114-f6e7ad7d3136',    bg: '#FFF3E0' },
+    { name: 'Coffee & Tea',       id: '1495474472287-4d71bcdd2085', bg: '#EFEBE9' },
+    { name: 'Juices',             id: '1610832958506-aa56368176cf', bg: '#FFF8E1' },
+    { name: 'Soft Drinks',        id: '1567108709905-ba1b45f60a46', bg: '#E8F5E9' },
+    { name: 'Water',              id: '1548407260-da850faa41e3',    bg: '#E3F2FD' },
+    { name: 'Cheese',             id: '1486297678162-eb2a19b0a32d', bg: '#FFFDE7' },
+    { name: 'Deli & Charcuterie', id: '1571167009064-df1b15709cca', bg: '#FBE9E7' },
+    { name: 'Ice Cream',          id: '1497034825349-c44503cc0c34', bg: '#E3F2FD' },
+    { name: 'Ready Meals',        id: '1547592180-85f173990554',    bg: '#FFF3E0' },
+    { name: 'Rice & Pasta',       id: '1612936169786-c6a4eba3bb4d', bg: '#FFFDE7' },
+    { name: 'Canned Goods',       id: '1534483509719-3feaee7c30da', bg: '#EFEBE9' },
+    { name: 'Sauces',             id: '1472476443507-c4ef9cd8b617', bg: '#FCE4EC' },
+    { name: 'Oils & Vinegars',    id: '1474979353478-e0eb3199462d', bg: '#FFFDE7' },
+    { name: 'Organic',            id: '1542838132-92e7ad5cb294',    bg: '#E8F5E9' },
+    { name: 'World Foods',        id: '1455619452474-d2be8097228c', bg: '#F3E5F5' },
+    { name: 'Candy & Sweets',     id: '1551024709-8f23befc548b',    bg: '#FCE4EC' },
+    { name: 'Personal Care',      id: '1556228578-8c89e6adf1b7',    bg: '#F3E5F5' },
+    { name: 'Household',          id: '1563453392212-326f349e4d17', bg: '#E8F5E9' },
+    { name: 'Baby & Kids',        id: '1515488042361-ee00e0ddd4e4', bg: '#E3F2FD' },
+    { name: 'Health & Vitamins',  id: '1584308666744-4d8b2cac3a0b', bg: '#E8F5E9' },
+    { name: 'Pharmacy',           id: '1587854692152-cbe660dbde88', bg: '#E3F2FD' },
+    { name: 'Pet Care',           id: '1587300003388-59208cc962cb', bg: '#FFF8E1' },
+    { name: 'Sports Nutrition',   id: '1571019613454-1cb2f99b2d8b', bg: '#FFF3E0' },
+    { name: 'Flowers & Plants',   id: '1490750967868-88df5691240e', bg: '#FCE4EC' },
+    { name: 'Electronics',        id: '1518770660439-4636190af475', bg: '#E8EAF6' },
+    { name: 'Stationery',         id: '1518455027359-f3f8164ba6bd', bg: '#EDE7F6' },
+  ],
+
   _mkBannerIcon(kind) {
     const w = 'rgba(255,255,255,0.95)';
     const ce = React.createElement.bind(React);
@@ -332,6 +369,14 @@ window.BottomNavScreen = {
       bnNewArrivalProducts:   this._mapProducts(this._newArrivalData,     bnNewWl,   bnNewCart,  setState, 'bnNewWl',  'bnNewCart'),
       bnSpecialOfferProducts: this._mapProducts(this._specialOfferData,   bnSoWl,    bnSoCart,   setState, 'bnSoWl',   'bnSoCart'),
       bnRecentlyViewedProducts: this._mapProducts(this._recentlyViewedData, bnRvWl,  bnRvCart,   setState, 'bnRvWl',   'bnRvCart'),
+
+      bnCategories: this._catsData.map(c => ({
+        name:   c.name,
+        bg:     c.bg,
+        imgSrc: 'https://images.unsplash.com/photo-' + c.id + '?auto=format&fit=crop&w=300&h=220&q=80',
+      })),
+
+      bnIsNonHomeOrCategories: bnTab !== 'home' && bnTab !== 'categories',
 
       bnSetHome:       () => setState({ bnTab: 'home' }),
       bnSetCategories: () => setState({ bnTab: 'categories' }),
