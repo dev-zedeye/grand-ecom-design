@@ -2130,15 +2130,24 @@
           <!-- CATEGORIES TAB CONTENT -->
           <sc-if value="{{ bnIsCategories }}" hint-placeholder-val="{{ false }}">
             <div style="padding:14px 14px 0">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px">
+
+              <!-- top summary row -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
                 <span style="font-size:14px;font-weight:800;color:#141414;letter-spacing:-0.3px;font-family:var(--font-heading)">Browse All</span>
                 <span style="background:#FFF0F0;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;color:#E53935;font-family:var(--font-body)">34 categories</span>
               </div>
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
-                <sc-for list="{{ bnCategories }}" as="cat" hint-placeholder-count="9">
+
+              <!-- ── Section 1: Fresh & Chilled ── -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+                <span style="font-size:12.5px;font-weight:800;color:#141414;letter-spacing:-0.2px;font-family:var(--font-heading)">🥬 Fresh &amp; Chilled</span>
+                <span style="background:#E8F5E9;border-radius:20px;padding:2px 9px;font-size:10px;font-weight:700;color:#2E7D32;font-family:var(--font-body)">6 items</span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+                <sc-for list="{{ bnCatFresh }}" as="cat" hint-placeholder-count="6">
                   <div style="background:#fff;border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.07);animation:fadeUp 0.3s ease both">
-                    <div style="height:84px;overflow:hidden;background:{{ cat.bg }};position:relative">
-                      <img src="{{ cat.imgSrc }}" alt="{{ cat.name }}" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" />
+                    <div style="height:84px;background:{{ cat.bg }};position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden">
+                      <span style="font-size:34px;line-height:1;position:absolute;z-index:1">{{ cat.emoji }}</span>
+                      <img src="{{ cat.imgSrc }}" alt="{{ cat.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2" onerror="this.style.display='none'" loading="lazy" />
                     </div>
                     <div style="padding:7px 5px 9px">
                       <span style="font-size:9.5px;font-weight:700;color:#141414;line-height:1.35;display:block;text-align:center;letter-spacing:-0.1px;font-family:var(--font-body)">{{ cat.name }}</span>
@@ -2146,6 +2155,83 @@
                   </div>
                 </sc-for>
               </div>
+
+              <!-- ── Section 2: Bakery & Pantry ── -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+                <span style="font-size:12.5px;font-weight:800;color:#141414;letter-spacing:-0.2px;font-family:var(--font-heading)">🍞 Bakery &amp; Pantry</span>
+                <span style="background:#FFF8E1;border-radius:20px;padding:2px 9px;font-size:10px;font-weight:700;color:#B45309;font-family:var(--font-body)">8 items</span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+                <sc-for list="{{ bnCatPantry }}" as="cat" hint-placeholder-count="6">
+                  <div style="background:#fff;border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.07);animation:fadeUp 0.3s ease both">
+                    <div style="height:84px;background:{{ cat.bg }};position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden">
+                      <span style="font-size:34px;line-height:1;position:absolute;z-index:1">{{ cat.emoji }}</span>
+                      <img src="{{ cat.imgSrc }}" alt="{{ cat.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2" onerror="this.style.display='none'" loading="lazy" />
+                    </div>
+                    <div style="padding:7px 5px 9px">
+                      <span style="font-size:9.5px;font-weight:700;color:#141414;line-height:1.35;display:block;text-align:center;letter-spacing:-0.1px;font-family:var(--font-body)">{{ cat.name }}</span>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <!-- ── Section 3: Drinks & Snacks ── -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+                <span style="font-size:12.5px;font-weight:800;color:#141414;letter-spacing:-0.2px;font-family:var(--font-heading)">🥤 Drinks &amp; Snacks</span>
+                <span style="background:#E0F7FA;border-radius:20px;padding:2px 9px;font-size:10px;font-weight:700;color:#00838F;font-family:var(--font-body)">7 items</span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+                <sc-for list="{{ bnCatDrinks }}" as="cat" hint-placeholder-count="6">
+                  <div style="background:#fff;border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.07);animation:fadeUp 0.3s ease both">
+                    <div style="height:84px;background:{{ cat.bg }};position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden">
+                      <span style="font-size:34px;line-height:1;position:absolute;z-index:1">{{ cat.emoji }}</span>
+                      <img src="{{ cat.imgSrc }}" alt="{{ cat.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2" onerror="this.style.display='none'" loading="lazy" />
+                    </div>
+                    <div style="padding:7px 5px 9px">
+                      <span style="font-size:9.5px;font-weight:700;color:#141414;line-height:1.35;display:block;text-align:center;letter-spacing:-0.1px;font-family:var(--font-body)">{{ cat.name }}</span>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <!-- ── Section 4: Frozen & Ready ── -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+                <span style="font-size:12.5px;font-weight:800;color:#141414;letter-spacing:-0.2px;font-family:var(--font-heading)">🧊 Frozen &amp; Ready</span>
+                <span style="background:#E8EAF6;border-radius:20px;padding:2px 9px;font-size:10px;font-weight:700;color:#3949AB;font-family:var(--font-body)">3 items</span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+                <sc-for list="{{ bnCatFrozen }}" as="cat" hint-placeholder-count="3">
+                  <div style="background:#fff;border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.07);animation:fadeUp 0.3s ease both">
+                    <div style="height:84px;background:{{ cat.bg }};position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden">
+                      <span style="font-size:34px;line-height:1;position:absolute;z-index:1">{{ cat.emoji }}</span>
+                      <img src="{{ cat.imgSrc }}" alt="{{ cat.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2" onerror="this.style.display='none'" loading="lazy" />
+                    </div>
+                    <div style="padding:7px 5px 9px">
+                      <span style="font-size:9.5px;font-weight:700;color:#141414;line-height:1.35;display:block;text-align:center;letter-spacing:-0.1px;font-family:var(--font-body)">{{ cat.name }}</span>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <!-- ── Section 5: Health & Lifestyle ── -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+                <span style="font-size:12.5px;font-weight:800;color:#141414;letter-spacing:-0.2px;font-family:var(--font-heading)">🏠 Health &amp; Lifestyle</span>
+                <span style="background:#F3E5F5;border-radius:20px;padding:2px 9px;font-size:10px;font-weight:700;color:#7B1FA2;font-family:var(--font-body)">10 items</span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+                <sc-for list="{{ bnCatLifestyle }}" as="cat" hint-placeholder-count="9">
+                  <div style="background:#fff;border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.07);animation:fadeUp 0.3s ease both">
+                    <div style="height:84px;background:{{ cat.bg }};position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden">
+                      <span style="font-size:34px;line-height:1;position:absolute;z-index:1">{{ cat.emoji }}</span>
+                      <img src="{{ cat.imgSrc }}" alt="{{ cat.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2" onerror="this.style.display='none'" loading="lazy" />
+                    </div>
+                    <div style="padding:7px 5px 9px">
+                      <span style="font-size:9.5px;font-weight:700;color:#141414;line-height:1.35;display:block;text-align:center;letter-spacing:-0.1px;font-family:var(--font-body)">{{ cat.name }}</span>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+
               <div style="height:24px"></div>
             </div>
           </sc-if>
