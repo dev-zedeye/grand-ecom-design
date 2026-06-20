@@ -2349,14 +2349,6 @@
             <span style="font-size:11px;font-weight:800;color:#fff;letter-spacing:0.2px">−{{ pdpProduct.discPct }}%</span>
           </div>
 
-          <!-- highlighted badge -->
-          <sc-if value="{{ pdpProduct.isHighlighted }}" hint-placeholder-val="{{ true }}">
-            <div style="position:absolute;top:100px;left:72px;background:linear-gradient(135deg,#FFB300,#FF8F00);border-radius:9px;padding:4px 10px;z-index:10;display:flex;align-items:center;gap:4px">
-              <svg width="9" height="9" viewBox="0 0 20 20" fill="white"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7"></polygon></svg>
-              <span style="font-size:11px;font-weight:800;color:#fff;letter-spacing:0.2px">Featured</span>
-            </div>
-          </sc-if>
-
           <!-- product emoji -->
           <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-top:20px">
             <span style="font-size:110px;line-height:1;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.18));user-select:none">{{ pdpProduct.emoji }}</span>
