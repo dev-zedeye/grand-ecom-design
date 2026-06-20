@@ -190,8 +190,9 @@ window.BottomNavScreen = {
         cartStyle:    { width:'100%', height:'36px', background: inCart ? '#F0FFF4' : '#E53935', border: inCart ? '1.5px solid #22C55E' : '1.5px solid transparent', borderRadius:'10px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:'5px', animation: inCart ? 'cartBounce 0.3s ease' : 'none' },
         cartLblStyle: { fontSize:'10.5px', fontWeight:'700', color: inCart ? '#16A34A' : '#fff' },
         cartLbl:      inCart ? 'Added to Cart' : 'Add to Cart',
-        onWishlist:   () => setState(s => { const n={...s[wlKey]}; n[p.id]=!n[p.id]; return { [wlKey]:n }; }),
-        onCart:       () => setState(s => { const n={...s[cartKey]}; n[p.id]=!n[p.id]; return { [cartKey]:n }; }),
+        onWishlist:   (e) => { e && e.stopPropagation(); setState(s => { const n={...s[wlKey]}; n[p.id]=!n[p.id]; return { [wlKey]:n }; }); },
+        onCart:       (e) => { e && e.stopPropagation(); setState(s => { const n={...s[cartKey]}; n[p.id]=!n[p.id]; return { [cartKey]:n }; }); },
+        onTap:        () => setState({ currentScreen: 'productdetail' }),
       };
     });
   },
